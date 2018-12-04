@@ -23,6 +23,7 @@ export default class CreateTripPlan extends Component {
         this.props.navigation.navigate('BookHotels_')
     }
     render() {
+        const { goBack } = this.props.navigation.dispatch({ type: 'Navigation/BACK' });
         return (
             <View style={{ flex: 1, alignItems: 'center', backgroundColor: 'white' }}>
                 <View style={styles.logo}>
@@ -31,8 +32,12 @@ export default class CreateTripPlan extends Component {
                         <View style={{ flex: 1 }} />
                         <View style={{ flex: 1 }}>
                             <View style={{ alignItems: 'center', flexDirection: 'row' }}>
-                                <Image source={require('../../Resource/TripPlan/CreateTripPlan/back.png')}
-                                    style={styles.iconBack} />
+                                
+                                    <TouchableHighlight onPress={() => goBack()} style={styles.touchableBack}
+                                    >
+                                    <Image source={require('../../Resource/TripPlan/CreateTripPlan/back.png')}
+                                        style={styles.iconBack} />
+                                </TouchableHighlight>
                                 <Text style={styles.textLogo}>Create Trip Plan</Text>
                             </View>
                         </View>
@@ -137,9 +142,9 @@ const shadow = {
 }
 const styles = {
     iconBack: {
-        width: 24,
-        height: 9,
-        marginLeft: 10
+        width: 50,
+        height: '100%',
+
     },
     iconUser: {
         width: 17,
@@ -222,7 +227,13 @@ const styles = {
         borderRadius: 3,
         borderWidth: 0.5,
         borderColor: '#9E9E9E'
-    }
+    },
+    touchableBack: {
+        justifyContent: 'center',
+        width: 50,
+        height: '100%',
+
+    },
 }
 
 

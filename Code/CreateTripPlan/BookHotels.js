@@ -17,19 +17,37 @@ export default class BookHotels extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            data: [{ source: require('../../Resource/TripPlan/BookHotels/DataImage/image1.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: 10000000, status: true },
-            { source: require('../../Resource/TripPlan/BookHotels/DataImage/image2.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: 10000000, status: false },
-            { source: require('../../Resource/TripPlan/BookHotels/DataImage/image3.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: 10000000, status: true },
-            { source: require('../../Resource/TripPlan/BookHotels/DataImage/image4.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: 10000000, status: true },
-            { source: require('../../Resource/TripPlan/BookHotels/DataImage/image5.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: 10000000, status: true },
-            { source: require('../../Resource/TripPlan/BookHotels/DataImage/image6.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: 10000000, status: true },
-            { source: require('../../Resource/TripPlan/BookHotels/DataImage/image7.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: 10000000, status: true },
-            { source: require('../../Resource/TripPlan/BookHotels/DataImage/image8.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: 10000000, status: true }]
+            data: [{ source: require('../../Resource/TripPlan/BookHotels/DataImage/image1.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: "10000000", status: true },
+            { source: require('../../Resource/TripPlan/BookHotels/DataImage/image2.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: "10000000", status: false },
+            { source: require('../../Resource/TripPlan/BookHotels/DataImage/image3.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: "10000000", status: false },
+            { source: require('../../Resource/TripPlan/BookHotels/DataImage/image4.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: "10000000", status: false },
+            { source: require('../../Resource/TripPlan/BookHotels/DataImage/image5.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: "10000000", status: false },
+            { source: require('../../Resource/TripPlan/BookHotels/DataImage/image6.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: "10000000", status: false },
+            { source: require('../../Resource/TripPlan/BookHotels/DataImage/image7.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: "10000000", status: true },
+            { source: require('../../Resource/TripPlan/BookHotels/DataImage/image8.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: "10000000", status: true }]
 
         }
     }
+    _onpressNextSteep() {
+        this.props.navigation.navigate('Place_')
+    }
     _backgroundTouchable(status) {
         return status === true ? styles.touchableTrue : styles.touchableFalse
+    }
+    formatNumberWithDot(number) {
+
+        let string = "";
+        k = number.length % 3;
+
+        for (let i = number.length - 1; i >= 0; i--) {
+            string += number[i];
+            if (i % 3 == k) {
+                string += ".";
+            }
+        }
+
+
+        return string.split('').reverse().join('');
     }
     _textTouchable(status) {
 
@@ -40,6 +58,7 @@ export default class BookHotels extends Component {
         }
     }
     render() {
+        const { goBack } = this.props.navigation;
         return (
             <View>
                 <View style={styles.logo}>
@@ -48,8 +67,11 @@ export default class BookHotels extends Component {
                         <View style={{ flex: 1 }} />
                         <View style={{ flex: 1 }}>
                             <View style={{ alignItems: 'center', flexDirection: 'row' }}>
-                                <Image source={require('../../Resource/TripPlan/BookHotels/back.png')}
-                                    style={styles.iconBack} />
+                                <TouchableHighlight onPress={() => goBack()} style={styles.touchableBack}>
+                                    <Image source={require('../../Resource/TripPlan/BookHotels/back.png')}
+                                        style={styles.iconBack} />
+                                </TouchableHighlight>
+
                                 <Text style={styles.textLogo}>Create Trip Plan</Text>
                                 <Image source={require('../../Resource/TripPlan/BookHotels/search.png')}
                                     style={styles.iconSearch}
@@ -81,15 +103,27 @@ export default class BookHotels extends Component {
                             <Image source={item.source} style={styles.imageItems}></Image>
                             <View style={styles.itemDescription}>
                                 <Text style={styles.textBlack}>{item.name}</Text>
-                                
+                                <View style={{ flexDirection: 'row', }}>
                                     <Rating
                                         ratingColor='#FF5526'
                                         type='star'
                                         imageSize={12}
                                         startingValue={item.rating}
                                     ></Rating>
+
                                     <Text> ({item.vote} đánh giá)</Text>
-                                
+                                </View>
+
+                                <View style={{ flexDirection: 'row' }}>
+                                    <Text>Home star  {item.star}</Text>
+                                    <Image style={{ width: 7, height: 7 }} source={require('../../Resource/TripPlan/BookHotels/star.png')}></Image>
+                                </View>
+                                <View style={{ flexDirection: 'row' }}>
+                                    <Text>Per night </Text>
+                                    <Text style={styles.textPerNight}>{this.formatNumberWithDot(item.pernight)}</Text>
+                                </View>
+
+
 
                             </View>
                             <View style={{ marginLeft: 40, alignItems: 'center', justifyContent: 'center' }}>
@@ -109,7 +143,7 @@ export default class BookHotels extends Component {
                     }
                 />
 
-                <TouchableHighlight style={{ width: '100%', marginTop: 'auto' }}>
+                <TouchableHighlight style={{ width: '100%', marginTop: 'auto' }} onPress={() => this._onpressNextSteep()}>
                     <View style={{ flexDirection: 'row' }}>
 
                         <Image source={require('../../Resource/TripPlan/BookHotels/nextsteep.png')}
@@ -129,9 +163,8 @@ export default class BookHotels extends Component {
 }
 const styles = {
     iconBack: {
-        width: 24,
-        height: 9,
-        marginLeft: 10
+        width: 50,
+        height: '100%',
     },
     iconSearch: {
         width: 25,
@@ -169,6 +202,16 @@ const styles = {
         marginLeft: 'auto',
         marginRight: 20,
         width: 100
+    },
+    textPerNight: {
+        color: '#FF5526',
+        marginLeft: 10
+    },
+    touchableBack: {
+        justifyContent: 'center',
+        width: 50,
+        height: '100%',
+
     },
     touchableTrue: {
         alignItems: 'center',

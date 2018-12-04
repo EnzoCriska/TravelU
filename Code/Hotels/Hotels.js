@@ -45,7 +45,7 @@ export default class Hotels extends Component {
 
         for (let i = number.length - 1; i >= 0; i--) {
             string += number[i];
-            if (i % 3 == 1) {
+            if (i % 3 == k) {
                 string += ".";
             }
         }

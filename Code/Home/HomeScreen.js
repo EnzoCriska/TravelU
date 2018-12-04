@@ -20,13 +20,15 @@ import {
     createStackNavigator
 }
     from 'react-navigation'
-import Login from '../Login/Login';
+
 import HomeScreenChild from './HomeScreenChild';
 import Hotels from '../Hotels/Hotels';
 import Restaurants from '../Restaurants/Restaurants';
 import Search from '../Search/Search';
-import StackTripPlan from '../TripPlan/StackTripPlan';
-import CreateTripPlan from '../TripPlan/CreateTripPlan';
+
+import StackPlan from '../CreateTripPlan/StackTripPlan';
+
+
 
 
 
@@ -43,7 +45,7 @@ const StackHome = createStackNavigator({
     Hotels_:Hotels,
     Restaurants_: Restaurants,
     Search_:Search,
-    StackTripPlan_:StackTripPlan
+    StackTripPlan_:StackPlan
   },
   
     {
@@ -61,7 +63,7 @@ const StackHome = createStackNavigator({
         tabBarVisible,
       };
     };
-    StackTripPlan.navigationOptions= ({ navigation }) => {
+    StackPlan.navigationOptions= ({ navigation }) => {
         let tabBarVisible = false;
       
         return {
@@ -84,7 +86,7 @@ const RootStack = createBottomTabNavigator({
         })
     },
     Button: {
-        screen: StackTripPlan,
+        screen: StackPlan,
         navigationOptions: () => (
             {
                 tabBarIcon: <Image source={require('../../Resource/Home/CreateTrip.png')} style={{ width: 82, height: 70, marginTop: -20 }}></Image>

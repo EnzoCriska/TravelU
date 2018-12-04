@@ -11,7 +11,7 @@ import {
     TextInput,
     ScrollView,
     FlatList,
-    ListItem,
+    StatusBar
 
 } from 'react-native';
 import { Rating, Icon } from 'react-native-elements'
@@ -61,7 +61,9 @@ export default class HomeScreenChild extends Component {
 
     render() {
         return (
+            
             <View style={{ flex: 1, alignItems: 'center' }}>
+
                 <ScrollView style={{ backgroundColor: 'white' }}>
                     <ImageBackground source={require('../../Resource/Home/logo/Logo.png')}
                         style={styles.imageLogo} >
@@ -91,32 +93,34 @@ export default class HomeScreenChild extends Component {
 
                     <View style={styles.parentTouch}>
 
-                        <TouchableHighlight onPress={() => this._onpressTripPlan()} style={styles.touchable}>
+                        <TouchableHighlight onPress={() => this._onpressTripPlan()}
+                        style={[ styles.touchable]}>
                             <Image source={require('../../Resource/Home/logo/TripPlan.png')}
-                                style={styles.imageTouchable}></Image>
+                               style={styles.imageTouchable}></Image>
                         </TouchableHighlight>
 
-                        <TouchableHighlight onPress={() => this._onpressHotel()} style={styles.touchable}>
-                            <Image source={require('../../Resource/Home/logo/Hotel.png')} style={styles.touchable}
-                                style={styles.imageTouchable}></Image>
+                        <TouchableHighlight onPress={() => this._onpressHotel()} 
+                        style={[{marginLeft:'2.5%'}, styles.touchable]}>
+                            <Image source={require('../../Resource/Home/logo/Hotel.png')} style={styles.imageTouchable}
+                              ></Image>
                         </TouchableHighlight>
 
-                        <TouchableHighlight onPress={() => this._onpressRestaurant()} style={styles.touchable}>
+                        <TouchableHighlight onPress={() => this._onpressRestaurant()}
+                        style={[{marginLeft:'2.5%'}, styles.touchable]} >
                             <Image source={require('../../Resource/Home/logo/Flights.png')}
                                 style={styles.imageTouchable}></Image>
                         </TouchableHighlight>
 
                         <TouchableHighlight
-                            style={styles.touchable}
+                           style={[{marginLeft:'2.5%'}, styles.touchable]}
                             onPress={() => this._onpressRestaurant()}>
-
                             <Image
-
                                 source={require('../../Resource/Home/logo/Restaurants.png')}
                                 style={styles.imageTouchable}></Image>
                         </TouchableHighlight>
 
-                        <TouchableHighlight onPress={() => this._onpressRestaurant()} style={styles.touchable}>
+                        <TouchableHighlight onPress={() => this._onpressRestaurant()}
+                        style={[{marginLeft:'2.5%'}, styles.touchable]}>
                             <Image source={require('../../Resource/Home/logo/Tours.png')}
                                 style={styles.imageTouchable}></Image>
                         </TouchableHighlight>
@@ -223,8 +227,6 @@ export default class HomeScreenChild extends Component {
 
             </View>
 
-
-
         );
     }
 }
@@ -265,10 +267,11 @@ const styles = {
         backgroundColor: 'white',
         flexDirection: 'row',
         height: 41,
-        width: '90%',
+        width: '84%',
         alignItems: 'center'
     },
     parentTouch: {
+        
         width: '90%',
         margin: '5%',
         marginTop: -33,
@@ -280,15 +283,14 @@ const styles = {
         borderRadius: 10,
         borderWidth: 0.5,
         borderColor: '#ED50C6',
-        width: 65,
+        width: '18%',
         height: 65,
-        marginLeft: '3%'
     },
     imageTouchable: {
         borderRadius: 10,
         borderWidth: 0.5,
         borderColor: '#ED50C6',
-        width: 65,
+        width: '100%',
         height: 65,
 
     },
