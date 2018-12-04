@@ -6,8 +6,24 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import React, { Component } from 'react';
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View
+}
+  from
+  'react-native';
+
+import{createStackNavigator} from 'react-navigation'
+import Login from './Code/Login/Login';
+import SignInEmail from './Code/Login/SignInEmail';
+import SignUp from './Code/Login/SignUp';
+import HomeScreen from './Code/Home/HomeScreen';
+
+import HomeScreenChild from './Code/Home/HomeScreenChild';
+import Hotels from './Code/Hotels/Hotels';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -16,18 +32,47 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-type Props = {};
-export default class App extends Component<Props> {
+const RootStack = createStackNavigator({
+
+  Home:{
+    screen: Login,
+    
+  },
+  SignIn: {
+    screen:SignInEmail,
+  },
+  SingUp_:{
+    screen : SignUp,
+  },
+  Home_:{
+    screen: HomeScreen,
+  },
+  Home_restaurants:{
+    screen: Hotels
+  },
+  ScreenHome:{
+    screen : HomeScreenChild,
+  }
+},
+
+  {
+    headerMode:'none'
+  }
+);
+
+export default class App extends Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
-    );
+    // return (
+    //   <View style={styles.container}>
+    //     <Text style={styles.welcome}>Welcome to React Native!</Text>
+    //     <Text style={styles.instructions}>To get started, edit App.js</Text>
+    //     <Text style={styles.instructions}>{instructions}</Text>
+    //   </View>
+    // );
+    return <RootStack />;
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {
