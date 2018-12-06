@@ -63,7 +63,7 @@ export default class HomeScreenChild extends Component {
         return (
             
             <View style={{ flex: 1, alignItems: 'center' }}>
-
+<StatusBar></StatusBar>
                 <ScrollView style={{ backgroundColor: 'white' }}>
                     <ImageBackground source={require('../../Resource/Home/logo/Logo.png')}
                         style={styles.imageLogo} >

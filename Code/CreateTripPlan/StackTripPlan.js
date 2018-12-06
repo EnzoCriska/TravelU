@@ -9,6 +9,7 @@ import Search from '../Search/Search';
 import PickDate from './Pickdate/Pickdate';
 import BookHotels from './BookHotels';
 import Place from './Place';
+import Finish from './Finish';
 
 
 export default class StackPlan extends Component {
@@ -22,7 +23,8 @@ const RootStack = createStackNavigator({
     Search_: Search,
     PickDate_:PickDate,
     BookHotels_:BookHotels,
-    Place_:Place
+    Place_:Place,
+    Finish_:Finish
     
 }, {
         headerMode: 'none'
