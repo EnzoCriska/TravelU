@@ -27,6 +27,7 @@ import Restaurants from '../Restaurants/Restaurants';
 import Search from '../Search/Search';
 
 import StackPlan from '../CreateTripPlan/StackTripPlan';
+import PopularDestinations from '../DestinationPopulation/PopularDestinations';
 
 
 
@@ -45,7 +46,8 @@ const StackHome = createStackNavigator({
     Hotels_:Hotels,
     Restaurants_: Restaurants,
     Search_:Search,
-    StackTripPlan_:StackPlan
+    StackTripPlan_:StackPlan,
+    PopularDes_:PopularDestinations
   },
   
     {
@@ -104,7 +106,6 @@ const RootStack = createBottomTabNavigator({
         screen: HomeScreenChild ,
         navigationOptions: () => ({
             tabBarIcon: <Image source={require('../../Resource/Home/icontabbar/user.png')} style={styles.inputIcon} />
-
         })
     },
 
