@@ -8,7 +8,8 @@ import {
     TouchableHighlight,
     Text,
     Image,
-    FlatList
+    FlatList,
+    TouchableOpacity
 
 } from 'react-native'
 import { Rating } from 'react-native-elements'
@@ -96,49 +97,53 @@ export default class BookHotels extends Component {
                 </TouchableHighlight>
 
                 <FlatList
+
+                    keyExtractor={(item) => item.name}
                     showsVerticalScrollIndicator={false}
                     data={this.state.data}
                     renderItem={({ item }) =>
-                        (<View style={styles.viewItem}>
-                            <Image source={item.source} style={styles.imageItems}></Image>
-                            <View style={styles.itemDescription}>
-                                <Text style={styles.textBlack}>{item.name}</Text>
-                                <View style={{ flexDirection: 'row', }}>
-                                    <Rating
-                                        ratingColor='#FF5526'
-                                        type='star'
-                                        imageSize={12}
-                                        startingValue={item.rating}
-                                    ></Rating>
+                        (
+                            <View style={styles.viewItem}>
+                                <Image source={item.source} style={styles.imageItems}></Image>
+                                <View style={styles.itemDescription}>
+                                    <Text style={styles.textBlack}>{item.name}</Text>
+                                    <View style={{ flexDirection: 'row', }}>
+                                        <Rating
+                                            ratingColor='#FF5526'
+                                            type='star'
+                                            imageSize={12}
+                                            startingValue={item.rating}
+                                        ></Rating>
 
-                                    <Text> ({item.vote} đánh giá)</Text>
+                                        <Text> ({item.vote} đánh giá)</Text>
+                                    </View>
+
+                                    <View style={{ flexDirection: 'row' }}>
+                                        <Text>Home star  {item.star}</Text>
+                                        <Image style={{ width: 7, height: 7 }} source={require('../../Resource/TripPlan/BookHotels/star.png')}></Image>
+                                    </View>
+                                    <View style={{ flexDirection: 'row' }}>
+                                        <Text>Per night </Text>
+                                        <Text style={styles.textPerNight}>{this.formatNumberWithDot(item.pernight)}</Text>
+                                    </View>
+
+
+
                                 </View>
+                                <View style={{ marginLeft: 40, alignItems: 'center', justifyContent: 'center' }}>
+                                    <View>
+                                        <TouchableHighlight style={this._backgroundTouchable(item.status)} >
+                                            <Text>{this._textTouchable(item.status)}</Text>
+                                        </TouchableHighlight>
+                                        <TouchableHighlight style={styles.touchableBook} >
+                                            <Text>Book</Text>
+                                        </TouchableHighlight>
+                                    </View>
 
-                                <View style={{ flexDirection: 'row' }}>
-                                    <Text>Home star  {item.star}</Text>
-                                    <Image style={{ width: 7, height: 7 }} source={require('../../Resource/TripPlan/BookHotels/star.png')}></Image>
                                 </View>
-                                <View style={{ flexDirection: 'row' }}>
-                                    <Text>Per night </Text>
-                                    <Text style={styles.textPerNight}>{this.formatNumberWithDot(item.pernight)}</Text>
-                                </View>
-
-
 
                             </View>
-                            <View style={{ marginLeft: 40, alignItems: 'center', justifyContent: 'center' }}>
-                                <View>
-                                    <TouchableHighlight style={this._backgroundTouchable(item.status)} >
-                                        <Text>{this._textTouchable(item.status)}</Text>
-                                    </TouchableHighlight>
-                                    <TouchableHighlight style={styles.touchableBook} >
-                                        <Text>Book</Text>
-                                    </TouchableHighlight>
-                                </View>
-
-                            </View>
-
-                        </View>)
+                       )
 
                     }
                 />

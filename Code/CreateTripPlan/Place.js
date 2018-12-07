@@ -21,6 +21,9 @@ export default class Place extends Component {
             { source: require('../../Resource/TripPlan/Place/DataImage/day3.png'), date: "26/12/2018", sumplace: 1, index: 3 }]
         }
     }
+    onpressNextSteep(){
+        this.props.navigation.navigate('Finish_')
+    }
     render() {
         const { goBack } = this.props.navigation;
         return (
@@ -66,6 +69,7 @@ export default class Place extends Component {
                 </View>
 
                 <FlatList
+                keyExtractor={(item)=>item.name}
                     style={{ width: '100%' }}
                     data={this.state.data}
                     renderItem={({ item }) =>
@@ -101,7 +105,7 @@ export default class Place extends Component {
                         </View>)
                     }
                 ></FlatList>
-                <TouchableHighlight style={{ width: '100%' }}>
+                <TouchableHighlight style={{ width: '100%' }} onPress={()=>this.onpressNextSteep()}>
                     <Image style={styles.touchableNextSteep} source={require('../../Resource/TripPlan/Place/nextsteep.png')}></Image>
                 </TouchableHighlight>
             </View>
@@ -139,7 +143,7 @@ const styles = {
         alignItems: 'center'
     },
     textTitle: {
-        fontSize: 24,
+        fontSize: 20,
         color: 'white',
     },
     textWhite: {

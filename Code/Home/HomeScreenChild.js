@@ -54,16 +54,16 @@ export default class HomeScreenChild extends Component {
     _onpressSearch() {
         this.props.navigation.navigate('Search_')
     }
-    _onpressTripPlan(){
+    _onpressTripPlan() {
         this.props.navigation.navigate('StackTripPlan_')
     }
     sizerat = 12;
 
     render() {
         return (
-            
+
             <View style={{ flex: 1, alignItems: 'center' }}>
-<StatusBar></StatusBar>
+                <StatusBar></StatusBar>
                 <ScrollView style={{ backgroundColor: 'white' }}>
                     <ImageBackground source={require('../../Resource/Home/logo/Logo.png')}
                         style={styles.imageLogo} >
@@ -79,7 +79,7 @@ export default class HomeScreenChild extends Component {
                                     onFocus={() => this._onpressSearch()}
                                     style={styles.inputSearch} keyboardType='numeric'
                                     placeholder='Find Destinations, hotels, restaurants....' />
-                                <TouchableHighlight style={{alignItems:'center'}}
+                                <TouchableHighlight style={{ alignItems: 'center' }}
                                 >
                                     <Image source={require('../../Resource/Home/logo/Find.png')}
                                         style={styles.inputIcon}
@@ -94,25 +94,25 @@ export default class HomeScreenChild extends Component {
                     <View style={styles.parentTouch}>
 
                         <TouchableHighlight onPress={() => this._onpressTripPlan()}
-                        style={[ styles.touchable]}>
+                            style={[styles.touchable]}>
                             <Image source={require('../../Resource/Home/logo/TripPlan.png')}
-                               style={styles.imageTouchable}></Image>
+                                style={styles.imageTouchable}></Image>
                         </TouchableHighlight>
 
-                        <TouchableHighlight onPress={() => this._onpressHotel()} 
-                        style={[{marginLeft:'2.5%'}, styles.touchable]}>
+                        <TouchableHighlight onPress={() => this._onpressHotel()}
+                            style={[{ marginLeft: '2.5%' }, styles.touchable]}>
                             <Image source={require('../../Resource/Home/logo/Hotel.png')} style={styles.imageTouchable}
-                              ></Image>
+                            ></Image>
                         </TouchableHighlight>
 
                         <TouchableHighlight onPress={() => this._onpressRestaurant()}
-                        style={[{marginLeft:'2.5%'}, styles.touchable]} >
+                            style={[{ marginLeft: '2.5%' }, styles.touchable]} >
                             <Image source={require('../../Resource/Home/logo/Flights.png')}
                                 style={styles.imageTouchable}></Image>
                         </TouchableHighlight>
 
                         <TouchableHighlight
-                           style={[{marginLeft:'2.5%'}, styles.touchable]}
+                            style={[{ marginLeft: '2.5%' }, styles.touchable]}
                             onPress={() => this._onpressRestaurant()}>
                             <Image
                                 source={require('../../Resource/Home/logo/Restaurants.png')}
@@ -120,7 +120,7 @@ export default class HomeScreenChild extends Component {
                         </TouchableHighlight>
 
                         <TouchableHighlight onPress={() => this._onpressRestaurant()}
-                        style={[{marginLeft:'2.5%'}, styles.touchable]}>
+                            style={[{ marginLeft: '2.5%' }, styles.touchable]}>
                             <Image source={require('../../Resource/Home/logo/Tours.png')}
                                 style={styles.imageTouchable}></Image>
                         </TouchableHighlight>
@@ -132,6 +132,7 @@ export default class HomeScreenChild extends Component {
                     </View>
 
                     <FlatList
+                        keyExtractor={(item) => item.name}
                         showsHorizontalScrollIndicator={false}
                         horizontal={true}
                         data={this.state.datapromotion}
@@ -154,10 +155,11 @@ export default class HomeScreenChild extends Component {
                     />
                     <View style={styles.parentTouch}>
                         <Text style={styles.textTitle}>Địa điểm phổ biến</Text>
-                        <Text style={styles.textSeeAll} onPress={()=> {this.props.navigation.navigate('PopularDes_')}}>See all</Text>
+                        <Text style={styles.textSeeAll} onPress={() => { this.props.navigation.navigate('PopularDes_') }}>See all</Text>
                     </View>
 
                     <FlatList
+                        keyExtractor={(item) => item.name}
                         showsHorizontalScrollIndicator={false}
                         horizontal={true}
                         data={this.state.dataTrend}
@@ -172,6 +174,7 @@ export default class HomeScreenChild extends Component {
                         <Text style={styles.textSeeAll}>See all</Text>
                     </View>
                     <FlatList
+                        keyExtractor={(item) => item.name}
                         showsHorizontalScrollIndicator={false}
                         horizontal={true}
                         data={this.state.dataNear}
@@ -198,6 +201,7 @@ export default class HomeScreenChild extends Component {
                         <Text style={styles.textSeeAll}>See all</Text>
                     </View>
                     <FlatList
+                        keyExtractor={(item) => item.name}
                         showsHorizontalScrollIndicator={false}
                         horizontal={true}
                         data={this.state.dataOctorber}
@@ -254,13 +258,13 @@ const styles = {
 
     },
     inputIcon: {
-        
+
         width: 17.5,
         height: 17.5,
 
     },
     inputParent: {
-       
+
         borderWidth: 0.5,
         borderColor: 'pink',
         borderRadius: 5,
@@ -271,7 +275,7 @@ const styles = {
         alignItems: 'center'
     },
     parentTouch: {
-        
+
         width: '90%',
         margin: '5%',
         marginTop: -33,

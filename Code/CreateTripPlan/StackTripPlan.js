@@ -10,6 +10,7 @@ import PickDate from './Pickdate/Pickdate';
 import BookHotels from './BookHotels';
 import Place from './Place';
 import Finish from './Finish';
+import MyTripPlan from './MyTripPlans';
 
 
 export default class StackPlan extends Component {
@@ -24,7 +25,8 @@ const RootStack = createStackNavigator({
     PickDate_:PickDate,
     BookHotels_:BookHotels,
     Place_:Place,
-    Finish_:Finish
+    Finish_:Finish,
+    MyTripPlans_:MyTripPlan
     
 }, {
         headerMode: 'none'

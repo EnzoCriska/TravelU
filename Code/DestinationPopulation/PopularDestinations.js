@@ -49,7 +49,8 @@ import {
     render() {
          return (
              <View style={{flex:1}}>
-                <View style={{height:'10%', backgroundColor:'#8D0CBA', width:'100%'}}>
+             
+                <ImageBackground source ={require('../../Resource/TripPlan/Finish/Logo.png')} style={{height:'10%', backgroundColor:'#8D0CBA', width:'100%'}}>
                    <View style = {{flex:1}}>
 
                    </View>
@@ -67,7 +68,7 @@ import {
                         <Text style={{color:'white', fontSize:20, marginHorizontal:20}}>Điểm đến phổ biến</Text>
                    </View>
                     
-                </View>
+                </ImageBackground>
                 <ScrollView style={{flex:2, backgroundColor:'white', width:'100%', padding:15}}>
                     <FlatList
                         data={datasourceDestinations}
