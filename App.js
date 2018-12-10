@@ -12,11 +12,9 @@ import {
   StyleSheet,
   Text,
   View
-}
-  from
-  'react-native';
+} from 'react-native';
 
-import{createStackNavigator} from 'react-navigation'
+import { createStackNavigator } from 'react-navigation'
 import Login from './Code/Login/Login';
 import SignInEmail from './Code/Login/SignInEmail';
 import SignUp from './Code/Login/SignUp';
@@ -34,41 +32,34 @@ const instructions = Platform.select({
 
 const RootStack = createStackNavigator({
 
-  Home:{
+  Home: {
     screen: Login,
-    
+
   },
   SignIn: {
-    screen:SignInEmail,
+    screen: SignInEmail,
   },
-  SingUp_:{
-    screen : SignUp,
+  SingUp_: {
+    screen: SignUp,
   },
-  Home_:{
+  Home_: {
     screen: HomeScreen,
   },
-  Home_restaurants:{
+  Home_restaurants: {
     screen: Hotels
   },
-  ScreenHome:{
-    screen : HomeScreenChild,
+  ScreenHome: {
+    screen: HomeScreenChild,
   }
 },
 
   {
-    headerMode:'none'
+    headerMode: 'none'
   }
 );
 
 export default class App extends Component {
   render() {
-    // return (
-    //   <View style={styles.container}>
-    //     <Text style={styles.welcome}>Welcome to React Native!</Text>
-    //     <Text style={styles.instructions}>To get started, edit App.js</Text>
-    //     <Text style={styles.instructions}>{instructions}</Text>
-    //   </View>
-    // );
     return <RootStack />;
   }
 }
