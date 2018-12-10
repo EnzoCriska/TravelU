@@ -1,102 +1,126 @@
 import React, { Component } from 'react';
-
 import {
-    Alert,
     StyleSheet,
     Text,
     View,
-    ImageBackground,
     Image,
     TouchableHighlight
 } from 'react-native';
 
 export default class Login extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        
+
+        this.state = {
+            sologan: "Travel with people. Make new friends",
+        };
     }
-    _onpress() {
-        
-        this.props.navigation.navigate('SignIn')
+    // functions when button clicked
+    btnLoginFBClicked() {
+        this.props.navigation.navigate('SignIn');
     }
+
+    btnLoginGPlusClicked() {
+        this.props.navigation.navigate('SignIn');
+    }
+
+    btnSignInEmailClicked() {
+        this.props.navigation.navigate('SignIn');
+    }
+
+    btnLoginClicked() {
+        this.props.navigation.navigate('SignIn');
+    }
+
     render() {
-        const { navigate } = this.props.navigation;
         return (
             <View style={{ flex: 1 }}>
+                {/* Image component to set background for screen
+                    Stylesheet have to  resizeMode: 'stretch' and position: 'absolute' 
+                */}
+                <Image style={styles.imageBg} source={require('../../Resource/Login/Background.png')}></Image>
 
-                <ImageBackground source={require('../../Resource/Login/Background.png')}
-                    style={styles.backgroundImage}>
-                    
-                        <Text style={styles.TextLogo}>TravelIu °</Text>
-                        <Text style={{ color: 'white', marginTop: '5%' }}>Travel with people. Make new friends</Text>
+                {/* Box 1 include: Image title - TravelU and Text */}
+                <View style={styles.viewBox}>
+                    <Image source={require('../../Resource/Login/title.png')}></Image>
+                    <Text style={{ color: 'white' }}>{this.state.sologan}</Text>
+                </View>
 
+                {/* Box 2 include: 4 button using TouchableHighlight (LoginFB, LoginG+, LoginEmail, Login) */}
+                <View style={styles.viewBox}>
+                    <TouchableHighlight
+                        style={styles.btn}
+                        onPress={() => { this.btnLoginFBClicked() }}
+                        underlayColor={'transparent'}
+                    >
+                        <Image source={require('../../Resource/Login/ButtonFaceBook.png')}
+                            resizeMode='stretch'
+                            style={styles.imgButton}>
+                        </Image>
+                    </TouchableHighlight>
 
-                    <View style={{  marginTop: '23%' ,height:'60%', width:'100%', alignItems:'center' }}>
-                        <TouchableHighlight style={{ height: '16%', width: '73%' }}>
-                            <Image source={require('../../Resource/Login/ButtonFaceBook.png')}
-                                resizeMode='stretch'
-                                style={{ height: '100%', width: '100%' }}>
-                            </Image>
-                        </TouchableHighlight>
+                    <TouchableHighlight
+                        style={styles.btn}
+                        onPress={() => { this.btnLoginGPlusClicked() }}
+                        underlayColor={'transparent'}
+                    >
+                        <Image source={require('../../Resource/Login/ButtonGoogle.png')}
+                            resizeMode='stretch'
+                            style={styles.imgButton}>
+                        </Image>
+                    </TouchableHighlight>
 
+                    <TouchableHighlight
+                        style={styles.btn}
+                        onPress={() => { this.btnSignInEmailClicked() }}
+                        underlayColor={'transparent'}
+                    >
+                        <Image source={require('../../Resource/Login/SignInEmail.png')}
+                            resizeMode='stretch'
+                            style={styles.imgButton}>
+                        </Image>
+                    </TouchableHighlight>
 
-                        <TouchableHighlight style={{ height: '14%', width: '73%', marginTop: '8%' }}>
-                            <Image source={require('../../Resource/Login/ButtonGoogle.png')}
-                                resizeMode='stretch'
-                                style={{ height: '100%', width: '100%' }}>
-                            </Image>
-                        </TouchableHighlight>
-
-                        <TouchableHighlight
-                            style={{ height: '28%', width: '73%', marginTop: '8%' }}
-                            onPress={() => this._onpress()}>
-                            <Image source={require('../../Resource/Login/SignInEmail.png')}
-                                resizeMode='stretch'
-                                style={{ height: '100%', width: '100%' }}>
-                            </Image>
-                        </TouchableHighlight>
-                    </View>
-                </ImageBackground>
-
-            </View>
-
-
-
+                    <TouchableHighlight
+                        style={styles.btnLogin}
+                        onPress={() => { this.btnLoginClicked() }}
+                        underlayColor={'transparent'}
+                    >
+                        <Text style={{ color: '#FFF' }}>Login</Text>
+                    </TouchableHighlight>
+                </View>
+            </View >
         );
     }
 };
 const styles = StyleSheet.create({
-    container: {
+    imageBg: {
         flex: 1,
+        resizeMode: 'stretch',
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center',
     },
-    backgroundImage: {
+    viewBox: {
         flex: 1,
+        justifyContent: 'center',
         alignItems: 'center'
     },
-    iconEmail: {
-        width: 30,
-        height: 30,
-        alignContent: 'center'
+    btn: {
+        height: '14%',
+        width: '73%',
+        marginTop: '8%'
     },
-    buttonLogin: {
-        height: 60,
-        borderWidth: 1,
-        borderRadius: 500,
-        borderColor: 'white',
-        justifyContent: 'center'
+    imgButton: {
+        height: '100%',
+        width: '100%'
     },
-    LogoForm: {
-        backgroundColor: 'transparent',
-        alignItems: 'center',
-        flex: 1,
-        flexDirection: 'column'
-    },
-
-    TextLogo: {
-        color: 'white',
-        marginTop: '34%',
-        alignItems: 'center',
-        fontSize: 40,
-        fontWeight: 'bold',
+    btnLogin: {
+        height: '14%',
+        width: '73%',
+        marginTop: 10,
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 });

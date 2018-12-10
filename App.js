@@ -23,18 +23,10 @@ import HomeScreen from './Code/Home/HomeScreen';
 import HomeScreenChild from './Code/Home/HomeScreenChild';
 import Hotels from './Code/Hotels/Hotels';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
 const RootStack = createStackNavigator({
 
   Home: {
     screen: Login,
-
   },
   SignIn: {
     screen: SignInEmail,
@@ -52,7 +44,6 @@ const RootStack = createStackNavigator({
     screen: HomeScreenChild,
   }
 },
-
   {
     headerMode: 'none'
   }
