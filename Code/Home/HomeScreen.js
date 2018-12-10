@@ -28,6 +28,7 @@ import Search from '../Search/Search';
 
 import StackPlan from '../CreateTripPlan/StackTripPlan';
 import PopularDestinations from '../DestinationPopulation/PopularDestinations';
+import MapHotelsScreen from '../Hotels/MapHotelsScreen';
 
 
 
@@ -47,7 +48,8 @@ const StackHome = createStackNavigator({
     Restaurants_: Restaurants,
     Search_:Search,
     StackTripPlan_:StackPlan,
-    PopularDes_:PopularDestinations
+    PopularDes_:PopularDestinations,
+    MapHotel_: MapHotelsScreen
   },
   
     {

@@ -84,7 +84,9 @@ export default class Hotels extends Component {
                 </View>
                 <View style={styles.titleFirst}>
                     <Text style={styles.textTitle}>Top Khách Sạn</Text>
-                    <Text style={styles.textSeeAll}>See all</Text>
+                    <Text style={styles.textSeeAll}
+                        onPress={()=>{this.props.navigation.navigate('MapHotel_')}}
+                         >See all</Text>
                 </View>
                 <FlatList
                     style={{ marginTop: -10 }}

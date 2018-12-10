@@ -4,7 +4,7 @@ import {
 } from 'react-native'
 import  Icon  from "react-native-vector-icons/FontAwesome";
 import MapView, { PROVIDER_GOOGLE , Marker} from 'react-native-maps';
-import ItemHotel from './FlatListItemHotel/ItemHotel';
+import ItemHotel from './FlatlistItem/ItemHotel';
 
 const listHotel = [
     {
