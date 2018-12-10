@@ -3,6 +3,7 @@ import {
     StyleSheet,
     Text,
     View,
+    StatusBar,
     Image,
     TouchableHighlight
 } from 'react-native';
@@ -35,6 +36,10 @@ export default class Login extends Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
+                <StatusBar
+                    backgroundColor={'transparent'}
+                    translucent={true}
+                />
                 {/* Image component to set background for screen
                     Stylesheet have to  resizeMode: 'stretch' and position: 'absolute' 
                 */}
