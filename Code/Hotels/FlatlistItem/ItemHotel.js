@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import { 
-    View, Image, Text
+    View, Image, Text, Dimensions
  } from "react-native";
 import {Rating} from 'react-native-elements'
 
-
+const {height, width} = Dimensions.get('window')
 
  export default class ItemHotel extends Component {
     constructor(props){
@@ -17,14 +17,15 @@ import {Rating} from 'react-native-elements'
 
      render() {
          return (
-             <View style = {{margin:3, height:100, width:'98%',flexDirection: 'row', backgroundColor:'green'}}>
-                    {/* <View style={{height:95, width:95, backgroundColor:'red'}}>
+             <View style = {{margin:3, height:100, width:width-10,flexDirection: 'row', backgroundColor:'#fff', borderRadius:5}}>
+                    <View style={{height:95, width:95, margin:2.5}}>
                         <Image
                             source={{uri:this.props.image}}
+                            style={{height:95, width:95}}
                         />
-                    </View>]
-                    <View style = {{flex:1, backgroundColor:'green'}}>
-                        <View style={{flex:1, flexDirection:'row', backgroundColor:'blue'}}>
+                    </View>
+                    <View style = {{flex:1}}>
+                        <View style={{flex:1, flexDirection:'row'}}>
                             <Text>{this.props.title}</Text>
                         </View>
                         <View style={{flex:1, flexDirection:'row'}}>
@@ -40,14 +41,14 @@ import {Rating} from 'react-native-elements'
                                 />
                             <Text>{this.props.vote}</Text>
                         </View>
-                        <View style={{flex:1, flexDirection:'row', backgroundColor:"red"}}>
+                        <View style={{flex:1, flexDirection:'row',}}>
                             <Text>Hotel star</Text>
                         </View>
-                        <View style={{flex:1, flexDirection:'row', backgroundColor:'pink'}}>
+                        <View style={{flex:1, flexDirection:'row',}}>
                             <Text>Per night</Text>
                         </View>
                             
-                    </View> */}
+                    </View>
              </View>
          );
      }
