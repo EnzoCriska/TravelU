@@ -134,7 +134,7 @@ export default class Hotels extends Component {
                         (<View style={{ width: 150 }} key = {item.title}>
                             <Image source={item.source} style={styles.imageTop}></Image>
                             <Text style={styles.textName}>{item.title}</Text>
-                            <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent:'center' }}>
+                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                 <Rating
                                     style={{ marginLeft: 10 }}
                                     type="star"

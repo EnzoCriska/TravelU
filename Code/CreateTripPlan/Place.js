@@ -7,8 +7,7 @@ import {
     FlatList,
     StyleSheet,
     Image,
-    TouchableHighlight,
-    TouchableOpacity
+    TouchableHighlight
 
 } from 'react-native';
 
@@ -24,9 +23,6 @@ export default class Place extends Component {
     }
     onpressNextSteep(){
         this.props.navigation.navigate('Finish_')
-    }
-    onpressDayOne(){
-        this.props.navigation.navigate('StackRoute_')
     }
     render() {
         const { goBack } = this.props.navigation;
@@ -77,8 +73,7 @@ export default class Place extends Component {
                     style={{ width: '100%' }}
                     data={this.state.data}
                     renderItem={({ item }) =>
-                        (<TouchableOpacity onPress={()=>this.onpressDayOne()}>
-                        <View style={styles.viewItem}>
+                        (<View style={styles.viewItem}>
                             <ImageBackground source={item.source}
                                 style={styles.imageItem}
                             >
@@ -107,8 +102,7 @@ export default class Place extends Component {
                                 </View>
                             </ImageBackground>
 
-                        </View>
-                        </TouchableOpacity>)
+                        </View>)
                     }
                 ></FlatList>
                 <TouchableHighlight style={{ width: '100%' }} onPress={()=>this.onpressNextSteep()}>

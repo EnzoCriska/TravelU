@@ -107,7 +107,7 @@ export default class BookHotels extends Component {
                                 <Image source={item.source} style={styles.imageItems}></Image>
                                 <View style={styles.itemDescription}>
                                     <Text style={styles.textBlack}>{item.name}</Text>
-                                    <View style={{ flexDirection: 'row',alignItems:'center' }}>
+                                    <View style={{ flexDirection: 'row', }}>
                                         <Rating
                                             ratingColor='#FF5526'
                                             type='star'
@@ -143,7 +143,7 @@ export default class BookHotels extends Component {
                                 </View>
 
                             </View>
-                        )
+                       )
 
                     }
                 />
