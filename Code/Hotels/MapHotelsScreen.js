@@ -117,8 +117,8 @@ export default class MapHotelsScreen extends Component {
                         >
 
                         {this.state.listHotel.map((hotel, index) => {
-                            return (
-                                
+                            console.log(this.state.listHotel.length + '--------' + index)
+                            return (                            
                                 <Marker key={index} 
                                     coordinate={hotel.location}
                                     title={hotel.title}>
@@ -128,8 +128,9 @@ export default class MapHotelsScreen extends Component {
                                     </View>
                                 </Marker>
                             );
+                            
                         })}
-
+                        {console.log('return market done...')}
                         </MapView>
                         <Animated.ScrollView
                             horizontal
@@ -137,8 +138,10 @@ export default class MapHotelsScreen extends Component {
                             showsHorizontalScrollIndicator={false}
                             style={{flex:1}}
                             >
-                            {this.state.listHotel.map((marker, index) => (
-                                <ItemHotel
+                            {this.state.listHotel.map((marker, index) => {
+                                console.log(this.state.listHotel.length + '--------' + index)
+                                return(
+                                    <ItemHotel
                                                 key={index}
                                                 title = {marker.title}
                                                 image = {marker.image}
@@ -149,7 +152,9 @@ export default class MapHotelsScreen extends Component {
                                                 per_night = {marker.per_night}
                                                 location = {marker.location}
                                             />
-                            ))}
+                                    )
+                            })}
+                            {console.log('return flatlist done...')}
                         </Animated.ScrollView>
                     </View>
                     
