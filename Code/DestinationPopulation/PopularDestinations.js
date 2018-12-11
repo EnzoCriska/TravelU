@@ -35,26 +35,18 @@ import {
 
  export default class PopularDestinations extends Component {
 
-    renderRow({item}){
-        console.log(item.title)
-        return(
-            
-            <ItemDestinations
-                title = {item.title}
-                image = {item.image}
-                description = {item.description}
-            />
-        )
+    
+
+    onPressItem(){
+        // this.props.navigation.navigate('')
     }
     render() {
          return (
              <View style={{flex:1}}>
              
-                <ImageBackground source ={require('../../Resource/CreateTripPlan/Finish/Logo.png')} style={{height:'10%', backgroundColor:'#8D0CBA', width:'100%'}}>
-                   <View style = {{flex:1}}>
-
-                   </View>
-                   <View style={{flex:1, flexDirection:'row', alignItems:'center', marginHorizontal:5, height:30}}>
+                <ImageBackground source ={require('../../Resource/CreateTripPlan/Finish/Logo.png')} style={{height:100, width:'100%'}}>
+                    <View style = {{flex:1}}></View>
+                    <View style={{flex:1, flexDirection:'row', alignItems:'center', marginHorizontal:5, height:30}}>
                         <TouchableOpacity 
                                 style={{height:20, width:30, borderRadius:20}}
                                 onPress={()=> {this.props.navigation.goBack()}}>
@@ -66,13 +58,22 @@ import {
                         </TouchableOpacity>
                         
                         <Text style={{color:'white', fontSize:20, marginHorizontal:20}}>Điểm đến phổ biến</Text>
-                   </View>
+                    </View>
                     
                 </ImageBackground>
                 <ScrollView style={{flex:2, backgroundColor:'white', width:'100%', padding:15}}>
                     <FlatList
                         data={datasourceDestinations}
-                        renderItem = {this.renderRow}
+                        renderItem = {({item}) =>(
+                            <TouchableOpacity onPress={()=>{this.onPressItem()}}>
+                                <ItemDestinations
+                                title = {item.title}
+                                image = {item.image}
+                                description = {item.description}
+                            />
+                            </TouchableOpacity>
+            
+                        )}
                         keyExtractor={item => item.title}
                     />
                 </ScrollView>

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { View, Text, ImageBackground, Image, TouchableOpacity } from 'react-native';
 import { createTabNavigator } from 'react-navigation'
-import RouteDayOne from './RouteDayOne';
-import RouteDayTwo from './RouteDayTwo';
-import RouteDayThree from './RouteDayThree';
+import MapDayOne from './MapDayOne';
+import MapDayTwo from './MapDayTwo';
+import MapDayThree from './MapDayThree';
 
-export default class StackRoute extends Component {
+
+export default class MapStack extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,25 +16,24 @@ export default class StackRoute extends Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <ImageBackground source={require('../../../Resource/StackRoute/logo.png')} style={styles.imageLogo} >
+                <ImageBackground source={require('../../../../Resource/StackRoute/logo.png')} style={styles.imageLogo} >
                     <View style={{ flex: 1 }}>
                         <View style={{ flex: 1 }}></View>
                         <View style={{ flex: 2 }}>
                             <View style={{ flex: 1, width: '100%', flexDirection: 'row', alignItems: 'center' }}>
                                 <TouchableOpacity style={styles.buttonBack}
                                     onPress={()=>{this.props.navigation.goBack()}}>
-                                    <Image source={require('../../../Resource/StackRoute/back.png')}
+                                    <Image source={require('../../../../Resource/StackRoute/back.png')}
                                         style={styles.iconBack} />
                                 </TouchableOpacity>
                                 <Text style={styles.textWhite}>3 day to Đà Lạt</Text>
-                                <TouchableOpacity style={styles.iconNote}>
-                                    <Image style={{width:'100%', height:'100%'}}  source={require('../../../Resource/StackRoute/note.png')}></Image>
+                                {/* <TouchableOpacity style={styles.iconNote}>
+                                    <Image style={{width:'100%', height:'100%'}}  source={require('../../../../Resource/StackRoute/note.png')}></Image>
                                 </TouchableOpacity>
 
-                                <TouchableOpacity style={styles.iconMap}
-                                    onPress={()=> {this.props.navigation.navigate('MapStack_')}}>
-                                    <Image style={{width:'100%', height:'100%'}} source={require('../../../Resource/StackRoute/map.png')}></Image>
-                                </TouchableOpacity>
+                                <TouchableOpacity style={styles.iconMap}>
+                                    <Image style={{width:'100%', height:'100%'}} source={require('../../../../Resource/StackRoute/map.png')}></Image>
+                                </TouchableOpacity> */}
                             </View>
                             <View style={{ flex: 1 }}></View>
                         </View>
@@ -46,16 +46,16 @@ export default class StackRoute extends Component {
 }
 const RootStack = createTabNavigator({
     RouteDayOne_: {
-        screen: RouteDayOne,
+        screen: MapDayOne,
         navigationOptions: { title: 'Day 1' }
 
     },
     RouteDayTwo_: {
-        screen: RouteDayTwo,
+        screen: MapDayTwo,
         navigationOptions: { title: 'Day 2' }
     },
     RouteDayThree_: {
-        screen: RouteDayTwo,
+        screen: MapDayThree,
         navigationOptions: {
             title: 'Day 3'
         }
