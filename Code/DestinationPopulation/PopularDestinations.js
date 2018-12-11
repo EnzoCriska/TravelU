@@ -50,7 +50,7 @@ import {
          return (
              <View style={{flex:1}}>
              
-                <ImageBackground source ={require('../../Resource/TripPlan/Finish/Logo.png')} style={{height:'10%', backgroundColor:'#8D0CBA', width:'100%'}}>
+                <ImageBackground source ={require('../../Resource/CreateTripPlan/Finish/Logo.png')} style={{height:'10%', backgroundColor:'#8D0CBA', width:'100%'}}>
                    <View style = {{flex:1}}>
 
                    </View>

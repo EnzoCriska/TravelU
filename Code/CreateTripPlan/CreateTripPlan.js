@@ -27,7 +27,7 @@ export default class CreateTripPlan extends Component {
         return (
             <View style={{ flex: 1, alignItems: 'center', backgroundColor: 'white' }}>
                 <View style={styles.logo}>
-                    <ImageBackground source={require('../../Resource/TripPlan/CreateTripPlan/logo.png')}
+                    <ImageBackground source={require('../../Resource/CreateTripPlan/CreateTripPlan/logo.png')}
                         style={styles.logo}>
                         <View style={{ flex: 1 }} />
                         <View style={{ flex: 1 }}>
@@ -35,7 +35,7 @@ export default class CreateTripPlan extends Component {
                                 
                                     <TouchableHighlight onPress={() => goBack()} style={styles.touchableBack}
                                     >
-                                    <Image source={require('../../Resource/TripPlan/CreateTripPlan/back.png')}
+                                    <Image source={require('../../Resource/CreateTripPlan/CreateTripPlan/back.png')}
                                         style={styles.iconBack} />
                                 </TouchableHighlight>
                                 <Text style={styles.textLogo}>Create Trip Plan</Text>
@@ -45,7 +45,7 @@ export default class CreateTripPlan extends Component {
                 </View>
 
                 <View style={[shadow, styles.parentPlanName]}>
-                    <Image source={require('../../Resource/TripPlan/CreateTripPlan/user.png')}
+                    <Image source={require('../../Resource/CreateTripPlan/CreateTripPlan/user.png')}
                         style={styles.iconUser}></Image>
                     <Text style={{ marginLeft: 20, color: this.gray }}> Plan name</Text>
                     <TextInput style={[styles.textBlack, { marginLeft: 'auto', marginRight: 18 }]}>
@@ -55,7 +55,7 @@ export default class CreateTripPlan extends Component {
 
                 <View style={[styles.parentRoute, shadow]}>
                     <View style={{ flex: 11, alignItems: 'center', justifyContent: 'center' }}>
-                        <Image source={require('../../Resource/TripPlan/CreateTripPlan/route.png')}
+                        <Image source={require('../../Resource/CreateTripPlan/CreateTripPlan/route.png')}
                             style={styles.iconRoute}></Image>
                     </View>
                     <View style={{ flex: 89 }} >
@@ -81,7 +81,7 @@ export default class CreateTripPlan extends Component {
                 <TouchableHighlight style={{ marginTop: 10 }} onPress={() => this._onpressPickDate()}>
                     <View style={[styles.parentStartDay, shadow]}>
                         <View style={{ flex: 11, alignItems: 'center', justifyContent: 'center' }}>
-                            <Image source={require('../../Resource/TripPlan/CreateTripPlan/calendar.png')}
+                            <Image source={require('../../Resource/CreateTripPlan/CreateTripPlan/calendar.png')}
                                 style={styles.iconCalendar}>
                             </Image>
                         </View>
@@ -96,7 +96,7 @@ export default class CreateTripPlan extends Component {
                 <TouchableHighlight style={{ marginTop: 5 }} onPress={() => this._onpressPickDate()}>
                     <View style={[styles.parentEndDay, shadow]}>
                         <View style={{ flex: 11, alignItems: 'center', justifyContent: 'center' }}>
-                            <Image source={require('../../Resource/TripPlan/CreateTripPlan/calendar.png')}
+                            <Image source={require('../../Resource/CreateTripPlan/CreateTripPlan/calendar.png')}
                                 style={styles.iconCalendar}>
                             </Image>
                         </View>
@@ -111,7 +111,7 @@ export default class CreateTripPlan extends Component {
                 <TouchableHighlight style={{ marginTop: 5 }}>
                     <View style={[styles.parentLock, shadow]}>
                         <View style={{ flex: 11, alignItems: 'center', justifyContent: 'center' }}>
-                            <Image source={require('../../Resource/TripPlan/CreateTripPlan/lock.png')}
+                            <Image source={require('../../Resource/CreateTripPlan/CreateTripPlan/lock.png')}
                                 style={styles.iconLock}>
                             </Image>
                         </View>
@@ -127,7 +127,7 @@ export default class CreateTripPlan extends Component {
 
                 <TouchableHighlight style={{ marginTop: 'auto',width:'100%' }} 
                 onPress={()=>this._onpressNextSteep()}>
-                    <Image source={require('../../Resource/TripPlan/CreateTripPlan/nextsteep.png')}
+                    <Image source={require('../../Resource/CreateTripPlan/CreateTripPlan/nextsteep.png')}
                         style={styles.nextsteepButton} />
                 </TouchableHighlight>
             </View>

@@ -17,14 +17,14 @@ export default class Finish extends Component {
         const { goBack } = this.props.navigation
         return (
             <View style={{ flex: 1, alignItems: 'center' }}>
-                <ImageBackground source={require('../../Resource/TripPlan/Finish/Logo.png')}
+                <ImageBackground source={require('../../Resource/CreateTripPlan/Finish/Logo.png')}
                     style={styles.imageLogo}>
                     <View style={{ flex: 1 }}>
                         <View style={{ flex: 1 }} />
                         <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                             <TouchableOpacity style={styles.touchable}
                                 onPress={() => goBack()}>
-                                <Image style={styles.iconBack} source={require('../../Resource/TripPlan/Finish/back.png')}
+                                <Image style={styles.iconBack} source={require('../../Resource/CreateTripPlan/Finish/back.png')}
                                 ></Image>
                             </TouchableOpacity>
                             <Text style={styles.textWhite}>3 days to Đà Lạt...</Text>
@@ -32,16 +32,16 @@ export default class Finish extends Component {
                     </View>
                 </ImageBackground>
 
-                <Image source={require('../../Resource/TripPlan/Finish/Flight.png')} style={styles.imageFight}></Image>
+                <Image source={require('../../Resource/CreateTripPlan/Finish/Flight.png')} style={styles.imageFight}></Image>
 
                 <Text style={styles.textSuccess}>Create Success</Text>
 
                 <Text style={styles.textShare}>Share trip plan ?</Text>
 
                 <View style={styles.viewButton}>
-                    <Image source={require('../../Resource/TripPlan/Finish/facebook.png')}
+                    <Image source={require('../../Resource/CreateTripPlan/Finish/facebook.png')}
                         style={styles.iconFaceBook} />
-                    <Image source={require('../../Resource/TripPlan/Finish/gmail.png')}
+                    <Image source={require('../../Resource/CreateTripPlan/Finish/gmail.png')}
                         style={styles.iconGmail} />
                 </View>
 
@@ -51,7 +51,7 @@ export default class Finish extends Component {
                 </View>
 
                 <TouchableHighlight style={{ width: '100%', marginTop:'auto' }} onPress={()=>this.onpressNextSteep()}>
-                    <Image source={require('../../Resource/TripPlan/Finish/nextsteep.png')}
+                    <Image source={require('../../Resource/CreateTripPlan/Finish/nextsteep.png')}
                         style={styles.nextsteepButton}></Image>
                 </TouchableHighlight>
             </View>

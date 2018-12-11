@@ -16,20 +16,25 @@ export default class StackRoute extends Component {
         return (
             <View style={{ flex: 1 }}>
                 <ImageBackground source={require('../../../Resource/StackRoute/logo.png')} style={styles.imageLogo} >
-                <View style={{flex:1}}>
-                    <View style={{ flex: 1}}></View>
-                    <View style={{ flex: 2 }}>
-                        <View style={{ flex: 1, width: '100%', flexDirection: 'row', alignItems:'center' }}>
-                            <TouchableOpacity style={styles.buttonBack}>
-                                <Image source={require('../../../Resource/StackRoute/back.png')}
-                                    style={styles.iconBack}/>
-                            </TouchableOpacity>
-                            <Text style={styles.textWhite}>3 day to Đà Lạt</Text>
-                            <Image style={styles.iconNote} source={require('../../../Resource/StackRoute/note.png')}></Image>
-                            <Image style={styles.iconMap} source={require('../../../Resource/StackRoute/map.png')}></Image>
-                        </View>
+                    <View style={{ flex: 1 }}>
                         <View style={{ flex: 1 }}></View>
-                    </View>
+                        <View style={{ flex: 2 }}>
+                            <View style={{ flex: 1, width: '100%', flexDirection: 'row', alignItems: 'center' }}>
+                                <TouchableOpacity style={styles.buttonBack}>
+                                    <Image source={require('../../../Resource/StackRoute/back.png')}
+                                        style={styles.iconBack} />
+                                </TouchableOpacity>
+                                <Text style={styles.textWhite}>3 day to Đà Lạt</Text>
+                                <TouchableOpacity style={styles.iconNote}>
+                                    <Image style={{width:'100%', height:'100%'}}  source={require('../../../Resource/StackRoute/note.png')}></Image>
+                                </TouchableOpacity>
+
+                                <TouchableOpacity style={styles.iconMap}>
+                                    <Image style={{width:'100%', height:'100%'}} source={require('../../../Resource/StackRoute/map.png')}></Image>
+                                </TouchableOpacity>
+                            </View>
+                            <View style={{ flex: 1 }}></View>
+                        </View>
                     </View>
                 </ImageBackground>
                 <RootStack></RootStack>
@@ -47,8 +52,8 @@ const RootStack = createTabNavigator({
         screen: RouteDayTwo,
         navigationOptions: { title: 'Day 2' }
     },
-    RouteDayThree: {
-        screen: RouteDayThree,
+    RouteDayThree_: {
+        screen: RouteDayTwo,
         navigationOptions: {
             title: 'Day 3'
         }
@@ -83,9 +88,9 @@ const RootStack = createTabNavigator({
     })
 
 const styles = {
-    buttonBack:{
-        width: '14%', 
-        height: 50 ,
+    buttonBack: {
+        width: '14%',
+        height: 50,
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -98,21 +103,21 @@ const styles = {
         width: '60%',
         height: 10
     },
-    iconNote:{
-        marginLeft:'auto',
-        width:18,
-        height:18
+    iconNote: {
+        marginLeft: 'auto',
+        width: 18,
+        height: 18
     },
-    iconMap:{
-        marginLeft:'9%',
+    iconMap: {
+        marginLeft: '9%',
         marginRight: '5%',
-        width:20,
-        height:20
+        width: 20,
+        height: 20
     },
     textWhite: {
         color: 'white',
         fontSize: 17
     },
-    
+
 }
 
