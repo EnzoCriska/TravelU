@@ -1,31 +1,16 @@
 import React, { Component } from 'react';
-
 import {
-    Alert,
     StyleSheet,
-    Text,
-    View,
-    ImageBackground,
     Image,
-    TouchableHighlight,
-    TextInput,
-    ScrollView,
-    FlatList,
-    ListItem,
-
 } from 'react-native';
-import { Rating, Icon } from 'react-native-elements'
 import {
     createBottomTabNavigator,
     createStackNavigator
-}
-    from 'react-navigation'
-
+} from 'react-navigation';
 import HomeScreenChild from './HomeScreenChild';
 import Hotels from '../Hotels/Hotels';
 import Restaurants from '../Restaurants/Restaurants';
 import Search from '../Search/Search';
-
 import StackPlan from '../CreateTripPlan/StackTripPlan';
 import PopularDestinations from '../DestinationPopulation/PopularDestinations';
 import MapHotelsScreen from '../Hotels/MapHotelsScreen';
@@ -35,58 +20,54 @@ export default class HomeScreen extends Component {
         super(props)
     }
     render() {
-        return (<RootStack />);
+        return (<HomeBottomTab />);
     }
 }
 const StackHome = createStackNavigator({
     HomeScreenChild_: HomeScreenChild,
-    Hotels_:Hotels,
+    Hotels_: Hotels,
     Restaurants_: Restaurants,
-    Search_:Search,
-    StackTripPlan_:StackPlan,
-    PopularDes_:PopularDestinations,
+    Search_: Search,
+    StackTripPlan_: StackPlan,
+    PopularDes_: PopularDestinations,
     MapHotel_: MapHotelsScreen,
-
-  },
-  
+},
     {
-      headerMode:'none'
-    }
-  );
-  StackHome.navigationOptions= ({ navigation }) => {
-      
-      let tabBarVisible = true;
-      if (navigation.state.index > 0) {
+        headerMode: 'none'
+    });
+
+StackHome.navigationOptions = ({ navigation }) => {
+    let tabBarVisible = true;
+    if (navigation.state.index > 0) {
         tabBarVisible = false;
-      }
-    
-      return {
+    }
+    return {
         tabBarVisible,
-      };
     };
-    StackPlan.navigationOptions= ({ navigation }) => {
-        let tabBarVisible = false;
-      
-        return {
-          tabBarVisible,
-        };
-      };
-const RootStack = createBottomTabNavigator({
-    
-    Home: {
-        screen:StackHome ,
+};
+
+StackPlan.navigationOptions = ({ navigation }) => {
+    let tabBarVisible = false;
+    return {
+        tabBarVisible,
+    };
+};
+
+// Create Button Tab 
+const HomeBottomTab = createBottomTabNavigator({
+    HomeTab: {
+        screen: StackHome,
         navigationOptions: () => ({
             tabBarIcon: <Image source={require('../../Resource/Home/icontabbar/home.png')} style={styles.inputIcon} />
         })
     },
-    // Home:StackHome,
-    File: {
-        screen: HomeScreenChild ,
+    PlanTab: {
+        screen: HomeScreenChild,
         navigationOptions: () => ({
             tabBarIcon: <Image source={require('../../Resource/Home/icontabbar/file.png')} style={styles.inputIcon} />
         })
     },
-    Button: {
+    CreateTripPlanTab: {
         screen: StackPlan,
         navigationOptions: () => (
             {
@@ -94,32 +75,33 @@ const RootStack = createBottomTabNavigator({
             }
         )
     },
-    Volume: {
-        screen: HomeScreenChild ,
+    ActivityTab: {
+        screen: HomeScreenChild,
         navigationOptions: () => ({
             tabBarIcon: <Image source={require('../../Resource/Home/icontabbar/music.png')} style={styles.inputIcon} />
         })
     },
-    User: {
-
-        screen: HomeScreenChild ,
+    ProfileTab: {
+        screen: HomeScreenChild,
         navigationOptions: () => ({
             tabBarIcon: <Image source={require('../../Resource/Home/icontabbar/user.png')} style={styles.inputIcon} />
         })
     },
-
 },
-
+    {
+        tabBarOptions: {
+            showLabel: false
+        }
+    },
     {
         headerMode: 'none'
-    }
-);
+    });
 
-const styles={
-    inputIcon:{
+const styles = StyleSheet.create({
+    inputIcon: {
         marginTop: 10,
         width: 24,
         height: 24,
     }
-}
+})
 
