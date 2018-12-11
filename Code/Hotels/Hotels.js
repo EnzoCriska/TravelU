@@ -84,7 +84,9 @@ export default class Hotels extends Component {
                 </View>
                 <View style={styles.titleFirst}>
                     <Text style={styles.textTitle}>Top Khách Sạn</Text>
-                    <Text style={styles.textSeeAll}>See all</Text>
+                    <Text style={styles.textSeeAll}
+                        onPress={()=>{this.props.navigation.navigate('MapHotel_')}}
+                         >See all</Text>
                 </View>
                 <FlatList
                     style={{ marginTop: -10 }}
@@ -92,7 +94,7 @@ export default class Hotels extends Component {
                     horizontal={true}
                     data={this.state.dataTopHotel}
                     renderItem={({ item }) =>
-                        (<View style={{ width: 150 }}>
+                        (<View style={{ width: 150 }} key ={item.title}>
                             <Image source={item.source} style={styles.imageTop}></Image>
                             <Text style={styles.textName}>{item.title}</Text>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -119,7 +121,9 @@ export default class Hotels extends Component {
 
                 <View style={styles.title}>
                     <Text style={styles.textTitle}>Top khách sạn lãng mạn</Text>
-                    <Text style={styles.textSeeAll}>See all</Text>
+                    <Text style={styles.textSeeAll}
+                        onPress={()=>{this.props.navigation.navigate('mapview_')}}
+                         >See all</Text>
                 </View>
                 <FlatList
                     style={{ marginTop: -10 }}
@@ -127,7 +131,7 @@ export default class Hotels extends Component {
                     horizontal={true}
                     data={this.state.dataHotelRomatic}
                     renderItem={({ item }) =>
-                        (<View style={{ width: 150 }}>
+                        (<View style={{ width: 150 }} key = {item.title}>
                             <Image source={item.source} style={styles.imageTop}></Image>
                             <Text style={styles.textName}>{item.title}</Text>
                             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent:'center' }}>
