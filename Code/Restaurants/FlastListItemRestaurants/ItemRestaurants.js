@@ -6,7 +6,7 @@ import {Rating} from 'react-native-elements'
 
 const {height, width} = Dimensions.get('window')
 
- export default class ItemHotel extends Component {
+ export default class ItemRestaurants extends Component {
     constructor(props){
         super(props)
     }
@@ -42,12 +42,7 @@ const {height, width} = Dimensions.get('window')
                                 />
                             <Text>({this.props.vote} vote)</Text>
                         </View>
-                        <View style={{flex:1, flexDirection:'row',}}>
-                            <Text>Hotel star: {this.props.rank} </Text>
-                        </View>
-                        <View style={{flex:1, flexDirection:'row',}}>
-                            <Text>Per night: {this.props.per_night}</Text>
-                        </View>
+                        <View style = {{flex:2}}></View>
                             
                     </View>
              </View>

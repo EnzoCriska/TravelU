@@ -29,6 +29,7 @@ import Search from '../Search/Search';
 import StackPlan from '../CreateTripPlan/StackTripPlan';
 import PopularDestinations from '../DestinationPopulation/PopularDestinations';
 import MapHotelsScreen from '../Hotels/MapHotelsScreen';
+import MapRestaurantScreen from '../Restaurants/MapRestaurantScreen';
 
 export default class HomeScreen extends Component {
     constructor(props) {
@@ -46,6 +47,7 @@ const StackHome = createStackNavigator({
     StackTripPlan_:StackPlan,
     PopularDes_:PopularDestinations,
     MapHotel_: MapHotelsScreen,
+    MapRestaurant_: MapRestaurantScreen
 
   },
   

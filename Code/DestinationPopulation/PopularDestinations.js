@@ -50,23 +50,21 @@ import {
          return (
              <View style={{flex:1}}>
              
-                <ImageBackground source ={require('../../Resource/TripPlan/Finish/Logo.png')} style={{height:'10%', backgroundColor:'#8D0CBA', width:'100%'}}>
-                   <View style = {{flex:1}}>
-
-                   </View>
-                   <View style={{flex:1, flexDirection:'row', alignItems:'center', marginHorizontal:5, height:30}}>
+                <ImageBackground source ={require('../../Resource/TripPlan/Finish/Logo.png')} style={{height:100, width:'100%'}}>
+                    <View style={{flex:1}}></View>
+                    <View style={{flex:1, flexDirection:'row', alignItems:'center', marginHorizontal:5, height:30}}>
                         <TouchableOpacity 
-                                style={{height:20, width:30, borderRadius:20}}
-                                onPress={()=> {this.props.navigation.goBack()}}>
+                            style={{height:20, width:30, borderRadius:20}}
+                            onPress={()=> {this.props.navigation.goBack()}}>
                             <Icon
                                 name='long-arrow-left'
                                 size={20}
                                 style={{color:'white'}}
                             />
                         </TouchableOpacity>
-                        
+                            
                         <Text style={{color:'white', fontSize:20, marginHorizontal:20}}>Điểm đến phổ biến</Text>
-                   </View>
+                    </View>
                     
                 </ImageBackground>
                 <ScrollView style={{flex:2, backgroundColor:'white', width:'100%', padding:15}}>

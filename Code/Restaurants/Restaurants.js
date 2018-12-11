@@ -85,7 +85,7 @@ export default class Restaurants extends Component {
                 </View>
                 <View style={styles.titleFirst}>
                     <Text style={styles.textTitle}>Top ăn uống</Text>
-                    <Text style={styles.textSeeAll}>See all</Text>
+                    <Text style={styles.textSeeAll} onPress={()=> {this.props.navigation.navigate('MapRestaurant_')}}>See all</Text>
                 </View>
                 <FlatList
                     style={{ marginTop: -10 }}
