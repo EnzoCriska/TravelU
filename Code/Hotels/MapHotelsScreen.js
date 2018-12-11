@@ -7,6 +7,12 @@ import MapView, { PROVIDER_GOOGLE , Marker} from 'react-native-maps';
 import ItemHotel from './FlatlistItem/ItemHotel';
 import ActionButton from 'react-native-action-button';
 
+
+const { width, height } = Dimensions.get("window");
+
+const CARD_HEIGHT = height / 4;
+const CARD_WIDTH = CARD_HEIGHT - 50;
+
 export default class MapHotelsScreen extends Component {
     constructor(props){
         super(props);
@@ -114,10 +120,10 @@ export default class MapHotelsScreen extends Component {
                         <MapView
                             ref={map => this.map = map}
                             initialRegion={this.state.region}
-                            style={{flex:4}}
+                            style={{flex:1}}
                         >
 
-                        {/* {this.state.listHotel.map((hotel, index) => {
+                        {this.state.listHotel.map((hotel, index) => {
                             console.log(this.state.listHotel.length + '--------' + index)
                             return (                            
                                 <Marker key={index} 
@@ -130,26 +136,18 @@ export default class MapHotelsScreen extends Component {
                                 </Marker>
                             );
                             
-                        })} */}
+                        })}
                         {console.log('return market done...')}
                         </MapView>
-                        <ActionButton buttonColor="rgba(231,76,60,1)">
-                    <ActionButton.Item buttonColor='#9b59b6' title="New Task" onPress={() => console.log("notes tapped!")}>
-                        <Icon name="md-create" style={styles.actionButtonIcon} />
-                    </ActionButton.Item>
-                    <ActionButton.Item buttonColor='#3498db' title="Notifications" onPress={() => {}}>
-                        <Icon name="md-notifications-off" style={styles.actionButtonIcon} />
-                    </ActionButton.Item>
-                    <ActionButton.Item buttonColor='#1abc9c' title="All Tasks" onPress={() => {}}>
-                        <Icon name="md-done-all" style={styles.actionButtonIcon} />
-                    </ActionButton.Item>
-                    </ActionButton>
-                        <Animated.ScrollView
+                       
+                        <ScrollView
                             horizontal
                             scrollEventThrottle={1}
                             showsHorizontalScrollIndicator={false}
-                            style={{flex:1, margin:10}}
-                            >
+                            snapToInterval={CARD_WIDTH}
+                            style={styles.scrollView}
+                            contentContainerStyle={styles.endPadding}>
+
                             {this.state.listHotel.map((marker, index) => {
                                 console.log(this.state.listHotel.length + '--------' + index)
                                 return(
@@ -167,7 +165,7 @@ export default class MapHotelsScreen extends Component {
                                     )
                             })}
                             {console.log('return flatlist done...')}
-                        </Animated.ScrollView>
+                        </ScrollView>
                     </View>
                     
                </View>     
@@ -199,4 +197,14 @@ const styles = StyleSheet.create({
         height: 22,
         color: 'white',
       },
+      scrollView: {
+        position: "absolute",
+        bottom: 10,
+        left: 10,
+        right: 0,
+        paddingVertical: 5,
+    },
+    endPadding: {
+    //  paddingHorizontal: width - CARD_WIDTH,
+    },
 })

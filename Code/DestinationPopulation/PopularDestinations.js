@@ -39,11 +39,13 @@ import {
         console.log(item.title)
         return(
             
-            <ItemDestinations
+                <ItemDestinations
+                
                 title = {item.title}
                 image = {item.image}
                 description = {item.description}
             />
+            
         )
     }
     render() {
@@ -63,7 +65,8 @@ import {
                             />
                         </TouchableOpacity>
                             
-                        <Text style={{color:'white', fontSize:20, marginHorizontal:20}}>Điểm đến phổ biến</Text>
+                        <Text style={{color:'white', fontSize:20, marginHorizontal:20}}
+                            onPress={()=> {this.props.navigation.navigate('MapDesPopular_')}}>Điểm đến phổ biến</Text>
                     </View>
                     
                 </ImageBackground>
