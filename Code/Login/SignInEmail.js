@@ -1,48 +1,101 @@
 import React, { Component } from 'react';
-
-import { ScrollView, TouchableHighlight, Platform, StyleSheet, Text, View, Image, ImageBackground, TextInput, DeviceEventEmitter } from 'react-native';
+import {
+    ScrollView,
+    TouchableHighlight,
+    StyleSheet,
+    Text,
+    View,
+    Image,
+    TextInput,
+} from 'react-native';
 
 export default class SignInEmail extends Component {
-    _onpressSignUp() {
-       
-        this.props.navigation.navigate('SingUp_')
+    signUpClicked() {
+        this.props.navigation.navigate('SingUpScreen')
     }
-    _onpressSignIn(){
-        this.props.navigation.navigate('Home_')
+    buttonBackClicked() {
+        this.props.navigation.navigate('LoginScreen')
     }
+    btnLoginClicked() {
+        this.props.navigation.navigate('HomeScreen')
+    }
+    forgetPassClicked() {
+        console.log("forget password clicked");
+    }
+
     render() {
         return (
-            <ScrollView>
+            <ScrollView style={{ flex: 1, backgroundColor: '#FFF' }}>
                 <View style={{ flex: 1 }}>
-                    <ImageBackground source={require('../../Resource/SignIn/Logo.png')}
-                        style={styles.imageLogo}>
-                    </ImageBackground>
-                    <View style={styles.addLogin}>
+                    <Image
+                        source={require('../../Resource/SignIn/cover.png')}
+                        style={styles.imageLogo} />
 
-                        <Text style={styles.textLogin}>Username :</Text>
-                        <TextInput style={styles.input} placeholder='example@email.com'></TextInput>
-
-                        <Text style={styles.textLogin}>Password :</Text>
-                        <TextInput style={styles.input} placeholder='********'></TextInput>
-
-                        <Text style={styles.forgotpasswod}>Forget your password </Text>
-
-                        <TouchableHighlight style={[styles.buttonLogin,shadow]} onPress={()=>this._onpressSignIn()}>
-                            <ImageBackground source={require('../../Resource/SignIn/ButtonLogin.png')}
-                                style={styles.imageButtonLogin}>
-                            </ImageBackground>
+                    {/* Header UI include: button Back and Image Title App - TravelU */}
+                    <View style={{ height: 176, marginTop: 15 }}>
+                        <TouchableHighlight
+                            style={{ marginLeft: 15 }}
+                            onPress={() => { this.buttonBackClicked() }}
+                            underlayColor={'transparent'}
+                        >
+                            <Image source={require('../../Resource/SignIn/btnBack.png')} />
                         </TouchableHighlight>
-                    <View style={{flex:1 , flexDirection:'row'}} >
-                    <Text style={{marginTop:30}} onPress={()=>this._onpressSignUp()}>Don't have an Acount ?</Text>
-                    <Text style={{marginTop:30,color:'blue'}}>SignUp</Text>
-                    </View>    
+
+                        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                            <Image source={require('../../Resource/SignIn/title_signup.png')} />
+                        </View>
+                    </View>
+
+                    {/* Content Screen include: 2 textInput(Username, Password), forget Password, Button Login and SignUp */}
+                    <View elevation={5} style={styles.addLogin}>
+                        <Text style={styles.textLogin}>
+                            Username
+                        </Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder='example@email.com' />
+
+                        <Text style={styles.textLogin}>
+                            Password
+                        </Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder='********'
+                            secureTextEntry={true} />
+
+                        <TouchableHighlight
+                            style={styles.forgotpasswod}
+                            onPress={() => { this.forgetPassClicked() }}
+                            underlayColor={'transparent'}
+                        >
+                            <Text style={{ color: '#9596AD' }}>
+                                Forget your password
+                            </Text>
+                        </TouchableHighlight>
+
+                        <TouchableHighlight
+                            style={[styles.buttonLogin, shadow]}
+                            onPress={() => { this.btnLoginClicked() }}
+                            underlayColor={'transparent'}
+                        >
+                            <Image
+                                source={require('../../Resource/SignIn/ButtonLogin.png')}
+                                style={styles.imageButtonLogin}>
+                            </Image>
+                        </TouchableHighlight>
+
+                        <TouchableHighlight
+                            onPress={() => { this.signUpClicked() }}
+                            underlayColor={'transparent'}
+                        >
+                            <Text style={{ marginTop: 30, color: '#9596AD' }}>
+                                Don't have an Acount?
+                            <Text style={{ marginTop: 30, color: '#2088FF' }}> SignUp</Text>
+                            </Text>
+                        </TouchableHighlight>
                     </View >
-
-
                 </View>
             </ScrollView>
-           
-
         );
     }
 }
@@ -51,55 +104,54 @@ const shadow = {
     shadowRadius: 10,
     shadowOpacity: 0.9,
     elevation: 8,
-    
-  }
-const styles = {
+}
+const styles = StyleSheet.create({
     imageLogo: {
         flex: 3,
         height: 176,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        position: 'absolute',
     },
     textLogin: {
         marginRight: 'auto',
-        margin: 20,
-
+        marginTop: 20,
+        marginLeft: 20,
+        fontSize: 10,
+        color: '#9596AD'
     },
     addLogin: {
         flex: 7,
         alignItems: 'center',
         height: 428,
         backgroundColor: 'white',
-        marginLeft: 20,
-        marginRight: 20,
-        marginTop: -30,
+        marginLeft: 15,
+        marginRight: 15,
+        marginTop: -45,
         borderRadius: 25,
-
     },
     forgotpasswod: {
         marginLeft: 'auto',
         marginRight: '5%',
-        marginTop: 30,
-        textDecorationLine: 'underline'
+        marginTop: 10,
     },
     buttonLogin: {
-        borderRadius:24,
-        marginTop: 20,
+        borderRadius: 24,
+        marginTop: 30,
         width: 166,
         height: 47,
-
     },
-    imageButtonLogin:{
+    imageButtonLogin: {
         width: 166,
         height: 47
     },
     input: {
         backgroundColor: 'white',
-        color: 'black',
-        fontSize: 18,
+        color: '#9596AD',
+        fontSize: 14,
         width: '90%',
         height: 40,
-        borderBottomColor: 'black',
+        borderBottomColor: '#9596AD',
         borderBottomWidth: 0.5,
     }
-}
+})

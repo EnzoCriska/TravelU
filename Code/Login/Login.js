@@ -18,19 +18,19 @@ export default class Login extends Component {
     }
     // functions when button clicked
     btnLoginFBClicked() {
-        this.props.navigation.navigate('SignIn');
+        this.props.navigation.navigate('SignInScreen');
     }
 
     btnLoginGPlusClicked() {
-        this.props.navigation.navigate('SignIn');
+        this.props.navigation.navigate('SignInScreen');
     }
 
     btnSignInEmailClicked() {
-        this.props.navigation.navigate('SignIn');
+        this.props.navigation.navigate('SignInScreen');
     }
 
     btnLoginClicked() {
-        this.props.navigation.navigate('SignIn');
+        this.props.navigation.navigate('SignInScreen');
     }
 
     render() {
