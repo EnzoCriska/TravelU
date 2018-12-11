@@ -5,7 +5,13 @@ import {
 import  Icon  from "react-native-vector-icons/FontAwesome";
 import MapView, { PROVIDER_GOOGLE , Marker} from 'react-native-maps';
 import ItemHotel from './FlatlistItem/ItemHotel';
+import ActionButton from 'react-native-action-button';
 
+
+const { width, height } = Dimensions.get("window");
+
+const CARD_HEIGHT = height / 4;
+const CARD_WIDTH = CARD_HEIGHT - 50;
 
 export default class MapHotelsScreen extends Component {
     constructor(props){
@@ -110,15 +116,16 @@ export default class MapHotelsScreen extends Component {
                         </View>
                    </ImageBackground>
                    <View style={styles.container}>
+                   
                         <MapView
                             ref={map => this.map = map}
                             initialRegion={this.state.region}
-                            style={{flex:4}}
+                            style={{flex:1}}
                         >
 
                         {this.state.listHotel.map((hotel, index) => {
-                            return (
-                                
+                            console.log(this.state.listHotel.length + '--------' + index)
+                            return (                            
                                 <Marker key={index} 
                                     coordinate={hotel.location}
                                     title={hotel.title}>
@@ -128,17 +135,23 @@ export default class MapHotelsScreen extends Component {
                                     </View>
                                 </Marker>
                             );
+                            
                         })}
-
+                        {console.log('return market done...')}
                         </MapView>
-                        <Animated.ScrollView
+                       
+                        <ScrollView
                             horizontal
                             scrollEventThrottle={1}
                             showsHorizontalScrollIndicator={false}
-                            style={{flex:1}}
-                            >
-                            {this.state.listHotel.map((marker, index) => (
-                                <ItemHotel
+                            snapToInterval={CARD_WIDTH}
+                            style={styles.scrollView}
+                            contentContainerStyle={styles.endPadding}>
+
+                            {this.state.listHotel.map((marker, index) => {
+                                console.log(this.state.listHotel.length + '--------' + index)
+                                return(
+                                    <ItemHotel
                                                 key={index}
                                                 title = {marker.title}
                                                 image = {marker.image}
@@ -149,8 +162,10 @@ export default class MapHotelsScreen extends Component {
                                                 per_night = {marker.per_night}
                                                 location = {marker.location}
                                             />
-                            ))}
-                        </Animated.ScrollView>
+                                    )
+                            })}
+                            {console.log('return flatlist done...')}
+                        </ScrollView>
                     </View>
                     
                </View>     
@@ -177,4 +192,19 @@ const styles = StyleSheet.create({
         flex:1,
         height:'100%',
       },
+    actionButtonIcon: {
+        fontSize: 20,
+        height: 22,
+        color: 'white',
+      },
+      scrollView: {
+        position: "absolute",
+        bottom: 10,
+        left: 10,
+        right: 0,
+        paddingVertical: 5,
+    },
+    endPadding: {
+    //  paddingHorizontal: width - CARD_WIDTH,
+    },
 })
