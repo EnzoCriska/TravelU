@@ -18,14 +18,14 @@ export default class BookHotels extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            data: [{ source: require('../../Resource/TripPlan/BookHotels/DataImage/image1.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: "10000000", status: true },
-            { source: require('../../Resource/TripPlan/BookHotels/DataImage/image2.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: "10000000", status: false },
-            { source: require('../../Resource/TripPlan/BookHotels/DataImage/image3.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: "10000000", status: false },
-            { source: require('../../Resource/TripPlan/BookHotels/DataImage/image4.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: "10000000", status: false },
-            { source: require('../../Resource/TripPlan/BookHotels/DataImage/image5.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: "10000000", status: false },
-            { source: require('../../Resource/TripPlan/BookHotels/DataImage/image6.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: "10000000", status: false },
-            { source: require('../../Resource/TripPlan/BookHotels/DataImage/image7.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: "10000000", status: true },
-            { source: require('../../Resource/TripPlan/BookHotels/DataImage/image8.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: "10000000", status: true }]
+            data: [{ source: require('../../Resource/CreateTripPlan/BookHotels/DataImage/image1.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: "10000000", status: true },
+            { source: require('../../Resource/CreateTripPlan/BookHotels/DataImage/image2.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: "10000000", status: false },
+            { source: require('../../Resource/CreateTripPlan/BookHotels/DataImage/image3.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: "10000000", status: false },
+            { source: require('../../Resource/CreateTripPlan/BookHotels/DataImage/image4.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: "10000000", status: false },
+            { source: require('../../Resource/CreateTripPlan/BookHotels/DataImage/image5.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: "10000000", status: false },
+            { source: require('../../Resource/CreateTripPlan/BookHotels/DataImage/image6.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: "10000000", status: false },
+            { source: require('../../Resource/CreateTripPlan/BookHotels/DataImage/image7.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: "10000000", status: true },
+            { source: require('../../Resource/CreateTripPlan/BookHotels/DataImage/image8.png'), name: 'The Dune Villa', rating: 4, star: 5, vote: 190, pernight: "10000000", status: true }]
 
         }
     }
@@ -63,21 +63,21 @@ export default class BookHotels extends Component {
         return (
             <View>
                 <View style={styles.logo}>
-                    <ImageBackground source={require('../../Resource/TripPlan/CreateTripPlan/logo.png')}
+                    <ImageBackground source={require('../../Resource/CreateTripPlan/CreateTripPlan/logo.png')}
                         style={styles.logo}>
                         <View style={{ flex: 1 }} />
                         <View style={{ flex: 1 }}>
                             <View style={{ alignItems: 'center', flexDirection: 'row' }}>
                                 <TouchableHighlight onPress={() => goBack()} style={styles.touchableBack}>
-                                    <Image source={require('../../Resource/TripPlan/BookHotels/back.png')}
+                                    <Image source={require('../../Resource/CreateTripPlan/BookHotels/back.png')}
                                         style={styles.iconBack} />
                                 </TouchableHighlight>
 
                                 <Text style={styles.textLogo}>Create Trip Plan</Text>
-                                <Image source={require('../../Resource/TripPlan/BookHotels/search.png')}
+                                <Image source={require('../../Resource/CreateTripPlan/BookHotels/search.png')}
                                     style={styles.iconSearch}
                                 ></Image>
-                                <Image source={require('../../Resource/TripPlan/BookHotels/map.png')}
+                                <Image source={require('../../Resource/CreateTripPlan/BookHotels/map.png')}
                                     style={styles.iconMap}
                                 ></Image>
                             </View>
@@ -89,7 +89,7 @@ export default class BookHotels extends Component {
                 <TouchableHighlight >
                     <View style={styles.viewSortBy}>
                         <Text style={{ marginLeft: 20 }}>Sort by: Popular</Text>
-                        <Image source={require('../../Resource/TripPlan/BookHotels/filter.png')}
+                        <Image source={require('../../Resource/CreateTripPlan/BookHotels/filter.png')}
                             style={styles.iconFilter}></Image>
                         <Text style={{ marginLeft: 5 }}>Filter</Text>
                     </View>
@@ -120,7 +120,7 @@ export default class BookHotels extends Component {
 
                                     <View style={{ flexDirection: 'row' }}>
                                         <Text>Home star  {item.star}</Text>
-                                        <Image style={{ width: 7, height: 7 }} source={require('../../Resource/TripPlan/BookHotels/star.png')}></Image>
+                                        <Image style={{ width: 7, height: 7 }} source={require('../../Resource/CreateTripPlan/BookHotels/star.png')}></Image>
                                     </View>
                                     <View style={{ flexDirection: 'row' }}>
                                         <Text>Per night </Text>
@@ -151,7 +151,7 @@ export default class BookHotels extends Component {
                 <TouchableHighlight style={{ width: '100%', marginTop: 'auto' }} onPress={() => this._onpressNextSteep()}>
                     <View style={{ flexDirection: 'row' }}>
 
-                        <Image source={require('../../Resource/TripPlan/BookHotels/nextsteep.png')}
+                        <Image source={require('../../Resource/CreateTripPlan/BookHotels/nextsteep.png')}
                             style={{ width: '100%', height: 55 }} />
 
                     </View>

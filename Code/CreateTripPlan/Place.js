@@ -17,9 +17,9 @@ export default class Place extends Component {
         super(props)
         this.state = {
 
-            data: [{ source: require('../../Resource/TripPlan/Place/DataImage/day1.png'), date: "24/12/2018", sumplace: 1, index: 1 },
-            { source: require('../../Resource/TripPlan/Place/DataImage/day2.png'), date: "25/12/2018", sumplace: 1, index: 2 },
-            { source: require('../../Resource/TripPlan/Place/DataImage/day3.png'), date: "26/12/2018", sumplace: 1, index: 3 }]
+            data: [{ source: require('../../Resource/CreateTripPlan/Place/DataImage/day1.png'), date: "24/12/2018", sumplace: 1, index: 1 },
+            { source: require('../../Resource/CreateTripPlan/Place/DataImage/day2.png'), date: "25/12/2018", sumplace: 1, index: 2 },
+            { source: require('../../Resource/CreateTripPlan/Place/DataImage/day3.png'), date: "26/12/2018", sumplace: 1, index: 3 }]
         }
     }
     onpressNextSteep(){
@@ -32,7 +32,7 @@ export default class Place extends Component {
         const { goBack } = this.props.navigation;
         return (
             <View style={{ flex: 1, backgroundColor: 'white' }}>
-                <ImageBackground source={require('../../Resource/TripPlan/Place/logo.png')}
+                <ImageBackground source={require('../../Resource/CreateTripPlan/Place/logo.png')}
                     style={styles.logoImage}>
                     <View style={{ flex: 1 }}>
                         <View style={{ flex: 1 }} />
@@ -42,7 +42,7 @@ export default class Place extends Component {
                                 <TouchableHighlight style={{ width:50 , height: '100%', justifyContent: 'center' }}
                                     onPress={() => goBack()}>
                                    
-                                        <Image source={require('../../Resource/TripPlan/Place/back.png')}
+                                        <Image source={require('../../Resource/CreateTripPlan/Place/back.png')}
                                             style={styles.iconBack}>
                                         </Image>
                                         
@@ -51,7 +51,7 @@ export default class Place extends Component {
 
                                 <Text style={styles.textTitle}>3 days to Đà Lạt</Text>
                                 <TouchableHighlight style={{ marginLeft: 'auto', marginRight: '4%' }}>
-                                    <Image source={require('../../Resource/TripPlan/Place/addHuman.png')}
+                                    <Image source={require('../../Resource/CreateTripPlan/Place/addHuman.png')}
                                         style={styles.iconAddHuman}></Image>
                                 </TouchableHighlight>
                             </View>
@@ -63,7 +63,7 @@ export default class Place extends Component {
 
                 <View style={styles.viewBudget}>
                     <TouchableHighlight style={{ marginLeft: '4%' }}>
-                        <Image source={require('../../Resource/TripPlan/Place/budget.png')}
+                        <Image source={require('../../Resource/CreateTripPlan/Place/budget.png')}
                             style={styles.iconBudget}
                         ></Image>
                     </TouchableHighlight>
@@ -97,7 +97,7 @@ export default class Place extends Component {
                                             <Text style={[styles.textWhite, { marginLeft: '4%' }]}>{item.date}</Text>
                                             <View style={{ marginLeft: 'auto', marginRight: 20, flexDirection: 'row', alignItems: 'center' }}>
                                                 <Image style={styles.iconLocation}
-                                                    source={require('../../Resource/TripPlan/Place/location.png')}></Image>
+                                                    source={require('../../Resource/CreateTripPlan/Place/location.png')}></Image>
                                                 <Text style={[styles.textWhite, { marginLeft: 10 }]}>Mở bản đồ</Text>
                                             </View>
 
@@ -112,7 +112,7 @@ export default class Place extends Component {
                     }
                 ></FlatList>
                 <TouchableHighlight style={{ width: '100%' }} onPress={()=>this.onpressNextSteep()}>
-                    <Image style={styles.touchableNextSteep} source={require('../../Resource/TripPlan/Place/nextsteep.png')}></Image>
+                    <Image style={styles.touchableNextSteep} source={require('../../Resource/CreateTripPlan/Place/nextsteep.png')}></Image>
                 </TouchableHighlight>
             </View>
         )

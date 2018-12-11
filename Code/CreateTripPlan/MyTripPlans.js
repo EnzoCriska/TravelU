@@ -7,24 +7,24 @@ export default class MyTripPlan extends Component {
         this.state = {
             data: [{
                 index: 1, sumkm: 9.8, sumplace: 3, day: '23/10/2018', images: [
-                    { name: 'Đà Lạt Cadasa resort luxury 5 star', image: require('../../Resource/TripPlan/MyTripPlans/data/day1/dalat_cadasa.png') },
-                    { name: 'Nhà thờ Đức bà', image: require('../../Resource/TripPlan/MyTripPlans/data/day1/ducba_church.png') },
-                    { name: 'Ruộng hoa', image: require('../../Resource/TripPlan/MyTripPlans/data/day1/flower.png') },
+                    { name: 'Đà Lạt Cadasa resort luxury 5 star', image: require('../../Resource/CreateTripPlan/MyTripPlans/data/day1/dalat_cadasa.png') },
+                    { name: 'Nhà thờ Đức bà', image: require('../../Resource/CreateTripPlan/MyTripPlans/data/day1/ducba_church.png') },
+                    { name: 'Ruộng hoa', image: require('../../Resource/CreateTripPlan/MyTripPlans/data/day1/flower.png') },
                 ]
 
             }, {
                 index: 2, sumkm: 9.8, sumplace: 3, day: '24/10/2018', images: [
-                    { name: 'Đà Lạt Cadasa resort luxury 5 star', image: require('../../Resource/TripPlan/MyTripPlans/data/day2/dalat_cadasa.png') },
-                    { name: 'Thị trấn sương mù', image: require('../../Resource/TripPlan/MyTripPlans/data/day2/fog_town.png') },
-                    { name: 'Ruộng hoa', image: require('../../Resource/TripPlan/MyTripPlans/data/day2/flower.png') },
+                    { name: 'Đà Lạt Cadasa resort luxury 5 star', image: require('../../Resource/CreateTripPlan/MyTripPlans/data/day2/dalat_cadasa.png') },
+                    { name: 'Thị trấn sương mù', image: require('../../Resource/CreateTripPlan/MyTripPlans/data/day2/fog_town.png') },
+                    { name: 'Ruộng hoa', image: require('../../Resource/CreateTripPlan/MyTripPlans/data/day2/flower.png') },
                 ]
 
             }, {
 
                 index: 1, sumkm: 9.8, sumplace: 3, day: '25/10/2018', images: [
-                    { name: 'Đà Lạt Cadasa resort luxury 5 star', image: require('../../Resource/TripPlan/MyTripPlans/data/day3/dalat_cadasa.png') },
-                    { name: 'Thị trấn sương mù', image: require('../../Resource/TripPlan/MyTripPlans/data/day3/fog_town.png') },
-                    { name: 'Ruộng hoa', image: require('../../Resource/TripPlan/MyTripPlans/data/day3/flower.png') },
+                    { name: 'Đà Lạt Cadasa resort luxury 5 star', image: require('../../Resource/CreateTripPlan/MyTripPlans/data/day3/dalat_cadasa.png') },
+                    { name: 'Thị trấn sương mù', image: require('../../Resource/CreateTripPlan/MyTripPlans/data/day3/fog_town.png') },
+                    { name: 'Ruộng hoa', image: require('../../Resource/CreateTripPlan/MyTripPlans/data/day3/flower.png') },
                 ]
 
             },]
@@ -35,23 +35,23 @@ export default class MyTripPlan extends Component {
 
         return (
             <View style={styles.container}>
-                <ImageBackground source={require('../../Resource/TripPlan/MyTripPlans/Logo/logo.png')}
+                <ImageBackground source={require('../../Resource/CreateTripPlan/MyTripPlans/Logo/logo.png')}
                     style={styles.imageLogo}>
                     <View style={{ flex: 1 }}>
                         <View style={{ flex: 1 }}></View>
                         <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                             <TouchableOpacity style={styles.buttonBack}>
-                                <Image source={require('../../Resource/TripPlan/MyTripPlans/Logo/back.png')}
+                                <Image source={require('../../Resource/CreateTripPlan/MyTripPlans/Logo/back.png')}
                                     style={styles.iconBack}></Image>
                             </TouchableOpacity>
                             <Text style={styles.textLogo}>3 days to Đà Lạt</Text>
                             <TouchableOpacity style={styles.buttonEdit}>
-                                <Image source={require('../../Resource/TripPlan/MyTripPlans/Logo/edit.png')}
+                                <Image source={require('../../Resource/CreateTripPlan/MyTripPlans/Logo/edit.png')}
                                     style={styles.iconEdit}></Image>
                             </TouchableOpacity>
 
                             <TouchableOpacity style={styles.buttonOption}>
-                                <Image source={require('../../Resource/TripPlan/MyTripPlans/Logo/option.png')}
+                                <Image source={require('../../Resource/CreateTripPlan/MyTripPlans/Logo/option.png')}
                                     style={styles.iconOption}></Image>
                             </TouchableOpacity>
                         </View>
@@ -59,7 +59,7 @@ export default class MyTripPlan extends Component {
                 </ImageBackground>
 
                 <View style={styles.viewProfile}>
-                    <Image source={require('../../Resource/TripPlan/MyTripPlans/Profile/avata.png')}
+                    <Image source={require('../../Resource/CreateTripPlan/MyTripPlans/Profile/avata.png')}
                         style={styles.imageAvata}></Image>
 
                     <View style={{ marginLeft: 10, width: '25%' }}>
@@ -68,7 +68,7 @@ export default class MyTripPlan extends Component {
                         <View style={{ marginTop: 10, flexDirection: 'row', alignItems: 'center' }}>
                         <TouchableOpacity>
                         <Image style={styles.iconBudget}
-                                source={require('../../Resource/TripPlan/MyTripPlans/Profile/budget.png')}></Image>
+                                source={require('../../Resource/CreateTripPlan/MyTripPlans/Profile/budget.png')}></Image>
                         </TouchableOpacity>
                             
                             <Text style={{ color: '#9E9E9E', marginLeft: 5 }}>Thêm budget</Text>
@@ -85,12 +85,12 @@ export default class MyTripPlan extends Component {
 
                         <Text style={[styles.textGrey, { marginLeft: 'auto' }]}>Từ 23/10/2018</Text>
                         <View style={{ marginLeft: 'auto', alignItems: 'center', flexDirection: 'row', flexWrap: 'wrap' }}>
-                            <Image source={require('../../Resource/TripPlan/MyTripPlans/Profile/gps.png')}
+                            <Image source={require('../../Resource/CreateTripPlan/MyTripPlans/Profile/gps.png')}
                                 style={styles.iconTo}
                             ></Image>
                             <Text style={[styles.textPink, { marginLeft: 10 }]}>Hà Nội  -------  </Text>
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                <Image source={require('../../Resource/TripPlan/MyTripPlans/Profile/location.png')}
+                                <Image source={require('../../Resource/CreateTripPlan/MyTripPlans/Profile/location.png')}
                                     style={styles.iconFrom}></Image>
                                 <Text style={[styles.textPink, { marginLeft: 10 }]}>Thành phố Hồ Chí Minh</Text>
                             </View>

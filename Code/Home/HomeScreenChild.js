@@ -44,6 +44,9 @@ export default class HomeScreenChild extends Component {
             dataOctorber: placeOfMonth,
         }
     }
+    _onpressTripPlan(){
+        this.props.navigation.navigate('StackTripPlan_')
+    }
     _onpressRestaurant() {
         this.props.navigation.navigate('Restaurants_')
     }
@@ -53,8 +56,8 @@ export default class HomeScreenChild extends Component {
     _onpressSearch() {
         this.props.navigation.navigate('Search_')
     }
-    _onpressTripPlan() {
-        this.props.navigation.navigate('StackTripPlan_')
+    _onpressCreateTripPlan() {
+        this.props.navigation.navigate('StackCreateTripPlan_')
     }
     sizerat = 12;
 

@@ -11,9 +11,11 @@ import HomeScreenChild from './HomeScreenChild';
 import Hotels from '../Hotels/Hotels';
 import Restaurants from '../Restaurants/Restaurants';
 import Search from '../Search/Search';
-import StackPlan from '../CreateTripPlan/StackTripPlan';
 import PopularDestinations from '../DestinationPopulation/PopularDestinations';
 import MapHotelsScreen from '../Hotels/MapHotelsScreen';
+import StackCreateTripPlan from '../CreateTripPlan/StackCreateTripPlan';
+import StackTripPlan from '../TripPlan/StackTripPlan';
+
 
 export default class HomeScreen extends Component {
     constructor(props) {
@@ -28,10 +30,11 @@ const StackHome = createStackNavigator({
     Hotels_: Hotels,
     Restaurants_: Restaurants,
     Search_: Search,
-    StackTripPlan_: StackPlan,
     PopularDes_: PopularDestinations,
     MapHotel_: MapHotelsScreen,
+    StackTripPlan_: StackTripPlan
 },
+
     {
         headerMode: 'none'
     });
@@ -46,8 +49,16 @@ StackHome.navigationOptions = ({ navigation }) => {
     };
 };
 
-StackPlan.navigationOptions = ({ navigation }) => {
+StackCreateTripPlan.navigationOptions = ({ navigation }) => {
     let tabBarVisible = false;
+
+    return {
+        tabBarVisible,
+    };
+};
+StackTripPlan.navigationOptions = ({ navigation }) => {
+    let tabBarVisible = false;
+
     return {
         tabBarVisible,
     };
@@ -57,6 +68,7 @@ StackPlan.navigationOptions = ({ navigation }) => {
 const HomeBottomTab = createBottomTabNavigator({
     HomeTab: {
         screen: StackHome,
+
         navigationOptions: () => ({
             tabBarIcon: <Image source={require('../../Resource/Home/icontabbar/home.png')} style={styles.inputIcon} />
         })
@@ -68,7 +80,7 @@ const HomeBottomTab = createBottomTabNavigator({
         })
     },
     CreateTripPlanTab: {
-        screen: StackPlan,
+        screen: StackCreateTripPlan,
         navigationOptions: () => (
             {
                 tabBarIcon: <Image source={require('../../Resource/Home/CreateTrip.png')} style={{ width: 82, height: 70, marginTop: -20 }}></Image>
