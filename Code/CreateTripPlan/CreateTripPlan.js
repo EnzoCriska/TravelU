@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import {
     View,
     ImageBackground,
@@ -8,11 +7,10 @@ import {
     Text,
     Image,
     TextInput
-} from 'react-native'
+} from 'react-native';
 import {
     createStackNavigator
-}
-    from 'react-navigation'
+}from 'react-navigation';
 
 export default class CreateTripPlan extends Component {
     gray = '#9E9E9E';

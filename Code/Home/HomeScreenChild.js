@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-
 import {
-    Alert,
     StyleSheet,
     Text,
     View,
@@ -12,43 +10,44 @@ import {
     ScrollView,
     FlatList,
     StatusBar
-
 } from 'react-native';
-import { Rating, Icon } from 'react-native-elements'
-import {
-    createBottomTabNavigator,
-
-}
-    from 'react-navigation'
-import Login from '../Login/Login';
+import { Rating } from 'react-native-elements'
 
 
 export default class HomeScreenChild extends Component {
     constructor(props) {
         super(props);
+        promotions = [
+            { id: 1, source: require('../../Resource/Home/promotion/Dalat.png'), key: 'Đà Lạt', rating: 4, vote: 190 },
+            { id: 2, source: require('../../Resource/Home/promotion/Hagiang.png'), key: 'Hà Giang', rating: 3, vote: 190 },
+            { id: 3, source: require('../../Resource/Home/promotion/Hagiang.png'), key: 'Đà Nẵng', rating: 3, vote: 190 }
+        ]
+        trends = [
+            { id: 1, source: require('../../Resource/Home/popular/HaLong.png') },
+            { id: 2, source: require('../../Resource/Home/popular/HaGiang.png') },
+            { id: 3, source: require('../../Resource/Home/popular/FinLand.png') }
+        ]
+        placeNears = [
+            { id: 1, source: require('../../Resource/Home/nearyou/HaGiang.png'), rating: 4, key: 'Hà Giang', vote: 190 },
+            { id: 2, source: require('../../Resource/Home/nearyou/LungCu.png'), rating: 3, key: 'Lũng Cú', vote: 190 },
+            { id: 3, source: require('../../Resource/Home/nearyou/Fansipan.png'), rating: 5, key: 'Fansipan', vote: 190 }
+        ]
+        placeOfMonth = [
+            { id: 1, source: require('../../Resource/Home/octorber/TayBac.png'), rating: 4, key: 'Tây Bắc ', vote: 190 },
+            { id: 2, source: require('../../Resource/Home/octorber/HoaTayBac.png'), rating: 3, key: 'Hoa Tây Bắc', vote: 190 },
+            { id: 3, source: require('../../Resource/Home/octorber/Fansipan.png'), rating: 5, key: 'Fansipan', vote: 190 }
+        ]
         this.state = {
-            datapromotion: [{ source: require('../../Resource/Home/promotion/Dalat.png'), key: 'Đà Lạt', rating: 4, vote: 190 },
-            { source: require('../../Resource/Home/promotion/Hagiang.png'), key: 'Hà Giang', rating: 3, vote: 190 },
-            { source: require('../../Resource/Home/promotion/Hagiang.png'), key: 'Hà Giang', rating: 3, vote: 190 }],
-
-            dataTrend: [{ source: require('../../Resource/Home/popular/HaLong.png') },
-            { source: require('../../Resource/Home/popular/HaGiang.png') },
-            { source: require('../../Resource/Home/popular/FinLand.png') }],
-
-            dataNear: [{ source: require('../../Resource/Home/nearyou/HaGiang.png'), rating: 4, key: 'Hà Giang', vote: 190 },
-            { source: require('../../Resource/Home/nearyou/LungCu.png'), rating: 3, key: 'Lũng Cú', vote: 190 },
-            { source: require('../../Resource/Home/nearyou/Fansipan.png'), rating: 5, key: 'Fansipan', vote: 190 }],
-
-            dataOctorber: [{ source: require('../../Resource/Home/octorber/TayBac.png'), rating: 4, key: 'Tây Bắc ', vote: 190 },
-            { source: require('../../Resource/Home/octorber/HoaTayBac.png'), rating: 3, key: 'Hoa Tây Bắc', vote: 190 },
-            { source: require('../../Resource/Home/octorber/Fansipan.png'), rating: 5, key: 'Fansipan', vote: 190 }],
+            datapromotion: promotions,
+            dataTrend: trends,
+            dataNear: placeNears,
+            dataOctorber: placeOfMonth,
         }
     }
     _onpressTripPlan(){
         this.props.navigation.navigate('StackTripPlan_')
     }
     _onpressRestaurant() {
-
         this.props.navigation.navigate('Restaurants_')
     }
     _onpressHotel() {
@@ -64,125 +63,151 @@ export default class HomeScreenChild extends Component {
 
     render() {
         return (
+            <ScrollView style={{ backgroundColor: '#FFF' }}>
+                <View style={{ flex: 1 }}>
+                    <StatusBar hidden={true} />
+                    <Image
+                        source={require('../../Resource/Home/logo/homeCover.png')}
+                        style={styles.imageLogo} />
 
-            <View style={{ flex: 1, alignItems: 'center' }}>
-                <StatusBar></StatusBar>
-                <ScrollView style={{ backgroundColor: 'white' }}>
-                    <ImageBackground source={require('../../Resource/Home/logo/Logo.png')}
-                        style={styles.imageLogo} >
-
-                        <View style={{ flex: 1, width: '100%' }}>
-                            <Image source={require('../../Resource/Home/logo/ring.png')} style={styles.notification}></Image>
-                        </View>
-
-                        <View style={{ flex: 1, width: '100%', alignItems: 'center' }}>
-
-                            <View style={styles.inputParent}>
-                                <TextInput
-                                    onFocus={() => this._onpressSearch()}
-                                    style={styles.inputSearch} keyboardType='numeric'
-                                    placeholder='Find Destinations, hotels, restaurants....' />
-                                <TouchableHighlight style={{ alignItems: 'center' }}
-                                >
-                                    <Image source={require('../../Resource/Home/logo/Find.png')}
-                                        style={styles.inputIcon}
-                                    />
-                                </TouchableHighlight>
-
-                            </View>
-
-                        </View>
-                    </ImageBackground>
-
-                    <View style={styles.parentTouch}>
-
-                        <TouchableHighlight onPress={() => this._onpressTripPlan()}
-                            style={[styles.touchable]}>
-                            <Image source={require('../../Resource/Home/logo/TripPlan.png')}
-                                style={styles.imageTouchable}></Image>
-                        </TouchableHighlight>
-
-                        <TouchableHighlight onPress={() => this._onpressHotel()}
-                            style={[{ marginLeft: '2.5%' }, styles.touchable]}>
-                            <Image source={require('../../Resource/Home/logo/Hotel.png')} style={styles.imageTouchable}
-                            ></Image>
-                        </TouchableHighlight>
-
-                        <TouchableHighlight onPress={() => this._onpressRestaurant()}
-                            style={[{ marginLeft: '2.5%' }, styles.touchable]} >
-                            <Image source={require('../../Resource/Home/logo/Flights.png')}
-                                style={styles.imageTouchable}></Image>
-                        </TouchableHighlight>
-
-                        <TouchableHighlight
-                            style={[{ marginLeft: '2.5%' }, styles.touchable]}
-                            onPress={() => this._onpressRestaurant()}>
+                    {/* Header UI include: titleImage, Notify, Search */}
+                    <View style={{ height: 195, width: '100%' }}>
+                        <View style={styles.headerView}>
                             <Image
-                                source={require('../../Resource/Home/logo/Restaurants.png')}
-                                style={styles.imageTouchable}></Image>
-                        </TouchableHighlight>
+                                source={require('../../Resource/Home/logo/title.png')} />
+                            <Image
+                                source={require('../../Resource/Home/logo/ring.png')}
+                                style={{ position: 'absolute', right: 25 }} />
+                        </View>
 
-                        <TouchableHighlight onPress={() => this._onpressRestaurant()}
-                            style={[{ marginLeft: '2.5%' }, styles.touchable]}>
-                            <Image source={require('../../Resource/Home/logo/Tours.png')}
-                                style={styles.imageTouchable}></Image>
-                        </TouchableHighlight>
-
+                        <View style={styles.inputSearch}>
+                            <ImageBackground
+                                style={{ width: 300, height: 50 }}
+                                resizeMode='stretch'
+                                source={require('../../Resource/Home/logo/bgInput.png')}
+                            >
+                                <TextInput
+                                    style={{ marginLeft: 10, marginRight: 10 }}
+                                    onFocus={() => this._onpressSearch()}
+                                    placeholder='Find Destinations, hotels, restaurants....' />
+                            </ImageBackground>
+                        </View>
                     </View>
+
+                    {/* 5 Button Options: Trips Plan, Hotels, Fights, Restaurants, Tours */}
+                    <View elevation={5} style={styles.optionView}>
+                        <View style={{ flex: 1 }}>
+                            <TouchableHighlight
+                                onPress={() => this._onpressTripPlan()}
+                            >
+                                <Image
+                                    style={styles.optionImage}
+                                    source={require('../../Resource/Home/logo/TripPlan.png')}
+                                    resizeMode='stretch' />
+                            </TouchableHighlight>
+                        </View>
+
+                        <View style={{ flex: 1 }}>
+                            <TouchableHighlight
+                                onPress={() => this._onpressTripPlan()}
+                            >
+                                <Image
+                                    style={styles.optionImage}
+                                    source={require('../../Resource/Home/logo/Hotel.png')} />
+                            </TouchableHighlight>
+                        </View>
+
+                        <View style={{ flex: 1 }}>
+                            <TouchableHighlight
+                                onPress={() => this._onpressTripPlan()}
+                            >
+                                <Image
+                                    style={styles.optionImage}
+                                    source={require('../../Resource/Home/logo/Flights.png')} />
+                            </TouchableHighlight>
+                        </View>
+
+                        <View style={{ flex: 1 }}>
+                            <TouchableHighlight
+                                onPress={() => this._onpressTripPlan()}
+                            >
+                                <Image
+                                    style={styles.optionImage}
+                                    source={require('../../Resource/Home/logo/Restaurants.png')} />
+                            </TouchableHighlight>
+                        </View>
+
+                        <View style={{ flex: 1 }}>
+                            <TouchableHighlight
+                                onPress={() => this._onpressTripPlan()}
+                            >
+                                <Image
+                                    style={styles.optionImage}
+                                    source={require('../../Resource/Home/logo/Tours.png')} />
+                            </TouchableHighlight>
+                        </View>
+                    </View>
+
+                    {/* List Khuyen mai */}
                     <View style={styles.parentTouch}>
                         <Text style={styles.textTitle}>Tin khuyến mại</Text>
                         <Text style={styles.textSeeAll}>See all</Text>
                     </View>
 
                     <FlatList
-                        keyExtractor={(item) => item.name}
                         showsHorizontalScrollIndicator={false}
                         horizontal={true}
                         data={this.state.datapromotion}
-                        renderItem={({ item }) =>
-                            (<View >
+                        keyExtractor={(item) => item.toString()}
+                        renderItem={({ item }) => (
+                            <View>
                                 <Image source={item.source} style={styles.imagePromotion}></Image>
-                                <Text style={{ marginLeft: 10 }}>{item.key}</Text>
-                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <Text style={{ marginLeft: 10, fontSize: 13 }}>{item.key}</Text>
+                                <View style={{ marginLeft: 10, flexDirection: 'row', alignItems: 'center' }}>
                                     <Rating
-                                        style={{ marginLeft: 10 }}
                                         ratingBackgroundColor='blue'
                                         type="star"
                                         fractions={1}
                                         startingValue={item.rating}
                                         imageSize={this.sizerat}
                                     ></Rating>
-                                    <Text style={{ fontSize: 12 }}>  ({item.vote} bình chọn)</Text>
+                                    <Text style={styles.txtRating}>  ({item.vote} bình chọn)</Text>
                                 </View>
-                            </View>)}
+                            </View>
+                        )}
                     />
+
+                    {/* List Place Public */}
                     <View style={styles.parentTouch}>
                         <Text style={styles.textTitle}>Địa điểm phổ biến</Text>
                         <Text style={styles.textSeeAll} onPress={() => { this.props.navigation.navigate('PopularDes_') }}>See all</Text>
                     </View>
 
                     <FlatList
-                        keyExtractor={(item) => item.name}
                         showsHorizontalScrollIndicator={false}
                         horizontal={true}
                         data={this.state.dataTrend}
-                        renderItem={({ item }) =>
-                            (<View >
-                                <Image source={item.source} style={styles.imageTrend}></Image>
-
-                            </View>)}
+                        keyExtractor={(item) => item.toString()}
+                        renderItem={({ item }) => (
+                            <View >
+                                <Image source={item.source} style={styles.imageTrend} />
+                            </View>
+                        )}
                     />
+
+                    {/* List Near Place */}
                     <View style={styles.parentTouch}>
                         <Text style={styles.textTitle}>Địa điểm gần bạn</Text>
                         <Text style={styles.textSeeAll}>See all</Text>
                     </View>
+
                     <FlatList
-                        keyExtractor={(item) => item.name}
                         showsHorizontalScrollIndicator={false}
                         horizontal={true}
                         data={this.state.dataNear}
-                        renderItem={({ item }) =>
-                            (<View >
+                        keyExtractor={(item) => item.toString()}
+                        renderItem={({ item }) => (
+                            <View >
                                 <Image source={item.source} style={styles.imageNear}></Image>
                                 <Text style={{ marginLeft: 10 }}>{item.key}</Text>
                                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -194,22 +219,25 @@ export default class HomeScreenChild extends Component {
                                         startingValue={item.rating}
                                         imageSize={this.sizerat}
                                     ></Rating>
-                                    <Text style={{ fontSize: 12 }}>  ({item.vote} bình chọn)</Text>
+                                    <Text style={styles.txtRating}>  ({item.vote} bình chọn)</Text>
                                 </View>
-                            </View>)}
+                            </View>
+                        )}
                     />
 
+                    {/* List Place of Month */}
                     <View style={styles.parentTouch}>
                         <Text style={styles.textTitle}>Tháng mười nên đi đâu</Text>
                         <Text style={styles.textSeeAll}>See all</Text>
                     </View>
+
                     <FlatList
-                        keyExtractor={(item) => item.name}
                         showsHorizontalScrollIndicator={false}
                         horizontal={true}
                         data={this.state.dataOctorber}
-                        renderItem={({ item }) =>
-                            (<View >
+                        keyExtractor={(item) => item.toString()}
+                        renderItem={({ item }) => (
+                            <View >
                                 <Image source={item.source} style={styles.imageOctorber}></Image>
                                 <Text style={{ marginLeft: 10 }}>({item.key}</Text>
                                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -221,85 +249,55 @@ export default class HomeScreenChild extends Component {
                                         startingValue={item.rating}
                                         imageSize={this.sizerat}
                                     ></Rating>
-                                    <Text style={{ fontSize: 12 }}>  ({item.vote} bình chọn)</Text>
+                                    <Text style={styles.txtRating}>  ({item.vote} bình chọn)</Text>
                                 </View>
-
-                            </View>)}
+                            </View>
+                        )}
                     />
-
-
-
-                </ScrollView>
-
-
-            </View>
-
+                </View>
+            </ScrollView >
         );
     }
 }
 
-const styles = {
+const styles = StyleSheet.create({
     imageLogo: {
-        height: 176,
+        height: 250,
         width: '100%',
+        position: 'absolute',
     },
-    notification: {
-        width: 18,
-        height: 18,
-        marginTop: 'auto',
-        marginLeft: 'auto',
-        marginBottom: 20,
-        marginRight: '5%'
-    },
-    inputSearch: {
-        padding: 10,
-        marginBottom: 'auto',
-        fontSize: 16,
-        width: '90%',
-        height: 41,
-        color: 'black',
-
-    },
-    inputIcon: {
-
-        width: 17.5,
-        height: 17.5,
-
-    },
-    inputParent: {
-
-        borderWidth: 0.5,
-        borderColor: 'pink',
-        borderRadius: 5,
-        backgroundColor: 'white',
+    headerView: {
+        flex: 1,
         flexDirection: 'row',
-        height: 41,
-        width: '84%',
+        justifyContent: 'center',
         alignItems: 'center'
     },
+    inputSearch: {
+        flex: 1,
+        alignItems: 'center',
+        marginTop: -25
+    },
+    optionView: {
+        marginLeft: 10,
+        marginRight: 10,
+        marginTop: -55,
+        flex: 1,
+        flexDirection: 'row'
+    },
+    optionImage: {
+        width: 65,
+        height: 65
+    },
+    inputIcon: {
+        width: 17.5,
+        height: 17.5,
+    },
     parentTouch: {
-
-        width: '90%',
-        margin: '5%',
+        width: '100%',
         marginTop: -33,
         marginBottom: 'auto',
         flexDirection: 'row',
         height: 65
-    },
-    touchable: {
-        borderRadius: 10,
-        borderWidth: 0.5,
-        borderColor: '#ED50C6',
-        width: '18%',
-        height: 65,
-    },
-    imageTouchable: {
-        borderRadius: 10,
-        borderWidth: 0.5,
-        borderColor: '#ED50C6',
-        width: '100%',
-        height: 65,
-
     },
     imagePromotion: {
         width: 210,
@@ -318,14 +316,20 @@ const styles = {
         height: 102
     },
     textTitle: {
-        color: 'black',
-        fontSize: 20,
+        marginLeft: 10,
+        color: '#000',
+        fontSize: 16,
         marginTop: 'auto'
     },
     textSeeAll: {
         color: '#ED50C6',
-        fontSize: 14,
+        fontSize: 12,
         marginTop: 'auto',
-        marginLeft: 'auto'
+        marginLeft: 'auto',
+        marginRight: 10,
+    },
+    txtRating: {
+        fontSize: 10,
+        color: '#A5A4A4'
     }
-}
+})
