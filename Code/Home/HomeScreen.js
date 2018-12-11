@@ -45,7 +45,8 @@ const StackHome = createStackNavigator({
     Search_:Search,
     StackTripPlan_:StackPlan,
     PopularDes_:PopularDestinations,
-    MapHotel_: MapHotelsScreen
+    MapHotel_: MapHotelsScreen,
+
   },
   
     {

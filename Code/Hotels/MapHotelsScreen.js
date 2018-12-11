@@ -1,178 +1,79 @@
 import React, { Component } from 'react'
 import {
-    View, Text, ImageBackground, TouchableOpacity, StyleSheet, FlatList
+    View, Text, ImageBackground, TouchableOpacity, StyleSheet, FlatList, Dimensions, Animated, ScrollView, Image
 } from 'react-native'
 import  Icon  from "react-native-vector-icons/FontAwesome";
 import MapView, { PROVIDER_GOOGLE , Marker} from 'react-native-maps';
 import ItemHotel from './FlatlistItem/ItemHotel';
 
-const listHotel = [
-    {
-        title: "melodi",
-        rank: 4,
-        rating: 4,
-        vote: 190,
-        distance: 130,
-        image: "https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg",
-        per_night: "103454",
-        location: {
-          latitude: 21.038247,
-          longitude: 105.7825949
-        }
-      },
-      {
-        title: "melodi",
-        rank: 4,
-        rating: 4,
-        vote: 190,
-        distance: 130,
-        image: "https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg",
-        per_night: "103454",
-        location: {
-          latitude: 21.038252,
-          longitude: 105.7825949
-        }
-      },
-      {
-        title: "melodi",
-        rank: 4,
-        rating: 4,
-        vote: 190,
-        distance: 130,
-        image: "https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg",
-        per_night: "103454",
-        location: {
-          latitude: 21.038247,
-          longitude: 105.7825936
-        }
-      },
-      {
-        title: "melodi",
-        rank: 4,
-        rating: 4,
-        vote: 190,
-        distance: 130,
-        image: "https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg",
-        per_night: "103454",
-        location: {
-          latitude: 21.038240,
-          longitude: 105.7825929
-        }
-      }
-]
+
 export default class MapHotelsScreen extends Component {
     constructor(props){
         super(props);
         this.state={
-            coordinates:[
-                {
-                    latitude:21.038247,
-                    longitude:105.7825949,
-                },
-                {
-                    latitude:21.0230544,
-                    longitude:105.8048466,
-                
-                }
-            ],
-            strokeColor: '#FF2D00',
             region:{
                 latitude:21.038247,
                 longitude:105.7825949,
                 latitudeDelta:0.02,
                 longitudeDelta:0.02,
             },
-            marker:{
-                latitude:21.024786,
-                longitude:105.8000984
-            },
-            markerss : [
+            listHotel : [
                 {
-                    "title": "melodi",
-                    "rank": 4,
-                    "rating": 4,
-                    "vote": 190,
-                    "distance": 130,
-                    "image": "https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg",
-                    "per_night": "103454",
-                    "location": {
-                      "latitude": 21.038247,
-                      "longitude": 105.7825949
+                    title: "melodi1",
+                    rank: 4,
+                    rating: 4,
+                    vote: 190,
+                    distance: 130,
+                    image: "https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg",
+                    per_night: "103454",
+                    location: {
+                        latitude: 21.038240,
+                        longitude: 105.7825929 
                     }
                   },
                   {
-                    "title": "melodi",
-                    "rank": 4,
-                    "rating": 4,
-                    "vote": 190,
-                    "distance": 130,
-                    "image": "https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg",
-                    "per_night": "103454",
-                    "location": {
-                      "latitude": 21.038252,
-                      "longitude": 105.7825949
+                    title: "melodi2",
+                    rank: 4,
+                    rating: 4,
+                    vote: 190,
+                    distance: 130,
+                    image: "https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg",
+                    per_night: "103454",
+                    location: {
+                        latitude: 21.040226,
+                        longitude: 105.779483
                     }
                   },
                   {
-                    "title": "melodi",
-                    "rank": 4,
-                    "rating": 4,
-                    "vote": 190,
-                    "distance": 130,
-                    "image": "https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg",
-                    "per_night": "103454",
-                    "location": {
-                      "latitude": 21.038247,
-                      "longitude": 105.7825936
+                    title: "melodi3",
+                    rank: 4,
+                    rating: 4,
+                    vote: 190,
+                    distance: 130,
+                    image: "https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg",
+                    per_night: "103454",
+                    location: {
+                        latitude:21.035850, 
+                        longitude:105.783474
                     }
                   },
                   {
-                    "title": "melodi",
-                    "rank": 4,
-                    "rating": 4,
-                    "vote": 190,
-                    "distance": 130,
-                    "image": "https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg",
-                    "per_night": "103454",
-                    "location": {
-                      "latitude": 21.038240,
-                      "longitude": 105.7825929
+                    title: "melodi4",
+                    rank: 4,
+                    rating: 4,
+                    vote: 190,
+                    distance: 130,
+                    image: "https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg",
+                    per_night: "103454",
+                    location: {
+                      latitude: 21.03421,
+                      longitude: 105.732345
                     }
                   }
             ]
         }
     }
 
-    renderMarker(){
-        markers = []
-        for (marker of listHotel){
-            console.log('>>>>>>>')
-            console.log(marker.location)
-            markers.push(
-                <Marker key = {marker.location.longitude + marker.location.latitude}
-                    coordinate={marker.location}
-                    image={require('../../Resource/Hotels/Map/hotelMarker.png')}
-                />
-            )
-        }
-        console.log(markers.length)
-        return markers
-    }
-
-    renderRow({item}){
-        return(          
-            <ItemHotel
-                title = {item.title}
-                image = {item.image}
-                rank = {item.rank}
-                rating = {item.rating}
-                vote = {item.vote}
-                distance = {item.distance}
-                per_night = {item.per_night}
-                location = {item.location}
-            />
-        )
-    }
     render() {
         return (
                <View style={{flex:1}}>
@@ -210,33 +111,53 @@ export default class MapHotelsScreen extends Component {
                    </ImageBackground>
                    <View style={styles.container}>
                         <MapView
-                            provider={PROVIDER_GOOGLE}
-                            showsUserLocation
-                            style={styles.map}
-                            region={{
-                                latitude: 21.024786,
-                                longitude: 105.8000984,
-                                latitudeDelta: 0.015,
-                                longitudeDelta: 0.0121,
-                            }}
+                            ref={map => this.map = map}
+                            initialRegion={this.state.region}
+                            style={{flex:4}}
                         >
-                        {   
-                            this.state.markerss.map(marker => (
-                            <Marker
-                                coordinate={marker.location}
-                                title={marker.title}
-                            />
-                        ))}
-                        {this.renderMarker()}
-                            <Text>Hello</Text>
+
+                        {this.state.listHotel.map((hotel, index) => {
+                            console.log(this.state.listHotel.length + '--------' + index)
+                            return (                            
+                                <Marker key={index} 
+                                    coordinate={hotel.location}
+                                    title={hotel.title}>
+                                    <View>
+                                        <Image source={require('../../Resource/Hotels/Map/hotelMarker.png')} style={{height:300, width:300}}>
+                                        </Image>
+                                    </View>
+                                </Marker>
+                            );
+                            
+                        })}
+                        {console.log('return market done...')}
                         </MapView>
+                        <Animated.ScrollView
+                            horizontal
+                            scrollEventThrottle={1}
+                            showsHorizontalScrollIndicator={false}
+                            style={{flex:1}}
+                            >
+                            {this.state.listHotel.map((marker, index) => {
+                                console.log(this.state.listHotel.length + '--------' + index)
+                                return(
+                                    <ItemHotel
+                                                key={index}
+                                                title = {marker.title}
+                                                image = {marker.image}
+                                                rank = {marker.rank}
+                                                rating = {marker.rating}
+                                                vote = {marker.vote}
+                                                distance = {marker.distance}
+                                                per_night = {marker.per_night}
+                                                location = {marker.location}
+                                            />
+                                    )
+                            })}
+                            {console.log('return flatlist done...')}
+                        </Animated.ScrollView>
                     </View>
-                    <FlatList
-                                horizontal={true}
-                                data={listHotel}
-                                renderItem = {this.renderRow}
-                                // keyExtractor={item => item.title}
-                            />
+                    
                </View>     
         );
     }
@@ -258,19 +179,7 @@ const styles = StyleSheet.create({
         paddingRight:5
     },
     container: {
-        // ...StyleSheet.absoluteFillObject,
         flex:1,
-        // height: 400,
-        width: '100%',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-
-      },
-    map: {
-        // ...StyleSheet.absoluteFillObject,
-        flex:1,
-        width:'100%',
-        alignItems:"center",
-        justifyContent:'center'
+        height:'100%',
       },
 })

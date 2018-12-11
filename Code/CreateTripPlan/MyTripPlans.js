@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ImageBackground, TouchableOpacity, Image, FlatList, } from 'react-native';
+import { View, Text, ImageBackground, TouchableOpacity, Image,FlatList  } from 'react-native';
 
 export default class MyTripPlan extends Component {
     constructor(props) {

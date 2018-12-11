@@ -11,6 +11,8 @@ import BookHotels from './BookHotels';
 import Place from './Place';
 import Finish from './Finish';
 import MyTripPlan from './MyTripPlans';
+import StackRoute from './StackRoute/StackRoute';
+
 
 
 export default class StackPlan extends Component {
@@ -26,7 +28,10 @@ const RootStack = createStackNavigator({
     BookHotels_:BookHotels,
     Place_:Place,
     Finish_:Finish,
-    MyTripPlans_:MyTripPlan
+    MyTripPlans_:MyTripPlan,
+    StackRoute_:StackRoute
+
+    
     
 }, {
         headerMode: 'none'
