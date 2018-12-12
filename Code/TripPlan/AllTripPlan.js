@@ -42,14 +42,14 @@ export default class AllTripPlan extends Component {
                     style={styles.flatlist}
                     data={this.state.data}
                     renderItem={({ item }) => (
-                        <View style={[shadow, styles.viewItem]}>
+                        <View elevation={5} style={ styles.viewItem}>
                             <View style={{ flexDirection: 'row', width: '100%', alignItems: 'center' }}>
                                 <Image source={item.avata} style={styles.avata}></Image>
                                 <Text style={{color:'black', marginLeft:5}}>{item.name}</Text>
                                 <Text style={styles.textTimeUpdate}>{item.timeupdate}</Text>
                             </View>
                             <View style={{ marginTop: 10, width: '100%' }}>
-                                <ImageBackground style={[styles.scenery, shadow]} source={item.scenery}>
+                                <ImageBackground style={styles.scenery} source={item.scenery}>
                                     <View style={styles.parentSumDay}>
                                         <View style={styles.parentTextSumday}>
                                             <Text style={{ color: 'black', fontSize: 12 }}> {item.sumday}</Text>
@@ -80,17 +80,7 @@ export default class AllTripPlan extends Component {
         );
     }
 }
-const shadow = {
-    shadowColor: '#30C1DD',
-    shadowRadius: 10,
-    shadowOpacity: 0.9,
-    elevation: 8,
-    shadowOffset: {
-        width: 0,
-        height: -3,
-    },
 
-}
 
 const styles = {
     avata: {
@@ -154,10 +144,11 @@ const styles = {
         color: '#777777'
     },
     viewItem: {
+        
         width: '100%',
         marginTop: 10,
-        // borderBottomColor:'#707070',
-        // borderBottomWidth: 0.5,
+        borderBottomColor:'#707070',
+        
     },
     viewFromTo: {
         alignItems: 'center',

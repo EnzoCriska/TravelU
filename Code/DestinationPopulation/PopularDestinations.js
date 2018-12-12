@@ -41,9 +41,8 @@ const datasourceDestinations = [
 ]
 
 export default class PopularDestinations extends Component {
-
     onPressItem() {
-        // this.props.navigation.navigate('')
+        this.props.navigation.navigate('DaLatDestinations_')
     }
     render() {
         return (
