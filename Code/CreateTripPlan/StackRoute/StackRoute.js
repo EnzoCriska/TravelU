@@ -14,6 +14,8 @@ export default class StackRoute extends Component {
     }
 
     render() {
+        console.log(this.props.navigation)
+        console.log('>>>>>>>')
         return (
             <View style={{ flex: 1 }}>
                 <ImageBackground source={require('../../../Resource/StackRoute/logo.png')} style={styles.imageLogo} >
@@ -55,7 +57,7 @@ const stackDayOne = createStackNavigator({
 
 const RootStack = createTabNavigator({
     RouteDayOne_: {
-        screen: stackDayOne,
+        screen: RouteDayOne,
         navigationOptions: { title: 'Day 1' }
 
     },

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-
 import {
-    Alert,
+    StatusBar,
     FlatList,
     StyleSheet,
     Text,
@@ -12,72 +11,94 @@ import {
     TextInput
 } from 'react-native';
 
-
 export default class Search extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            dataSearched: [{ name: 'Hà Giang', description: 'Cung đường sung sướng' },
-            { name: 'Vũng Tàu', description: 'Thiên đường Hải Sản' },],
 
-            dataLocation: [{ name: 'Hà Giang', description: 'Cung đường sung sướng' },
+        search = [
+            { name: 'Hà Giang', description: 'Cung đường sung sướng' },
+            { name: 'Vũng Tàu', description: 'Thiên đường Hải Sản' },
+        ]
+        locations = [
+            { name: 'Hà Giang', description: 'Cung đường sung sướng' },
             { name: 'Vũng Tàu', description: 'Thiên đường Hải Sản' },
             { name: 'Tạ Hiện', description: 'Thiên đường bia' },
-            { name: 'Đà Lạt', description: 'Thành Phố mộng mơ' }]
+            { name: 'Đà Lạt', description: 'Thành Phố mộng mơ' }
+        ]
+
+        this.state = {
+            dataSearched: search,
+            dataLocation: locations
         }
+    }
+    btnBackClicked() {
+        this.props.navigation.navigate('HomeScreenChild_');
     }
 
     render() {
         const { navigate } = this.props.navigation;
         return (
             <View style={{ flex: 1 }}>
-                <View style={styles.logo}>
-                    <ImageBackground style={styles.imageLogo} source={require('../../Resource/search/logo/Logo.png')}>
-                        <View style={styles.parrentBackInput}>
+                <StatusBar hidden={false} />
 
-                            <TouchableHighlight >
-                                <Image source={require('../../Resource/search/logo/iconBack.png')}
-                                    style={{ width: 24, height: 9, marginLeft: 10 }} />
+                {/* Top View include: inputSearch + button Back */}
+                <View style={styles.logo}>
+                    <ImageBackground
+                        style={styles.imageLogo}
+                        source={require('../../Resource/search/logo/Logo.png')}
+                    >
+                        <View style={styles.parrentBackInput}>
+                            <TouchableHighlight
+                                onPress={() => { this.btnBackClicked() }}
+                                underlayColor={'transparent'}
+                            >
+                                <Image
+                                    source={require('../../Resource/SignIn/btnBack.png')}
+                                    style={{ marginRight: 10 }} />
                             </TouchableHighlight>
 
                             <View style={styles.inputParent}>
                                 <TextInput style={styles.inputText}
-                                    placeholder='Find Destinations, hotels, restaurants...'></TextInput>
+                                    placeholder='Find Destinations, hotels, restaurants...' />
 
                                 <TouchableHighlight>
-                                    <Image source={require('../../Resource/search/icon/Find.png')}
-                                        style={styles.iconSearch}></Image>
+                                    <Image
+                                        source={require('../../Resource/search/icon/Find.png')}
+                                        style={styles.iconSearch} />
                                 </TouchableHighlight>
-
                             </View>
                         </View>
-
-
                     </ImageBackground>
                 </View>
 
                 <View style={styles.viewNear}>
                     <View style={{ width: '90%', marginVertical: 14 }}>
-                        <TouchableHighlight style={[styles.touchable, shadow]}  >
+                        <TouchableHighlight
+                            style={[styles.touchable, shadow]}
+                        >
                             <View style={{ flexDirection: 'row' }}>
-                                <Image source={require('../../Resource/search/icon/location.png')} style={styles.iconLocation}></Image>
+                                <Image
+                                    source={require('../../Resource/search/icon/location.png')}
+                                    style={styles.iconLocation} />
+
                                 <View style={styles.viewText}>
                                     <Text>Địa điểm gần bạn</Text>
                                 </View>
                             </View>
-
                         </TouchableHighlight>
 
-                        <TouchableHighlight style={[styles.touchable, shadow]} >
+                        <TouchableHighlight
+                            style={[styles.touchable, shadow]}
+                        >
                             <View style={{ flexDirection: 'row' }}>
-                                <Image source={require('../../Resource/search/icon/gps.png')}
+                                <Image
+                                    ource={require('../../Resource/search/icon/gps.png')}
                                     style={styles.iconGPS} />
 
                                 <View style={styles.viewText}>
                                     <Text>Hà Nội</Text>
                                 </View>
                             </View>
-
                         </TouchableHighlight>
                     </View>
                 </View>
@@ -92,17 +113,19 @@ export default class Search extends Component {
                         style={{ width: '100%' }}
                         showsVerticalScrollIndicator={false}
                         data={this.state.dataSearched}
-                        renderItem={({ item }) =>
-                            (<View style={styles.viewSearched}>
-                                <Image style={styles.iconPin}
-                                    source={require('../../Resource/search/icon/pin.png')}>
-                                </Image>
+                        keyExtractor={(item) => item.toString()}
+                        renderItem={({ item }) => (
+                            <View style={styles.viewSearched}>
+                                <Image
+                                    style={styles.iconPin}
+                                    source={require('../../Resource/search/icon/pin.png')} />
+
                                 <View style={{ marginLeft: 10 }}>
                                     <Text>{item.name}</Text>
                                     <Text>{item.description}</Text>
                                 </View>
-                            </View>)
-                        }
+                            </View>
+                        )}
                     />
                 </View>
 
@@ -115,21 +138,21 @@ export default class Search extends Component {
                         style={{ width: '100%' }}
                         showsVerticalScrollIndicator={false}
                         data={this.state.dataLocation}
-                        renderItem={({ item }) =>
-                            (<View style={styles.viewSearched}>
-                                <Image style={styles.iconLocation}
-                                    source={require('../../Resource/search/icon/location.png')}>
-                                </Image>
+                        keyExtractor={(item) => item.toString()}
+                        renderItem={({ item }) => (
+                            <View style={styles.viewSearched}>
+                                <Image
+                                    style={styles.iconLocation}
+                                    source={require('../../Resource/search/icon/location.png')} />
+
                                 <View style={{ marginLeft: 10 }}>
                                     <Text>{item.name}</Text>
                                     <Text>{item.description}</Text>
                                 </View>
-                            </View>)
-                        }
+                            </View>
+                        )}
                     />
                 </View>
-
-
             </View>
         );
     }
@@ -140,8 +163,7 @@ const shadow = {
     shadowOpacity: 0.9,
     elevation: 4,
 }
-const styles = {
-   
+const styles = StyleSheet.create({
     imageLogo: {
         flex: 1,
         alignItems: 'center',
@@ -168,7 +190,7 @@ const styles = {
     iconSearch: {
         width: 17.5,
         height: 17.5
-    },   
+    },
     iconLocation: {
         marginLeft: 20,
         width: 12.5,
@@ -242,5 +264,5 @@ const styles = {
         width: '100%',
     },
 
-}
+})
 

@@ -60,8 +60,9 @@ export default class HomeScreenChild extends Component {
     _onpressCreateTripPlan() {
         this.props.navigation.navigate('StackCreateTripPlan_')
     }
-    _onpressPopular(){
-         this.props.navigation.navigate('StackPopular_') }
+    _onpressPopular() {
+        this.props.navigation.navigate('StackPopular_')
+    }
     sizerat = 12;
 
     render() {
@@ -171,7 +172,8 @@ export default class HomeScreenChild extends Component {
                             <View>
                                 <Image source={item.source} style={styles.imagePromotion}></Image>
                                 <Text style={{ marginLeft: 10, fontSize: 13 }}>{item.key}</Text>
-                                <View style={{ marginLeft: 10, flexDirection: 'row', alignItems: 'center' }}>
+                                <View
+                                    style={{ marginLeft: 10, flexDirection: 'row', alignItems: 'center' }}>
                                     <Rating
                                         ratingBackgroundColor='blue'
                                         type="star"
@@ -188,7 +190,11 @@ export default class HomeScreenChild extends Component {
                     {/* List Place Public */}
                     <View style={styles.parentTouch}>
                         <Text style={styles.textTitle}>Địa điểm phổ biến</Text>
-                        <Text style={styles.textSeeAll} onPress={() => this._onpressPopular()}>See all</Text>
+
+                        <Text style={styles.textSeeAll}
+                            onPress={() => { this.props.navigation.navigate('PopularDes_') }} >
+                            See all
+                        </Text>
                     </View>
 
                     <FlatList

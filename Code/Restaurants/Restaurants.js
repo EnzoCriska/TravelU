@@ -17,9 +17,27 @@ export default class Restaurants extends Component {
         super(props);
 
         topFoods = [
-            { source: require('../../Resource/Restaurants/TopFood/Dalat.png'), title: 'Giai Điệu - Melody Hotel Đà Lạt', ratting: 4, vote: 190, pernight: "1000000" },
-            { source: require('../../Resource/Restaurants/TopFood/LungCu.png'), title: 'Lũng Cú', ratting: 4, vote: 190, pernight: "1000000" },
-            { source: require('../../Resource/Restaurants/TopFood/Fansipan.png'), title: 'Fansipan', ratting: 4, vote: 190, pernight: "1000000" }
+            { 
+                source: require('../../Resource/Restaurants/TopFood/Dalat.png'), 
+                title: 'Giai Điệu - Melody Hotel Đà Lạt', 
+                ratting: 4, 
+                vote: 190, 
+                pernight: "1000000" 
+            },
+            { 
+                source: require('../../Resource/Restaurants/TopFood/LungCu.png'), 
+                title: 'Lũng Cú', 
+                ratting: 4, 
+                vote: 190, 
+                pernight: "1000000" 
+            },
+            { 
+                source: require('../../Resource/Restaurants/TopFood/Fansipan.png'), 
+                title: 'Fansipan', 
+                ratting: 4, 
+                vote: 190, 
+                pernight: "1000000" 
+            }
         ]
 
         this.state = {
@@ -59,7 +77,8 @@ export default class Restaurants extends Component {
 
     render() {
         return (
-            <ScrollView style={{ backgroundColor: '#FFF' }}>
+            <ScrollView style={styles.containerScroll}>
+
                 {/* Statusbar and background header Image */}
                 <StatusBar hidden={false} />
                 <Image
@@ -67,7 +86,7 @@ export default class Restaurants extends Component {
                     style={styles.imageLogo} />
 
                 {/* Box Header inlcude: back button, image title, form find */}
-                <View style={{ alignItems: 'center', height: 250 }}>
+                <View style={styles.containerHeader}>
                     {/* Header view */}
                     <View style={styles.headerView}>
                         <TouchableHighlight
@@ -79,7 +98,7 @@ export default class Restaurants extends Component {
                                 source={require('../../Resource/SignIn/btnBack.png')} />
                         </TouchableHighlight>
 
-                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                        <View style={styles.containerTitle}>
                             <Image
                                 source={require('../../Resource/Home/logo/title.png')} />
                         </View>
@@ -98,12 +117,12 @@ export default class Restaurants extends Component {
                                     style={styles.iconsearch} />
 
                                 <TextInput
-                                    style={{ marginLeft: 12, width: '90%', fontSize: 12, color: '#9F9F9F' }}
+                                    style={styles.textInput}
                                     placeholder='Where do you want to go?' />
                             </View>
                         </View>
 
-                        <View style={{ flex: 1, alignItems: 'center', width: '100%' }}>
+                        <View style={styles.containerFindBtn}>
                             <TouchableHighlight
                                 style={{ width: '90%' }}
                                 onPress={() => { }}
@@ -139,7 +158,7 @@ export default class Restaurants extends Component {
                         <View style={{ width: 150 }}>
                             <Image source={item.source} style={styles.imageTop}></Image>
                             <Text style={styles.textName}>{item.title}</Text>
-                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                            <View style={styles.containerRating}>
                                 <Rating
                                     style={{ marginLeft: 10 }}
                                     type="star"
@@ -153,8 +172,8 @@ export default class Restaurants extends Component {
                                 </Text>
                             </View>
 
-                            <View style={{ flexDirection: 'row', marginLeft: 10, height: 30 }}>
-                                <View style={{ flexDirection: 'row', height: '100%', alignItems: 'center' }}>
+                            <View style={styles.containerPernight}>
+                                <View style={styles.pernightItemContainer}>
                                     <Text style={styles.txtPriceTitle}>Per night</Text>
                                     <Text style={styles.txtPrice}>
                                         {this.formatNumberWithDot(item.pernight)}
@@ -182,7 +201,7 @@ export default class Restaurants extends Component {
                         <View style={{ width: 150 }}>
                             <Image source={item.source} style={styles.imageTop}></Image>
                             <Text style={styles.textName}>{item.title}</Text>
-                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                            <View style={styles.containerRating}>
                                 <Rating
                                     style={{ marginLeft: 10 }}
                                     type="star"
@@ -196,8 +215,8 @@ export default class Restaurants extends Component {
                                 </Text>
                             </View>
 
-                            <View style={{ flexDirection: 'row', marginLeft: 10, height: 30 }}>
-                                <View style={{ flexDirection: 'row', height: '100%', alignItems: 'center' }}>
+                            <View style={styles.containerPernight}>
+                                <View style={styles.pernightItemContainer}>
                                     <Text style={styles.txtPriceTitle}>Per night</Text>
                                     <Text style={styles.txtPrice}>
                                         {this.formatNumberWithDot(item.pernight)}
@@ -225,7 +244,7 @@ export default class Restaurants extends Component {
                         <View style={{ width: 150 }}>
                             <Image source={item.source} style={styles.imageTop}></Image>
                             <Text style={styles.textName}>{item.title}</Text>
-                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                            <View style={styles.containerRating}>
                                 <Rating
                                     style={{ marginLeft: 10 }}
                                     type="star"
@@ -236,10 +255,12 @@ export default class Restaurants extends Component {
                                 <Text style={{ fontSize: 12 }}>({item.vote} đánh giá)</Text>
                             </View>
 
-                            <View style={{ flexDirection: 'row', marginLeft: 10, height: 30 }}>
-                                <View style={{ flexDirection: 'row', height: '100%', alignItems: 'center' }}>
+                            <View style={styles.containerPernight}>
+                                <View style={styles.pernightItemContainer}>
                                     <Text style={styles.txtPriceTitle}>Per night</Text>
-                                    <Text style={styles.txtPrice}>{this.formatNumberWithDot(item.pernight)}</Text>
+                                    <Text style={styles.txtPrice}>
+                                            {this.formatNumberWithDot(item.pernight)}
+                                    </Text>
                                 </View>
                                 <Text style={styles.txtPrice}>đ</Text>
                             </View>
@@ -266,7 +287,7 @@ export default class Restaurants extends Component {
                         <View style={{ width: 150 }}>
                             <Image source={item.source} style={styles.imageTop}></Image>
                             <Text style={styles.textName}>{item.title}</Text>
-                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                            <View style={styles.containerRating}>
                                 <Rating
                                     style={{ marginLeft: 10 }}
                                     type="star"
@@ -277,10 +298,12 @@ export default class Restaurants extends Component {
                                 <Text style={{ fontSize: 12 }}>({item.vote} đánh giá)</Text>
                             </View>
 
-                            <View style={{ flexDirection: 'row', marginLeft: 10, height: 30 }}>
-                                <View style={{ flexDirection: 'row', height: '100%', alignItems: 'center' }}>
+                            <View style={styles.containerPernight}>
+                                <View style={styles.pernightItemContainer}>
                                     <Text style={styles.txtPriceTitle}>Per night</Text>
-                                    <Text style={styles.txtPrice}>{this.formatNumberWithDot(item.pernight)}</Text>
+                                    <Text style={styles.txtPrice}>
+                                            {this.formatNumberWithDot(item.pernight)}
+                                    </Text>
                                 </View>
                                 <Text style={styles.txtPrice}>đ</Text>
                             </View>
@@ -298,6 +321,43 @@ const shadow = {
     elevation: 8,
 }
 const styles = StyleSheet.create({
+    containerScroll: { 
+        backgroundColor: '#FFF' 
+    },
+    containerHeader:{ 
+        alignItems: 'center', 
+        height: 250 
+    },
+    containerTitle: { 
+        flex: 1, 
+        justifyContent: 'center', 
+        alignItems: 'center' 
+    },
+    textInput:{ 
+        marginLeft: 12, 
+        width: '90%', 
+        fontSize: 12, 
+        color: '#9F9F9F' 
+    },
+    containerFindBtn: { 
+        flex: 1, 
+        alignItems: 'center', 
+        width: '100%' 
+    },
+    containerRating: { 
+        flexDirection: 'row', 
+        alignItems: 'center' 
+    },
+    containerPernight:{ 
+        flexDirection: 'row', 
+        marginLeft: 10, 
+        height: 30 
+    },
+    pernightItemContainer: { 
+        flexDirection: 'row', 
+        height: '100%', 
+        alignItems: 'center' 
+    },
     imageLogo: {
         height: 250,
         width: '100%',

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import {
-    View, Text, ImageBackground, TouchableOpacity, StyleSheet, FlatList, Dimensions, Animated, ScrollView, Image
-} from 'react-native'
+import { 
+    View, Text, FlatList, StyleSheet, TouchableOpacity, ImageBackground, Image, ScrollView, Dimensions
+ } from "react-native";
+import MapView, {Marker} from "react-native-maps";
 import  Icon  from "react-native-vector-icons/FontAwesome";
-import MapView, { PROVIDER_GOOGLE , Marker} from 'react-native-maps';
+
 import ItemHotel from './FlatlistItem/ItemHotel';
-import ActionButton from 'react-native-action-button';
 
 
 const { width, height } = Dimensions.get("window");
@@ -13,84 +13,83 @@ const { width, height } = Dimensions.get("window");
 const CARD_HEIGHT = height / 4;
 const CARD_WIDTH = CARD_HEIGHT - 50;
 
-export default class MapHotelsScreen extends Component {
+export default class MapRestaurantScreen extends Component {
     constructor(props){
-        super(props);
-        this.state={
+        super(props)
+        this.state = {
             region:{
                 latitude:21.038247,
                 longitude:105.7825949,
                 latitudeDelta:0.02,
                 longitudeDelta:0.02,
             },
-            listHotel : [
+            listRestaurants:[
                 {
-                    title: "melodi1",
-                    rank: 4,
+                    title: "la decima",
                     rating: 4,
                     vote: 190,
-                    distance: 130,
-                    image: "https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg",
-                    per_night: "103454",
-                    location: {
+                    distance: 1934,
+                    image: 'https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg',
+                    location:{
                         latitude: 21.038240,
                         longitude: 105.7825929 
-                    }
-                  },
-                  {
-                    title: "melodi2",
-                    rank: 4,
+                    },
+                    rank:4,
+                    per_night:100000
+                },
+                {
+                    title: "la decima34",
                     rating: 4,
                     vote: 190,
-                    distance: 130,
-                    image: "https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg",
-                    per_night: "103454",
-                    location: {
+                    distance: 1934,
+                    image: 'https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg',
+                    location:{
                         latitude: 21.040226,
-                        longitude: 105.779483
-                    }
-                  },
-                  {
-                    title: "melodi3",
-                    rank: 4,
+                        longitude: 105.779483 
+                    },
+                    rank:4,
+                    per_night:100000
+                },
+                {
+                    title: "la decima54",
                     rating: 4,
                     vote: 190,
-                    distance: 130,
-                    image: "https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg",
-                    per_night: "103454",
-                    location: {
+                    distance: 1934,
+                    image: 'https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg',
+                    location:{
                         latitude:21.035850, 
-                        longitude:105.783474
-                    }
-                  },
-                  {
-                    title: "melodi4",
-                    rank: 4,
+                        longitude:105.783474 
+                    },
+                    rank:4,
+                    per_night:100000
+                },
+                {
+                    title: "la decima7uy6",
                     rating: 4,
                     vote: 190,
-                    distance: 130,
-                    image: "https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg",
-                    per_night: "103454",
-                    location: {
-                      latitude: 21.03421,
-                      longitude: 105.732345
-                    }
-                  }
+                    distance: 1934,
+                    image: 'https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg',
+                    location:{
+                        latitude: 21.03421,
+                      longitude: 105.732345 
+                    },
+                    rank:4,
+                    per_night:100000
+                },
             ]
         }
     }
-
-    render() {
-        return (
-               <View style={{flex:1}}>
-                   <ImageBackground
+  render() {
+    return (
+      <View style={styles.container}>
+            <View style={StyleSheet.header}>
+                <ImageBackground
                         source={require('../../Resource/Hotels/logo.png')}
-                        style = {{height: 100, width:'100%'}}>
-                        <View style = {{flex:1}}></View>
-                        <View style={{flex:1, flexDirection:'row'}}>
+                        style = {styles.imageBackground}>
+                        <View style={styles.containerHeader}>
                             <View style={styles.containerBackHeader}>
                                 <TouchableOpacity 
-                                    style={{height:20, width:30, borderRadius:20}}
+                                    style={styles.touchableIcon}
                                     onPress={()=> {this.props.navigation.goBack()}}>
                                     <Icon
                                         name='long-arrow-left'
@@ -99,7 +98,7 @@ export default class MapHotelsScreen extends Component {
                                     />
                                 </TouchableOpacity>
                                 
-                                <Text style={{color:'white', fontSize:20, marginHorizontal:15}}>Hotels</Text>
+                                <Text style={styles.titleHeader}>Hotels</Text>
                             </View>
                             <View style={styles.containerMenuHeader}>
                                     <Icon
@@ -115,65 +114,85 @@ export default class MapHotelsScreen extends Component {
                             </View>
                         </View>
                    </ImageBackground>
-                   <View style={styles.container}>
-                   
-                        <MapView
-                            ref={map => this.map = map}
-                            initialRegion={this.state.region}
-                            style={{flex:1}}
-                        >
+            </View>
+            <View style = {styles.body}>
+                <MapView
+                    ref={map => this.map = map}
+                    initialRegion={this.state.region}
+                    style={{height:'100%'}}>
+                    {this.state.listRestaurants.map((item, index) => (
+                    <Marker
+                        coordinate = {item.location}
+                        title = {item.title}>
+                        <Image source = {require('../../Resource/Hotels/Map/hotelMarker.png')}
+                            style={styles.imageMarker}
+                        />
+                        </Marker>
+                        
+                ))}
+                </MapView>
+                {/* <Image
+                        source={require('../../Resource/Hotels/Map/qw.png')}
+                        style={{height:100, width:100}}
+                        contentContainerStyle={{alignItems:'center', justifyContent:'center'}}
+                /> */}
 
-                        {this.state.listHotel.map((hotel, index) => {
-                            console.log(this.state.listHotel.length + '--------' + index)
-                            return (                            
-                                <Marker key={index} 
-                                    coordinate={hotel.location}
-                                    title={hotel.title}>
-                                    <View>
-                                        <Image source={require('../../Resource/Hotels/Map/hotelMarker.png')} style={{height:300, width:300}}>
-                                        </Image>
-                                    </View>
-                                </Marker>
-                            );
-                            
-                        })}
-                        {console.log('return market done...')}
-                        </MapView>
-                       
-                        <ScrollView
-                            horizontal
-                            scrollEventThrottle={1}
-                            showsHorizontalScrollIndicator={false}
-                            snapToInterval={CARD_WIDTH}
-                            style={styles.scrollView}
-                            contentContainerStyle={styles.endPadding}>
-
-                            {this.state.listHotel.map((marker, index) => {
-                                console.log(this.state.listHotel.length + '--------' + index)
-                                return(
-                                    <ItemHotel
-                                                key={index}
-                                                title = {marker.title}
-                                                image = {marker.image}
-                                                rank = {marker.rank}
-                                                rating = {marker.rating}
-                                                vote = {marker.vote}
-                                                distance = {marker.distance}
-                                                per_night = {marker.per_night}
-                                                location = {marker.location}
-                                            />
-                                    )
-                            })}
-                            {console.log('return flatlist done...')}
-                        </ScrollView>
-                    </View>
-                    
-               </View>     
-        );
-    }
+                <ScrollView
+                    horizontal
+                    scrollEventThrottle={1}
+                    showsHorizontalScrollIndicator={false}
+                    snapToInterval={CARD_WIDTH}
+                    style={styles.scrollView}
+                    contentContainerStyle={styles.endPadding}>
+                    {this.state.listRestaurants.map((item, index) => (
+                        <ItemHotel
+                            title = {item.title}
+                            image = {item.image}
+                            distance = {item.distance}
+                            rating = {item.rating}
+                            vote = {item.vote}
+                            rank = {item.rank}
+                            per_night = {item.per_night}
+                        />
+                    ))}
+                </ScrollView>
+                
+            </View>
+      </View>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
+    container:{
+        flex:1
+    }, 
+    imageBackground:{
+        height: 100, 
+        width:'100%'
+    },
+    containerHeader:{
+        flex:1, 
+        flexDirection:'row', 
+        marginTop:50
+    },
+    touchableIcon:{
+        height:20, 
+        width:30, 
+        borderRadius:20
+    },
+    titleHeader:{
+        color:'white', 
+        fontSize:20, 
+        marginHorizontal:15
+    },
+    imageMarker:{
+        height:150, 
+        width:150
+    },
+    header:{
+
+    },
     containerBackHeader: {
         flex:1,  
         justifyContent:'flex-start', 
@@ -188,16 +207,10 @@ const styles = StyleSheet.create({
         flexDirection:'row', 
         paddingRight:5
     },
-    container: {
+    body:{
         flex:1,
-        height:'100%',
-      },
-    actionButtonIcon: {
-        fontSize: 20,
-        height: 22,
-        color: 'white',
-      },
-      scrollView: {
+    },
+    scrollView: {
         position: "absolute",
         bottom: 10,
         left: 10,
