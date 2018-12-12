@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { 
-    View, Text, ImageBackground, ScrollView, TouchableOpacity, FlatList
+    View, Text, ImageBackground, ScrollView, TouchableOpacity, FlatList, StyleSheet
  } from "react-native";
  import  Icon  from "react-native-vector-icons/FontAwesome";
  import ItemDestinations from './FlatListItem/ItemDestinations'
@@ -43,26 +43,25 @@ import {
     }
     render() {
          return (
-             <View style={{flex:1}}>
+             <View style={styles.container}>
              
-                <ImageBackground source ={require('../../Resource/CreateTripPlan/Finish/Logo.png')} style={{height:100, width:'100%'}}>
-                    <View style = {{flex:1}}></View>
-                    <View style={{flex:1, flexDirection:'row', alignItems:'center', marginHorizontal:5, height:30}}>
+                <ImageBackground source ={require('../../Resource/CreateTripPlan/Finish/Logo.png')} style={styles.imageBackground}>
+                    <View style={styles.containerHeader}>
                         <TouchableOpacity 
-                                style={{height:20, width:30, borderRadius:20}}
+                                style={styles.touchableOpacity}
                                 onPress={()=> {this.props.navigation.goBack()}}>
                             <Icon
                                 name='long-arrow-left'
                                 size={20}
-                                style={{color:'white'}}
+                                style={styles.iconStyle}
                             />
                         </TouchableOpacity>
                         
-                        <Text style={{color:'white', fontSize:20, marginHorizontal:20}}>Điểm đến phổ biến</Text>
+                        <Text style={styles.titleHeader}>Điểm đến phổ biến</Text>
                     </View>
                     
                 </ImageBackground>
-                <ScrollView style={{flex:2, backgroundColor:'white', width:'100%', padding:15}}>
+                <ScrollView style={styles.scrollView}>
                     <FlatList
                         data={datasourceDestinations}
                         renderItem = {({item}) =>(
@@ -83,3 +82,40 @@ import {
          );
      }
  }
+
+ const styles = StyleSheet.create({
+     container:{
+         flex:1
+        },
+    imageBackground:{
+        height:100, 
+        width:'100%',
+        paddingTop:55,
+    },
+    containerHeader:{
+        flex:1, 
+        flexDirection:'row', 
+        alignItems:'center', 
+        marginHorizontal:5, 
+        height:30
+    },
+    touchableOpacity: {
+        height:20, 
+        width:30, 
+        borderRadius:20
+    },
+    titleHeader:{
+        color:'white', 
+        fontSize:20, 
+        marginHorizontal:20
+    },
+    scrollView: {
+        flex:2, 
+        backgroundColor:'white', 
+        width:'100%', 
+        padding:15
+    },
+    iconStyle: {
+        color:'#fff'
+    }
+ })

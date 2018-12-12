@@ -9,14 +9,14 @@ export default class ItemLocation extends Component {
   render() {
     return (
       <View style = {styles.container}>
-        <View style={{flex:1}}>
+        <View style={styles.containerLeft}>
             <Image source={{uri:this.props.image}}
-                style={{height:95, width:95, margin:5}}
+                style={styles.imagePreview}
             />
         </View>
-        <View style={{flex:2, margin:5}}>
-            <Text style={{fontSize:16, fontWeight:'bold', marginLeft:10}}>{this.props.title}</Text>
-            <View style={{flex:1, flexDirection:'row', marginLeft:10}}>
+        <View style={styles.containerMid}>
+            <Text style={styles.titleStyle}>{this.props.title}</Text>
+            <View style={styles.containerRating}>
                             <Rating
                                     //showRating
                                     type="star" 
@@ -30,8 +30,8 @@ export default class ItemLocation extends Component {
                             <Text>({this.props.vote} vote)</Text>
                         </View>
         </View>
-        <View style = {{flex:1, alignItems:'flex-end', margin:5, justifyContent:'space-between'}}>
-            <Text>{this.props.distance}</Text>
+        <View style = {styles.containerRight}>
+            <Text>{this.props.distance} Km</Text>
             <TouchableOpacity>
                 <View style = {styles.button}>
                     <Text style={{color:"#fff"}}>Thêm</Text>
@@ -51,7 +51,11 @@ const styles=StyleSheet.create({
         backgroundColor:'#fff', 
         borderRadius:5,
         margin:5
-    }, button: {
+    },
+    containerLeft:{
+        flex:1
+    },
+    button: {
         height:30, 
         width:50, 
         borderRadius:5, 
@@ -59,5 +63,29 @@ const styles=StyleSheet.create({
         alignItems:'center', 
         justifyContent:'center'
     },
-
+    imagePreview:{
+        height:95, 
+        width:95, 
+        margin:5
+    }, 
+    titleStyle: {
+        fontSize:16, 
+        fontWeight:'bold', 
+        marginLeft:10
+    },
+    containerRating:{
+        flex:1, 
+        flexDirection:'row', 
+        marginLeft:10
+    },
+    containerRight: {
+        flex:1, 
+        alignItems:'flex-end', 
+        margin:5, 
+        justifyContent:'space-between',
+        marginRight:10
+    },
+    containerMid: {
+        flex:2, 
+        margin:5}
 })

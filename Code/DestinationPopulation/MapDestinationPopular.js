@@ -74,16 +74,15 @@ export default class MapDestinationPopular extends Component {
 
   render() {
     return (
-      <View style={{flex:1}}>
-            <View style={StyleSheet.header}>
+      <View style={styles.container}>
+            <View style={styles.header}>
                 <ImageBackground
                         source={require('../../Resource/Hotels/logo.png')}
-                        style = {{height: 100, width:'100%'}}>
-                        <View style = {{flex:1}}></View>
-                        <View style={{flex:1, flexDirection:'row'}}>
+                        style = {styles.imageBackground}>
+                        <View style={styles.containerHeader}>
                             <View style={styles.containerBackHeader}>
                                 <TouchableOpacity 
-                                    style={{height:20, width:30, borderRadius:20}}
+                                    style={styles.touchableOpacity}
                                     onPress={()=> {this.props.navigation.goBack()}}>
                                     <Icon
                                         name='long-arrow-left'
@@ -92,19 +91,9 @@ export default class MapDestinationPopular extends Component {
                                     />
                                 </TouchableOpacity>
                                 
-                                <Text style={{color:'white', fontSize:20, marginHorizontal:15}}>Đà Lạt</Text>
+                                <Text style={styles.titleHeader}>Đà Lạt</Text>
                             </View>
                             <View style={styles.containerMenuHeader}>
-                                    {/* <Icon
-                                        name='search'
-                                        size={20}
-                                        style={{color:'white', margin:10}}
-                                    />
-                                    <Icon
-                                        name='list'
-                                        size={20}
-                                        style={{color:'white', margin:10}}
-                                    /> */}
                             </View>
                         </View>
                    </ImageBackground>
@@ -119,7 +108,7 @@ export default class MapDestinationPopular extends Component {
                         coordinate = {item.location}
                         title = {item.title}>
                         <Image source = {require('../../Resource/Hotels/Map/location.png')}
-                            style={{height:40, width:30}}
+                            style={styles.imageMarker}
                         />
                         </Marker>
                     ))}
@@ -148,8 +137,20 @@ export default class MapDestinationPopular extends Component {
 }
 
 const styles = StyleSheet.create({
+    container:{
+        flex:1
+    },
     header:{
 
+    },
+    imageBackground:{
+        height: 100, 
+        width:'100%'
+    },
+    containerHeader: {
+        flex:1, 
+        flexDirection:'row',
+        paddingTop:55
     },
     containerBackHeader: {
         flex:1,  
@@ -164,6 +165,20 @@ const styles = StyleSheet.create({
         alignItems:'center', 
         flexDirection:'row', 
         paddingRight:5
+    },
+    touchableOpacity:{
+        height:20, 
+        width:30, 
+        borderRadius:20
+    },
+    titleHeader:{
+        color:'white', 
+        fontSize:20, 
+        marginHorizontal:15
+    },
+    imageMarker:{
+        height:40, 
+        width:30
     },
     body:{
         flex:1,

@@ -4,6 +4,7 @@ import { createTabNavigator } from 'react-navigation'
 import MapDayOne from './MapDayOne';
 import MapDayTwo from './MapDayTwo';
 import MapDayThree from './MapDayThree';
+import StackNearly from '../AddPlace/Nearly/StackNearly';
 
 
 export default class MapStack extends Component {
@@ -27,19 +28,18 @@ export default class MapStack extends Component {
                                         style={styles.iconBack} />
                                 </TouchableOpacity>
                                 <Text style={styles.textWhite}>3 day to Đà Lạt</Text>
-                                {/* <TouchableOpacity style={styles.iconNote}>
-                                    <Image style={{width:'100%', height:'100%'}}  source={require('../../../../Resource/StackRoute/note.png')}></Image>
-                                </TouchableOpacity>
-
-                                <TouchableOpacity style={styles.iconMap}>
-                                    <Image style={{width:'100%', height:'100%'}} source={require('../../../../Resource/StackRoute/map.png')}></Image>
-                                </TouchableOpacity> */}
                             </View>
                             <View style={{ flex: 1 }}></View>
                         </View>
                     </View>
                 </ImageBackground>
                 <RootStack></RootStack>
+                <TouchableHighlight style={{ marginTop: 'auto',width:'100%' }} 
+                    onPress={()=>{
+                        this.props.navigation.navigate('StackNearly_')}}    >
+                            <Image source={require('../../../../Resource/CreateTripPlan/Place/nextsteep.png')}
+                                style={styles.addPlaceButton} />
+                    </TouchableHighlight>
             </View>
         );
     }
@@ -104,17 +104,6 @@ const styles = {
     iconBack: {
         width: '60%',
         height: 10
-    },
-    iconNote: {
-        marginLeft: 'auto',
-        width: 18,
-        height: 18
-    },
-    iconMap: {
-        marginLeft: '9%',
-        marginRight: '5%',
-        width: 20,
-        height: 20
     },
     textWhite: {
         color: 'white',

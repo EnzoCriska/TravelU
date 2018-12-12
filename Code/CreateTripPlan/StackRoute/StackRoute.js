@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, ImageBackground, Image, TouchableOpacity } from 'react-native';
-import { createTabNavigator } from 'react-navigation'
+import { createTabNavigator , createStackNavigator} from 'react-navigation'
 import RouteDayOne from './RouteDayOne';
 import RouteDayTwo from './RouteDayTwo';
 import RouteDayThree from './RouteDayThree';
+import StackNearly from './AddPlace/Nearly/StackNearly';
 
 export default class StackRoute extends Component {
     constructor(props) {
@@ -44,9 +45,17 @@ export default class StackRoute extends Component {
         );
     }
 }
+
+const stackDayOne = createStackNavigator({
+    DayOne_: RouteDayOne,
+    StackNearly_ : StackNearly,
+}, {
+    headerMode: "none"
+})
+
 const RootStack = createTabNavigator({
     RouteDayOne_: {
-        screen: RouteDayOne,
+        screen: stackDayOne,
         navigationOptions: { title: 'Day 1' }
 
     },

@@ -7,7 +7,7 @@ import {
     Text,
     Image,
     TextInput
-} from 'react-native';
+}from 'react-native';
 import {
     createStackNavigator
 }from 'react-navigation';
