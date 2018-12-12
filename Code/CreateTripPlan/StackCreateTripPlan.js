@@ -19,23 +19,6 @@ export default class StackCreateTripPlan extends Component {
     }
 };
 
-<<<<<<< HEAD
-const RootStack = createStackNavigator({
-    CreateTripPlan_: CreateTripPlan,
-    Search_: Search,
-    PickDate_:PickDate,
-    BookHotels_:BookHotels,
-    Place_:Place,
-    Finish_:Finish,
-    MyTripPlans_:MyTripPlan,
-    StackRoute_:StackRoute,
-    MapStack_: MapStack,
-    StackNearly_: StackNearly
-
-    
-    
-}, {
-=======
 const RootStack = createStackNavigator(
     {
         CreateTripPlan_: CreateTripPlan,
@@ -49,7 +32,6 @@ const RootStack = createStackNavigator(
         MapStack_: MapStack,
     },
     {
->>>>>>> dc04855ff288bea48c68d6f2394f22d0df521e64
         headerMode: 'none'
     }
 )

@@ -45,14 +45,6 @@ export default class PopularDestinations extends Component {
         this.props.navigation.navigate('DaLatDestinations_')
     }
     render() {
-<<<<<<< HEAD
-         return (
-             <View style={styles.container}>
-             
-                <ImageBackground 
-                    source ={require('../../Resource/CreateTripPlan/Finish/Logo.png')} 
-                    style={styles.imageBackground}>
-=======
         return (
             <View style={styles.container}>
                 <StatusBar hidden={false} />
@@ -60,7 +52,6 @@ export default class PopularDestinations extends Component {
                     source={require('../../Resource/CreateTripPlan/Finish/Logo.png')}
                     style={styles.imageBackground}
                 >
->>>>>>> dc04855ff288bea48c68d6f2394f22d0df521e64
                     <View style={styles.containerHeader}>
                         <TouchableOpacity
                             style={styles.touchableOpacity}
