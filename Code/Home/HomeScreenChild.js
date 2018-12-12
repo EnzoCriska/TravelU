@@ -99,6 +99,7 @@ export default class HomeScreenChild extends Component {
                         <View style={{ flex: 1 }}>
                             <TouchableHighlight
                                 onPress={() => this._onpressTripPlan()}
+                                underlayColor={'transparent'}
                             >
                                 <Image
                                     style={styles.optionImage}
@@ -110,6 +111,7 @@ export default class HomeScreenChild extends Component {
                         <View style={{ flex: 1 }}>
                             <TouchableHighlight
                                 onPress={() => this._onpressHotel()}
+                                underlayColor={'transparent'}
                             >
                                 <Image
                                     style={styles.optionImage}
@@ -120,6 +122,7 @@ export default class HomeScreenChild extends Component {
                         <View style={{ flex: 1 }}>
                             <TouchableHighlight
                                 onPress={() => { }}
+                                underlayColor={'transparent'}
                             >
                                 <Image
                                     style={styles.optionImage}
@@ -130,6 +133,7 @@ export default class HomeScreenChild extends Component {
                         <View style={{ flex: 1 }}>
                             <TouchableHighlight
                                 onPress={() => this._onpressRestaurant()}
+                                underlayColor={'transparent'}
                             >
                                 <Image
                                     style={styles.optionImage}
@@ -140,6 +144,7 @@ export default class HomeScreenChild extends Component {
                         <View style={{ flex: 1 }}>
                             <TouchableHighlight
                                 onPress={() => { }}
+                                underlayColor={'transparent'}
                             >
                                 <Image
                                     style={styles.optionImage}

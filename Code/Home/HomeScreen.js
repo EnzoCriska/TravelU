@@ -68,7 +68,6 @@ StackTripPlan.navigationOptions = ({ navigation }) => {
 const HomeBottomTab = createBottomTabNavigator({
     HomeTab: {
         screen: StackHome,
-
         navigationOptions: () => ({
             tabBarIcon: <Image source={require('../../Resource/Home/icontabbar/home.png')} style={styles.inputIcon} />
         })
