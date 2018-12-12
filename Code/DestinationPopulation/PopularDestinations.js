@@ -38,7 +38,8 @@ import {
     
 
     onPressItem(){
-        // this.props.navigation.navigate('')
+        this.props.navigation.navigate('DaLatDestinations_')
+
     }
     render() {
          return (

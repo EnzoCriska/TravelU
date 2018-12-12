@@ -34,7 +34,7 @@ render() {
                 style={styles.flatlist}
                 data={this.state.data}
                 renderItem={({ item }) => (
-                    <View style={[shadow, styles.viewItem]}>
+                    <View style={styles.viewItem}>
                         <View style={{ flexDirection: 'row', width: '100%', alignItems: 'center' }}>
                             <Image source={item.avata} style={styles.avata}></Image>
                             <Text style={{color:'black', marginLeft:5}}>{item.name}</Text>

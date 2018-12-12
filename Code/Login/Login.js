@@ -50,7 +50,7 @@ export default class Login extends Component {
                     <Image source={require('../../Resource/Login/title.png')}></Image>
                     <Text style={{ color: 'white' }}>{this.state.sologan}</Text>
                 </View>
-
+                    
                 {/* Box 2 include: 4 button using TouchableHighlight (LoginFB, LoginG+, LoginEmail, Login) */}
                 <View style={styles.viewBox}>
                     <TouchableHighlight

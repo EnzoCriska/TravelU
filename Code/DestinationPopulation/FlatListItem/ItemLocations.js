@@ -16,7 +16,7 @@ export default class ItemLocations extends Component {
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                     <Rating startingValue={this.props.ratting}
                         type='star'
-                        imageSize='12'
+                        imageSize={12}
                     />
                     <Text style={styles.textGrey}> ( {this.props.vote} đánh giá )</Text>
                 </View>

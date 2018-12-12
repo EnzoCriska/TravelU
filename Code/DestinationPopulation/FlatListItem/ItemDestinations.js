@@ -17,6 +17,7 @@ import {Rating} from 'react-native-elements'
      render() {
          console.log(this.props.image)
          return (
+             
              <View style = {{margin:3, height:200, width:'98%',alignItems:'center', justifyContent:'center', marginBottom:6}}>
                  <ImageBackground
                     source={{uri: this.props.image}}
