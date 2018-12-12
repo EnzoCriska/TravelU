@@ -34,7 +34,7 @@ render() {
                 style={styles.flatlist}
                 data={this.state.data}
                 renderItem={({ item }) => (
-                    <View style={[shadow, styles.viewItem]}>
+                    <View style={styles.viewItem}>
                         <View style={{ flexDirection: 'row', width: '100%', alignItems: 'center' }}>
                             <Image source={item.avata} style={styles.avata}></Image>
                             <Text style={{color:'black', marginLeft:5}}>{item.name}</Text>
@@ -47,7 +47,7 @@ render() {
                                         <Text style={{ color: 'black', fontSize: 12 }}> {item.sumday}</Text>
                                     </View>
                                     <Text style={{ color: 'white', fontSize: 12, marginLeft: 10, fontWeight:'bold' }}>Days</Text>
-
+                                    <Image style={styles.iconVote} source={require('../../Resource/TripPlan/mytripplan/vote.png')}></Image>
                                 </View>
 
                             </ImageBackground>
@@ -102,6 +102,12 @@ container: {
 flatlist: {
     width: '90%',
     marginTop: 20,
+},
+iconVote:{
+    width:60,
+    height:30,
+    marginLeft:'auto',
+    marginRight:16
 },
 iconGPS: {
     width: 17,

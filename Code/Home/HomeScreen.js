@@ -15,7 +15,7 @@ import PopularDestinations from '../DestinationPopulation/PopularDestinations';
 import MapHotelsScreen from '../Hotels/MapHotelsScreen';
 import StackCreateTripPlan from '../CreateTripPlan/StackCreateTripPlan';
 import StackTripPlan from '../TripPlan/StackTripPlan';
-import MapRestaurantScreen from '../Restaurants/MapRestaurantScreen';
+import DaLatDenistation from '../DestinationPopulation/DaLatDestinations';
 
 
 export default class HomeScreen extends Component {
@@ -34,7 +34,7 @@ const StackHome = createStackNavigator({
     PopularDes_: PopularDestinations,
     MapHotel_: MapHotelsScreen,
     StackTripPlan_: StackTripPlan,
-    MapRestaurant_: MapRestaurantScreen
+    DaLatDestinations_:DaLatDenistation
 },
 
     {
@@ -70,6 +70,7 @@ StackTripPlan.navigationOptions = ({ navigation }) => {
 const HomeBottomTab = createBottomTabNavigator({
     HomeTab: {
         screen: StackHome,
+
         navigationOptions: () => ({
             tabBarIcon: <Image source={require('../../Resource/Home/icontabbar/home.png')} style={styles.inputIcon} />
         })
