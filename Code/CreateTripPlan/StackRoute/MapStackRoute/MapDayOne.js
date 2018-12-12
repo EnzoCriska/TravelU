@@ -26,6 +26,7 @@ export default class MapDayOne extends Component {
                     rating: 4,
                     vote: 190,
                     distance: 1934,
+                    type: 'hotel',
                     image: 'https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg',
                     location:{
                         latitude: 21.038240,
@@ -37,6 +38,7 @@ export default class MapDayOne extends Component {
                     rating: 4,
                     vote: 190,
                     distance: 1934,
+                    type: 'location',
                     image: 'https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg',
                     location:{
                         latitude: 21.040226,
@@ -48,6 +50,7 @@ export default class MapDayOne extends Component {
                     rating: 4,
                     vote: 190,
                     distance: 1934,
+                    type: 'hotel',
                     image: 'https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg',
                     location:{
                         latitude:21.035850, 
@@ -59,6 +62,7 @@ export default class MapDayOne extends Component {
                     rating: 4,
                     vote: 190,
                     distance: 1934,
+                    type: 'restaurant',
                     image: 'https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg',
                     location:{
                         latitude: 21.03421,
@@ -69,20 +73,31 @@ export default class MapDayOne extends Component {
         }
     }
 
+    renderImageMarker({item}){
+        if (item.type === 'hotel') return <Image source = {require('../../../../Resource/Hotels/Map/hotelMarker.png')}
+                                                                style={styles.imageMarker}
+                                                                />
+        if (item.type === 'restaurant') return <Image source = {require('../../../../Resource/Hotels/Map/restaurantMarker.png')}
+                                                                style={styles.imageMarker}
+                                                                />
+        if (item.type === 'location') return <Image source = {require('../../../../Resource/Hotels/Map/location.png')}
+                                                                style={styles.imageMarker}
+                                                                />
+                        
+    }
+
     render() {
     return (
-      <View  style = {{flex:1}}>
+      <View  style = {styles.container}>
           <MapView
                 ref={map => this.map = map}
                 initialRegion={this.state.region}
-                style={{height:'100%'}}>
+                style={styles.mapSize}>
                 {this.state.list.map((item, index) => (
                     <Marker
                         coordinate = {item.location}
                         title = {item.title}>
-                        <Image source = {require('../../../../Resource/Hotels/Map/location.png')}
-                            style={{height:40, width:30}}
-                        />
+                            {this.renderImageMarker({item})}
                         </Marker>
                     ))}
           </MapView>
@@ -109,6 +124,16 @@ export default class MapDayOne extends Component {
 }
 
 const styles = StyleSheet.create({
+    container:{
+        flex:1
+    },
+    mapSize:{
+        height:'100%'
+    },
+    imageMarker:{
+        height:40, 
+        width:30
+    },
     scrollView: {
         position: "absolute",
         bottom: 10,

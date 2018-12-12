@@ -13,6 +13,7 @@ import Finish from './Finish';
 import MyTripPlan from './MyTripPlans';
 import StackRoute from './StackRoute/StackRoute';
 import MapStack from './StackRoute/MapStackRoute/MapStack';
+import StackNearly from './StackRoute/AddPlace/Nearly/StackNearly';
 
 
 
@@ -31,7 +32,7 @@ const RootStack = createStackNavigator({
     Finish_:Finish,
     MyTripPlans_:MyTripPlan,
     StackRoute_:StackRoute,
-    MapStack_: MapStack
+    MapStack_: MapStack,
 
     
     
