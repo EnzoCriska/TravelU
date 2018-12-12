@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, Image, TouchableOpacity, ImageBackground, FlatList } from 'react-native';
+import { 
+    View, Text, Image, TouchableOpacity, ImageBackground, FlatList, TouchableHighlight
+} from 'react-native';
 import { Rating } from 'react-native-elements'
 
 export default class RouteDayOne extends Component {
@@ -130,7 +132,7 @@ export default class RouteDayOne extends Component {
                                         <Text style={styles.textInButton}>Ghi chú</Text>
                                     </ImageBackground>
                                 </TouchableOpacity>
-                                <TouchableOpacity>
+                                <TouchableOpacity onPress={()=> this.props.navigation.navigate('MyTripPlans_')}>
                                     <ImageBackground source={require('../../../Resource/StackRoute/RouteDay1/button_near.png')}
                                         style={[styles.buttonInItem, { marginLeft: 10 }]}>
                                         <Text style={styles.textInButton}>Gần đây</Text>
@@ -194,7 +196,7 @@ export default class RouteDayOne extends Component {
                                             <Text style={styles.textInButton}>Ghi chú</Text>
                                         </ImageBackground>
                                     </TouchableOpacity>
-                                    <TouchableOpacity>
+                                    <TouchableOpacity onPress={()=> {this.props.navigation.navigate('StackNearly_')}}>
                                         <ImageBackground source={require('../../../Resource/StackRoute/RouteDay1/button_near.png')}
                                             style={[styles.buttonInItem, { marginLeft: 10 }]}>
                                             <Text style={styles.textInButton}>Gần đây</Text>
@@ -208,7 +210,9 @@ export default class RouteDayOne extends Component {
                     >
                     </FlatList>
                     {/* End Flatlist */}
+                    
                 </View>
+                
             </View>
             // </View >
         );
@@ -295,5 +299,9 @@ const styles = {
         marginLeft: 'auto',
         height: 100
         // marginRight: '6%',
-    }
+    },
+    addPlaceButton: {
+        width: '100%',
+        height: 55,
+    },
 }
