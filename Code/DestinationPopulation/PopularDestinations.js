@@ -44,7 +44,9 @@ import {
          return (
              <View style={styles.container}>
              
-                <ImageBackground source ={require('../../Resource/CreateTripPlan/Finish/Logo.png')} style={styles.imageBackground}>
+                <ImageBackground 
+                    source ={require('../../Resource/CreateTripPlan/Finish/Logo.png')} 
+                    style={styles.imageBackground}>
                     <View style={styles.containerHeader}>
                         <TouchableOpacity 
                                 style={styles.touchableOpacity}

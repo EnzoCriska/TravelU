@@ -22,19 +22,28 @@ export default class StackNearly extends Component {
                 <View style={{ flex: 1 }}>
                     <View style={{ flex: 1 }}></View>
                     <View style={{ flex: 2 }}>
-                        <View style={{ flex: 1, width: '100%', flexDirection: 'row', alignItems: 'center' }}>
-                            <TouchableOpacity style={styles.buttonBack}
-                                onPress={()=>{this.props.navigation.goBack()}}>
-                                <Image source={require('../../../../../Resource/StackRoute/back.png')}
-                                    style={styles.iconBack} />
-                            </TouchableOpacity>
-                            <Text style={styles.textWhite}>Nearly</Text>
+                        <View style = {{flex:1, width:'100%', flexDirection:'row'}}>
+                            <View style={{ flex: 2, flexDirection: 'row', alignItems: 'center' }}>
+                                <TouchableOpacity style={styles.buttonBack}
+                                    onPress={()=>{this.props.navigation.goBack()}}>
+                                    <Image source={require('../../../../../Resource/StackRoute/back.png')}
+                                        style={styles.iconBack} />
+                                </TouchableOpacity>
+                                <Text style={styles.textWhite}>Nearly</Text>
+                                
+                            </View>
+                            <View style ={{flex:1, justifyContent:'center', alignItems:'flex-end', paddingRight:20}}>
+                                <Text style ={{color: '#fff', fontSize:16}}>Done</Text>
+                            </View>
                         </View>
-                        <View style={{ flex: 1 }}></View>
+                        
+                        <View style={{ flex: 1}}>
+                            
+                        </View>
                     </View>
                 </View>
             </ImageBackground>
-            {/* <RootStack></RootStack> */}
+            <RootStack></RootStack>
         </View>
     );
 }

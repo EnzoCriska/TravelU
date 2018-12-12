@@ -132,7 +132,9 @@ export default class RouteDayOne extends Component {
                                         <Text style={styles.textInButton}>Ghi chú</Text>
                                     </ImageBackground>
                                 </TouchableOpacity>
-                                <TouchableOpacity onPress={()=> this.props.navigation.navigate('MyTripPlans_')}>
+                                <TouchableOpacity onPress={()=> {
+                                    console.log(this.props.navigation.dangerouslyGetParent())
+                                    this.props.navigation.dangerouslyGetParent().navigate('MyTripPlans_')}}>
                                     <ImageBackground source={require('../../../Resource/StackRoute/RouteDay1/button_near.png')}
                                         style={[styles.buttonInItem, { marginLeft: 10 }]}>
                                         <Text style={styles.textInButton}>Gần đây</Text>

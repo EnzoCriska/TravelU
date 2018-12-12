@@ -33,6 +33,7 @@ const RootStack = createStackNavigator({
     MyTripPlans_:MyTripPlan,
     StackRoute_:StackRoute,
     MapStack_: MapStack,
+    StackNearly_: StackNearly
 
     
     

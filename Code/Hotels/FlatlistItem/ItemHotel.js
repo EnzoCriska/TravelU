@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { 
-    View, Image, Text, Dimensions
+    View, Image, Text, Dimensions, StyleSheet
  } from "react-native";
 import {Rating} from 'react-native-elements'
 
@@ -17,19 +17,19 @@ const {height, width} = Dimensions.get('window')
 
      render() {
          return (
-             <View style = {{margin:3, height:100, width:width-20,flexDirection: 'row', backgroundColor:'#fff', borderRadius:5}}>
-                    <View style={{height:95, width:95, margin:2.5}}>
+             <View style = {styles.container}>
+                    <View style={styles.containerPreview}>
                         <Image
                             source={{uri:this.props.image}}
-                            style={{height:95, width:95}}
+                            style={styles.imagePreview}
                         />
                     </View>
-                    <View style = {{flex:1, padding:10}}>
-                        <View style={{flex:1, flexDirection:'row', justifyContent:'space-between'}}>
-                            <Text style={{fontWeight: 'bold', fontSize:16}}>{this.props.title}</Text>
+                    <View style = {styles.containerContent}>
+                        <View style={styles.containerTitle}>
+                            <Text style={styles.title}>{this.props.title}</Text>
                             <Text>{this.props.distance} Km</Text>
                         </View>
-                        <View style={{flex:1, flexDirection:'row'}}>
+                        <View style={styles.containerRating}>
                             <Rating
                                     //showRating
                                     type="star" 
@@ -42,10 +42,10 @@ const {height, width} = Dimensions.get('window')
                                 />
                             <Text>({this.props.vote} vote)</Text>
                         </View>
-                        <View style={{flex:1, flexDirection:'row',}}>
+                        <View style={styles.containerRank}>
                             <Text>Hotel star: {this.props.rank} </Text>
                         </View>
-                        <View style={{flex:1, flexDirection:'row',}}>
+                        <View style={styles.containerPernight}>
                             <Text>Per night: {this.props.per_night}</Text>
                         </View>
                             
@@ -54,3 +54,50 @@ const {height, width} = Dimensions.get('window')
          );
      }
  }
+
+ const styles = StyleSheet.create({
+     container:{
+         margin:3, 
+         height:100, 
+         width:width-20,
+         flexDirection: 'row', 
+         backgroundColor:'#fff', 
+         borderRadius:5
+        },
+        containerPreview:{
+            height:95, 
+            width:95, 
+            margin:2.5
+        },
+        imagePreview:{
+            height:95, 
+            width:95
+        },
+        containerContent:{
+            flex:1, 
+            padding:10
+        },
+        containerTitle:{
+            flex:1, 
+            flexDirection:'row', 
+            justifyContent:'space-between'
+        },
+        title:{
+            fontWeight: 'bold', 
+            fontSize:16
+        },
+        containerRating:{
+            flex:1, 
+            flexDirection:'row'
+        },
+        containerRank:{
+            flex:1, 
+            flexDirection:'row',
+        },
+        containerPernight:{
+            flex:1, 
+            flexDirection:'row',
+        }
+
+
+ })

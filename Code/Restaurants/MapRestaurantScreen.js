@@ -72,16 +72,15 @@ export default class MapRestaurantScreen extends Component {
     }
   render() {
     return (
-      <View style={{flex:1}}>
+      <View style={styles.container}>
             <View style={StyleSheet.header}>
                 <ImageBackground
                         source={require('../../Resource/Hotels/logo.png')}
-                        style = {{height: 100, width:'100%'}}>
-                        <View style = {{flex:1}}></View>
-                        <View style={{flex:1, flexDirection:'row'}}>
+                        style = {styles.imageBackground}>
+                        <View style={styles.containerHeader}>
                             <View style={styles.containerBackHeader}>
                                 <TouchableOpacity 
-                                    style={{height:20, width:30, borderRadius:20}}
+                                    style={styles.touchableIcon}
                                     onPress={()=> {this.props.navigation.goBack()}}>
                                     <Icon
                                         name='long-arrow-left'
@@ -90,7 +89,7 @@ export default class MapRestaurantScreen extends Component {
                                     />
                                 </TouchableOpacity>
                                 
-                                <Text style={{color:'white', fontSize:20, marginHorizontal:15}}>Restaurants</Text>
+                                <Text style={styles.titleHeader}>Restaurants</Text>
                             </View>
                             <View style={styles.containerMenuHeader}>
                                     <Icon
@@ -117,20 +116,17 @@ export default class MapRestaurantScreen extends Component {
                         coordinate = {item.location}
                         title = {item.title}>
                         <Image source = {require('../../Resource/Hotels/Map/restaurantMarker.png')}
-                            style={{height:200, width:200}}
+                            style={styles.imageMarker}
                         />
                         </Marker>
                         
                 ))}
                 </MapView>
-
-                
-                
-                <Image
+                {/* <Image
                         source={require('../../Resource/Hotels/Map/qw.png')}
                         style={{height:100, width:100}}
                         contentContainerStyle={{alignItems:'center', justifyContent:'center'}}
-                />
+                /> */}
 
                 <ScrollView
                     horizontal
@@ -157,6 +153,32 @@ export default class MapRestaurantScreen extends Component {
 }
 
 const styles = StyleSheet.create({
+    container:{
+        flex:1
+    }, 
+    imageBackground:{
+        height: 100, 
+        width:'100%'
+    },
+    containerHeader:{
+        flex:1, 
+        flexDirection:'row', 
+        marginTop:50
+    },
+    touchableIcon:{
+        height:20, 
+        width:30, 
+        borderRadius:20
+    },
+    titleHeader:{
+        color:'white', 
+        fontSize:20, 
+        marginHorizontal:15
+    },
+    imageMarker:{
+        height:200, 
+        width:200
+    },
     header:{
 
     },
