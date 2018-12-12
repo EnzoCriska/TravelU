@@ -44,7 +44,7 @@ export default class HomeScreenChild extends Component {
             dataOctorber: placeOfMonth,
         }
     }
-    _onpressTripPlan(){
+    _onpressTripPlan() {
         this.props.navigation.navigate('StackTripPlan_')
     }
     _onpressRestaurant() {
@@ -109,7 +109,7 @@ export default class HomeScreenChild extends Component {
 
                         <View style={{ flex: 1 }}>
                             <TouchableHighlight
-                                onPress={() => this._onpressTripPlan()}
+                                onPress={() => this._onpressHotel()}
                             >
                                 <Image
                                     style={styles.optionImage}
@@ -119,7 +119,7 @@ export default class HomeScreenChild extends Component {
 
                         <View style={{ flex: 1 }}>
                             <TouchableHighlight
-                                onPress={() => this._onpressTripPlan()}
+                                onPress={() => { }}
                             >
                                 <Image
                                     style={styles.optionImage}
@@ -129,7 +129,7 @@ export default class HomeScreenChild extends Component {
 
                         <View style={{ flex: 1 }}>
                             <TouchableHighlight
-                                onPress={() => this._onpressTripPlan()}
+                                onPress={() => this._onpressRestaurant()}
                             >
                                 <Image
                                     style={styles.optionImage}
@@ -139,7 +139,7 @@ export default class HomeScreenChild extends Component {
 
                         <View style={{ flex: 1 }}>
                             <TouchableHighlight
-                                onPress={() => this._onpressTripPlan()}
+                                onPress={() => { }}
                             >
                                 <Image
                                     style={styles.optionImage}
@@ -239,7 +239,7 @@ export default class HomeScreenChild extends Component {
                         renderItem={({ item }) => (
                             <View >
                                 <Image source={item.source} style={styles.imageOctorber}></Image>
-                                <Text style={{ marginLeft: 10 }}>({item.key}</Text>
+                                <Text style={{ marginLeft: 10 }}>{item.key}</Text>
                                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                     <Rating
                                         style={{ marginLeft: 10 }}
