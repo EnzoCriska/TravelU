@@ -76,15 +76,15 @@ export default class MapDayOne extends Component {
     renderImageMarker({item}){
         if (item.type === 'hotel') 
             return <Image 
-                        source = {require('../../../../Resource/Hotels/Map/hotelMarker.png')}
+                        source = {require('../../../../../Resource/Hotels/Map/hotelMarker.png')}
                         style={styles.imageMarker}/>
         if (item.type === 'restaurant') 
             return <Image 
-                        source = {require('../../../../Resource/Hotels/Map/restaurantMarker.png')}
+                        source = {require('../../../../../Resource/Hotels/Map/restaurantMarker.png')}
                         style={styles.imageMarker}/>
         if (item.type === 'location') 
             return <Image 
-                        source = {require('../../../../Resource/Hotels/Map/location.png')}
+                        source = {require('../../../../../Resource/Hotels/Map/location.png')}
                         style={styles.imageMarker}/>
                         
     }

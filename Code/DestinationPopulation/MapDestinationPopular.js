@@ -4,7 +4,7 @@ import {
  } from "react-native";
 import MapView, {Marker} from "react-native-maps";
 import  Icon  from "react-native-vector-icons/FontAwesome";
-import ItemRestaurants from '../Restaurants/FlastListItemRestaurants/ItemRestaurants';
+import ItemRestaurants from './FlastListItemRestaurants/ItemRestaurants';
 
 
 const { width, height } = Dimensions.get("window");
@@ -122,6 +122,7 @@ export default class MapDestinationPopular extends Component {
                     contentContainerStyle={styles.endPadding}>
                     {this.state.list.map((item, index) => (
                         <ItemRestaurants
+                            key = {index}
                             title = {item.title}
                             image = {item.image}
                             distance = {item.distance}

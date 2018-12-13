@@ -67,7 +67,8 @@ export default class DaLatRestaurants extends Component {
                                 </Image>
                             </TouchableOpacity>
 
-                            <TouchableOpacity style={styles.btnMap} >
+                            <TouchableOpacity style={styles.btnMap}
+                                onPress={()=>this.props.navigation.navigate('MapRestaurants_')}>
                                 <Image style={styles.imgSearch}
                                     source={require('../../Resource/DataImages/imgMap.png')}
                                 >

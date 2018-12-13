@@ -260,10 +260,11 @@ export default class DaLatDenistation extends Component {
                   >
                   </Image>
                 </TouchableOpacity>
-
+ 
                 <Text style={styles.txtWhite}>   Đà Lạt</Text>
 
-                <TouchableOpacity style={styles.btnMap}>
+                <TouchableOpacity style={styles.btnMap}
+                    onPress={()=> this.props.navigation.navigate('MapDestinationPopular_')}>
                   <Image source={require('../../Resource/Denistation/Dalat/imgMap.png')}
                     style={styles.imgmap}
                   >

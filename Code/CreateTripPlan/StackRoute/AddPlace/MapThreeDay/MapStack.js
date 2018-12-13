@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, ImageBackground, Image, TouchableOpacity } from 'react-native';
+import { View, Text, ImageBackground, Image, TouchableOpacity, StyleSheet} from 'react-native';
 import { createTabNavigator } from 'react-navigation'
 import MapDayOne from './MapDayOne';
 import MapDayTwo from './MapDayTwo';
 import MapDayThree from './MapDayThree';
-import StackNearly from '../AddPlace/Nearly/StackNearly';
+
 
 
 export default class MapStack extends Component {
@@ -16,20 +16,20 @@ export default class MapStack extends Component {
 
     render() {
         return (
-            <View style={{ flex: 1 }}>
-                <ImageBackground source={require('../../../../Resource/StackRoute/logo.png')} style={styles.imageLogo} >
-                    <View style={{ flex: 1 }}>
-                        <View style={{ flex: 1 }}></View>
+            <View style={styles.container}>
+                <ImageBackground source={require('../../../../../Resource/StackRoute/logo.png')} style={styles.imageLogo} >
+                    <View style={styles.container}>
+                        <View style={styles.container}></View>
                         <View style={{ flex: 2 }}>
-                            <View style={{ flex: 1, width: '100%', flexDirection: 'row', alignItems: 'center' }}>
+                            <View style={styles.containerHeader}>
                                 <TouchableOpacity style={styles.buttonBack}
                                     onPress={()=>{this.props.navigation.goBack()}}>
-                                    <Image source={require('../../../../Resource/StackRoute/back.png')}
+                                    <Image source={require('../../../../../Resource/StackRoute/back.png')}
                                         style={styles.iconBack} />
                                 </TouchableOpacity>
                                 <Text style={styles.textWhite}>3 day to Đà Lạt</Text>
                             </View>
-                            <View style={{ flex: 1 }}></View>
+                            <View style={styles.container}></View>
                         </View>
                     </View>
                 </ImageBackground>
@@ -83,7 +83,16 @@ const RootStack = createTabNavigator({
         }
     })
 
-const styles = {
+const styles = StyleSheet.create({
+    container:{
+        flex:1
+    },
+    containerHeader:{
+        flex:1, 
+        width:'100%', 
+        flexDirection:'row', 
+        alignItems: 'center' 
+    },
     buttonBack: {
         width: '14%',
         height: 50,
@@ -104,5 +113,5 @@ const styles = {
         fontSize: 17
     },
 
-}
+})
 
