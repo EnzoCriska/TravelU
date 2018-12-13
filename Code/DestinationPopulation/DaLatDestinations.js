@@ -190,6 +190,12 @@ export default class DaLatDenistation extends Component {
   _onpressBack() {
     this.props.navigation
   }
+  _onpressRestaurant() {
+    this.props.navigation.navigate('DaLatRestaurants_');
+  }
+  _onpressHotels(){
+    this.props.navigation.navigate('DaLatHotels_')
+  }
   _renderDotIndicator() {
     return <PagerDotIndicator style={{ marginBottom: 100 }} pageCount={5} dotStyle={{ backgroundColor: 'black' }} />
   }
@@ -266,57 +272,57 @@ export default class DaLatDenistation extends Component {
             {/* 5 Button Options: Trips Plan, Hotels, Fights, Restaurants, Tours */}
             <View elevation={5} style={styles.optionView}>
               <View style={{ flex: 1 }}>
-                <TouchableHighlight
-                  onPress={() => this._onpressTripPlan()}
+                <TouchableOpacity
+
                 >
                   <Image
                     style={styles.optionImage}
                     source={require('../../Resource/Home/logo/TripPlan.png')}
                     resizeMode='stretch'
                   />
-                </TouchableHighlight>
+                </TouchableOpacity>
               </View>
 
               <View style={{ flex: 1 }}>
-                <TouchableHighlight
-                  onPress={() => this._onpressTripPlan()}
+                <TouchableOpacity
+                onPress={()=>this._onpressHotels()}
                 >
                   <Image
                     style={styles.optionImage}
                     source={require('../../Resource/Home/logo/Hotel.png')}
                   />
-                </TouchableHighlight>
+                </TouchableOpacity>
               </View>
 
               <View style={{ flex: 1 }}>
-                <TouchableHighlight
-                  onPress={() => this._onpressTripPlan()}
+                <TouchableOpacity
+
                 >
                   <Image
                     style={styles.optionImage}
                     source={require('../../Resource/Home/logo/Flights.png')}
                   />
-                </TouchableHighlight>
+                </TouchableOpacity>
               </View>
 
               <View style={{ flex: 1 }}>
-                <TouchableHighlight
-                  onPress={() => this._onpressTripPlan()}
+                <TouchableOpacity
+                  onPress={() => this._onpressRestaurant()}
                 >
                   <Image
                     style={styles.optionImage}
                     source={require('../../Resource/Home/logo/Restaurants.png')} />
-                </TouchableHighlight>
+                </TouchableOpacity>
               </View>
 
               <View style={{ flex: 1 }}>
-                <TouchableHighlight
-                  onPress={() => this._onpressTripPlan()}
+                <TouchableOpacity
+
                 >
                   <Image
                     style={styles.optionImage}
                     source={require('../../Resource/Home/logo/Tours.png')} />
-                </TouchableHighlight>
+                </TouchableOpacity>
               </View>
             </View>
 
@@ -336,7 +342,7 @@ export default class DaLatDenistation extends Component {
           {/* FlatList all Location */}
 
           <FlatList
-            keyExtractor={({ item }) => item.toString()}
+            keyExtractor={(item) => item.toString()}
             showsVerticalScrollIndicator={false}
             style={{ width: '100%' }}
             data={this.state.data}
@@ -344,7 +350,7 @@ export default class DaLatDenistation extends Component {
               <View style={styles.itemParentFlatList}>
                 <Text style={styles.txtTitleList}>{item.name}</Text>
                 <FlatList
-                  keyExtractor={({ item }) => item.toString()}
+                  keyExtractor={(item) => item.toString()}
                   horizontal={true}
                   data={item.locations}
                   showsHorizontalScrollIndicator={false}

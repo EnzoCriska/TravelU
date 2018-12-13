@@ -192,7 +192,7 @@ export default class HomeScreenChild extends Component {
                         <Text style={styles.textTitle}>Địa điểm phổ biến</Text>
 
                         <Text style={styles.textSeeAll}
-                            onPress={() => { this.props.navigation.navigate('PopularDes_') }} >
+                            onPress={() => this._onpressPopular()} >
                             See all
                         </Text>
                     </View>
