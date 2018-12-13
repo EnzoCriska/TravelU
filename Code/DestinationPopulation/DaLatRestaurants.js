@@ -41,7 +41,7 @@ export default class DaLatRestaurants extends Component {
 
     render() {
         const{goBack}= this.props.navigation
-        return (
+        return ( 
             <View style={styles.container}>
                 <ImageBackground style={styles.imgLogo}
                     source={require('../../Resource/DataImages/imgLogo90.png')}
