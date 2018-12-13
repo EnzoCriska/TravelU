@@ -1,19 +1,16 @@
 import React, { Component } from 'react'
 import { 
-    View, Text, FlatList, StyleSheet, TouchableOpacity, ImageBackground, Image, ScrollView, Dimensions
+    View, Text, Image,ScrollView, Dimensions, StyleSheet
  } from "react-native";
 import MapView, {Marker} from "react-native-maps";
-import  Icon  from "react-native-vector-icons/FontAwesome";
-import ItemRestaurants from './FlastListItemRestaurants/ItemRestaurants';
-
+import ItemLocation from './ItemLocation/ItemLocation';
 
 const { width, height } = Dimensions.get("window");
 
 const CARD_HEIGHT = height / 4;
 const CARD_WIDTH = CARD_HEIGHT - 50;
 
-export default class MapDestinationPopular extends Component {
-
+export default class MapDayOne extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -29,6 +26,7 @@ export default class MapDestinationPopular extends Component {
                     rating: 4,
                     vote: 190,
                     distance: 1934,
+                    type: 'hotel',
                     image: 'https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg',
                     location:{
                         latitude: 21.038240,
@@ -40,6 +38,7 @@ export default class MapDestinationPopular extends Component {
                     rating: 4,
                     vote: 190,
                     distance: 1934,
+                    type: 'location',
                     image: 'https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg',
                     location:{
                         latitude: 21.040226,
@@ -51,6 +50,7 @@ export default class MapDestinationPopular extends Component {
                     rating: 4,
                     vote: 190,
                     distance: 1934,
+                    type: 'hotel',
                     image: 'https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg',
                     location:{
                         latitude:21.035850, 
@@ -62,6 +62,7 @@ export default class MapDestinationPopular extends Component {
                     rating: 4,
                     vote: 190,
                     distance: 1934,
+                    type: 'restaurant',
                     image: 'https://r-ec.bstatic.com/images/hotel/max1024x768/945/94534929.jpg',
                     location:{
                         latitude: 21.03421,
@@ -72,48 +73,38 @@ export default class MapDestinationPopular extends Component {
         }
     }
 
-  render() {
+    renderImageMarker({item}){
+        if (item.type === 'hotel') 
+            return <Image 
+                        source = {require('../../../../../Resource/Hotels/Map/hotelMarker.png')}
+                        style={styles.imageMarker}/>
+        if (item.type === 'restaurant') 
+            return <Image 
+                        source = {require('../../../../../Resource/Hotels/Map/restaurantMarker.png')}
+                        style={styles.imageMarker}/>
+        if (item.type === 'location') 
+            return <Image 
+                        source = {require('../../../../../Resource/Hotels/Map/location.png')}
+                        style={styles.imageMarker}/>
+                        
+    }
+
+    render() {
     return (
-      <View style={styles.container}>
-            <View style={styles.header}>
-                <ImageBackground
-                        source={require('../../Resource/Hotels/logo.png')}
-                        style = {styles.imageBackground}>
-                        <View style={styles.containerHeader}>
-                            <View style={styles.containerBackHeader}>
-                                <TouchableOpacity 
-                                    style={styles.touchableOpacity}
-                                    onPress={()=> {this.props.navigation.goBack()}}>
-                                    <Icon
-                                        name='long-arrow-left'
-                                        size={20}
-                                        style={{color:'white'}}
-                                    />
-                                </TouchableOpacity>
-                                
-                                <Text style={styles.titleHeader}>Đà Lạt</Text>
-                            </View>
-                            <View style={styles.containerMenuHeader}>
-                            </View>
-                        </View>
-                   </ImageBackground>
-            </View>
-            <View style={styles.body}>
-                <MapView
-                    ref={map => this.map = map}
-                    initialRegion={this.state.region}
-                    style={{height:'100%'}}>
-                    {this.state.list.map((item, index) => (
+      <View  style = {styles.container}>
+          <MapView
+                ref={map => this.map = map}
+                initialRegion={this.state.region}
+                style={styles.mapSize}>
+                {this.state.list.map((item, index) => (
                     <Marker
                         coordinate = {item.location}
                         title = {item.title}>
-                        <Image source = {require('../../Resource/Hotels/Map/location.png')}
-                            style={styles.imageMarker}
-                        />
+                            {this.renderImageMarker({item})}
                         </Marker>
                     ))}
-                </MapView>
-                <ScrollView
+          </MapView>
+          <ScrollView
                     horizontal
                     scrollEventThrottle={1}
                     showsHorizontalScrollIndicator={false}
@@ -121,8 +112,7 @@ export default class MapDestinationPopular extends Component {
                     style={styles.scrollView}
                     contentContainerStyle={styles.endPadding}>
                     {this.state.list.map((item, index) => (
-                        <ItemRestaurants
-                            key = {index}
+                        <ItemLocation
                             title = {item.title}
                             image = {item.image}
                             distance = {item.distance}
@@ -131,7 +121,6 @@ export default class MapDestinationPopular extends Component {
                         />
                     ))}
                 </ScrollView>
-            </View>
       </View>
     )
   }
@@ -141,48 +130,12 @@ const styles = StyleSheet.create({
     container:{
         flex:1
     },
-    header:{
-
-    },
-    imageBackground:{
-        height: 100, 
-        width:'100%'
-    },
-    containerHeader: {
-        flex:1, 
-        flexDirection:'row',
-        paddingTop:55
-    },
-    containerBackHeader: {
-        flex:1,  
-        justifyContent:'flex-start', 
-        alignItems:'center', 
-        flexDirection:'row', 
-        paddingLeft:20
-    },
-    containerMenuHeader:{
-        flex:1, 
-        justifyContent:'flex-end', 
-        alignItems:'center', 
-        flexDirection:'row', 
-        paddingRight:5
-    },
-    touchableOpacity:{
-        height:20, 
-        width:30, 
-        borderRadius:20
-    },
-    titleHeader:{
-        color:'white', 
-        fontSize:20, 
-        marginHorizontal:15
+    mapSize:{
+        height:'100%'
     },
     imageMarker:{
         height:40, 
         width:30
-    },
-    body:{
-        flex:1,
     },
     scrollView: {
         position: "absolute",

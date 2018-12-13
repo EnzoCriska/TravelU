@@ -77,7 +77,8 @@ export default class DaLatHotels extends Component {
                                 </Image>
                             </TouchableOpacity>
 
-                            <TouchableOpacity style={styles.btnMap} >
+                            <TouchableOpacity style={styles.btnMap}
+                                onPress={()=> this.props.navigation.navigate('MapHotels_')} >
                                 <Image style={styles.imgSearch}
                                     source={require('../../Resource/DataImages/imgMap.png')}
                                 >

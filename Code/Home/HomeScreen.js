@@ -12,7 +12,6 @@ import Hotels from '../Hotels/Hotels';
 import Restaurants from '../Restaurants/Restaurants';
 import Search from '../Search/Search';
 
-import MapHotelsScreen from '../Hotels/MapHotelsScreen';
 import StackCreateTripPlan from '../CreateTripPlan/StackCreateTripPlan';
 import StackTripPlan from '../TripPlan/StackTripPlan';
 
@@ -21,6 +20,7 @@ import StackNearly from '../CreateTripPlan/StackRoute/AddPlace/Nearly/StackNearl
 import ThingsToDo from '../CreateTripPlan/StackRoute/AddPlace/Nearly/ThingsToDo';
 import ItemThingsToDo from '../CreateTripPlan/StackRoute/AddPlace/Nearly/ItemFlatsList/ItemThingsToDo';
 import StackAddPlace from '../CreateTripPlan/StackRoute/AddPlace/AddPlace/StackAddPlace';
+import MapStack from '../CreateTripPlan/StackRoute/AddPlace/MapThreeDay/MapStack';
 
 
 export default class HomeScreen extends Component {
@@ -36,11 +36,11 @@ const StackHome = createStackNavigator({
     Hotels_: Hotels,
     Restaurants_: Restaurants,
     Search_: Search,
-    MapHotel_: MapHotelsScreen,
     StackTripPlan_: StackTripPlan,
     StackPopular_:StackPopularDes,
     TempStNearly_: StackNearly,   // temp for test, delete when finish stack
     TempStAddPlace_:StackAddPlace,  // temp for test, delete when finish stack
+    TempMapStack_:MapStack // temp for test, delete when finish stack
     // TempThingsTodo_: ThingsToDo,
     // TempItem_:ItemThingsToDo
 },

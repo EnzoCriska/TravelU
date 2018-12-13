@@ -160,7 +160,8 @@ export default class HomeScreenChild extends Component {
                     {/* List Khuyen mai */}
                     <View style={styles.parentTouch}>
                         <Text style={styles.textTitle}>Tin khuyến mại</Text>
-                        <Text style={styles.textSeeAll}>See all</Text>
+                        <Text style={styles.textSeeAll}
+                            onPress={()=> this.props.navigation.navigate('TempMapStack_')}>See all</Text>
                     </View>
 
                     <FlatList

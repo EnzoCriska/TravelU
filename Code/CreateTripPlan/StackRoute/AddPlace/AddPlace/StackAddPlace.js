@@ -40,7 +40,8 @@ export default class StackAddPlace extends Component {
                                     />
                                 </TouchableOpacity>
                                 
-                                <TouchableOpacity>
+                                <TouchableOpacity
+                                    onPress={()=> this.props.navigation.navigate('TempMapStack_')}>
                                     <Image
                                         source={require('../../../../../Resource/CreateTripPlan/addPlaceandMap/map.png')}
                                         style={styles.iconHeaderRight}
