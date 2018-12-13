@@ -22,7 +22,7 @@ export default class DaLatDenistation extends Component {
     this.state = {
       data: [
         {
-          
+
           name: "Top vui chơi giải trí",
           locations: [
             {
@@ -46,7 +46,7 @@ export default class DaLatDenistation extends Component {
           ]
         },
         {
-          screenSeeAll:'DaLatHotels_',
+          screenSeeAll: 'DaLatHotels_',
           name: "Top khách sạn",
           locations: [
             {
@@ -70,7 +70,7 @@ export default class DaLatDenistation extends Component {
           ]
         },
         {
-          
+
           name: "Top ăn uống",
           locations: [
             {
@@ -94,7 +94,7 @@ export default class DaLatDenistation extends Component {
           ]
         },
         {
-          
+
           name: "Địa điểm văn hóa địa phương",
           locations: [
             {
@@ -118,7 +118,7 @@ export default class DaLatDenistation extends Component {
           ]
         },
         {
-        
+
           name: "Địa điểm thiên nhiên hấp dẫn",
           locations: [
             {
@@ -142,7 +142,7 @@ export default class DaLatDenistation extends Component {
           ]
         },
         {
-          screenSeeAll:'DaLatHotels_',
+          screenSeeAll: 'DaLatHotels_',
           name: "Địa điểm dành cho gia đình",
           locations: [
             {
@@ -166,7 +166,7 @@ export default class DaLatDenistation extends Component {
           ]
         },
         {
-          screenSeeAll:'DaLatHotels_',
+          screenSeeAll: 'DaLatHotels_',
           name: "Địa điểm mới lạ",
           locations: [
             {
@@ -193,8 +193,8 @@ export default class DaLatDenistation extends Component {
       ]
     };
   }
-  _onpressSeeAll(sceen,name){
-    this.props.navigation.navigate(sceen,{titleHotel:name})
+  _onpressSeeAll(sceen, name) {
+    this.props.navigation.navigate(sceen, { titleHotel: name })
   }
   _onpressBack() {
     this.props.navigation
@@ -205,6 +205,12 @@ export default class DaLatDenistation extends Component {
   _onpressHotels() {
     this.props.navigation.navigate('DaLatHotels_', { titleHotel: "Hotels" })
 
+  }
+  _onpressTripPlan() {
+    this.props.navigation.navigate('TripPlanDaLat_')
+  }
+  _onpressSearch() {
+    this.props.navigation.navigate('DaLatSearch_')
   }
   _renderDotIndicator() {
     return <PagerDotIndicator style={{ marginBottom: 100 }} pageCount={5} dotStyle={{ backgroundColor: 'black' }} />
@@ -269,7 +275,11 @@ export default class DaLatDenistation extends Component {
 
               {/* view Search include icon search & inputtext */}
               <View style={styles.viewSearch}>
-                <TextInput style={styles.inputTextSearch} placeholder={"What do you search in"} />
+                <TextInput
+                  style={styles.inputTextSearch}
+                  onFocus={() => this._onpressSearch()}
+                  placeholder={"What do you search in"}
+                />
                 <TouchableOpacity style={styles.btnSearch}>
                   <Image style={styles.imgSearch}
                     source={require('../../Resource/Denistation/Dalat/imgSearch.png')}
@@ -284,7 +294,7 @@ export default class DaLatDenistation extends Component {
             <View elevation={5} style={styles.optionView}>
               <View style={{ flex: 1 }}>
                 <TouchableOpacity
-
+                  onPress={() => this._onpressTripPlan()}
                 >
                   <Image
                     style={styles.optionImage}
@@ -296,6 +306,7 @@ export default class DaLatDenistation extends Component {
 
               <View style={{ flex: 1 }}>
                 <TouchableOpacity
+
                   onPress={() => this._onpressHotels()}
                 >
                   <Image
@@ -359,12 +370,12 @@ export default class DaLatDenistation extends Component {
             data={this.state.data}
             renderItem={({ item }) => (
               <View style={styles.itemParentFlatList}>
-                <View style={{ flexDirection: 'row', width: '100%', alignItems:'center' }}>
+                <View style={{ flexDirection: 'row', width: '100%', alignItems: 'center' }}>
                   <Text style={styles.txtTitleList}>{item.name}</Text>
                   <Text style={styles.txtSeeAll}
-                  onPress={()=>this._onpressSeeAll(item.screenSeeAll==null ? '' : item.screenSeeAll ,item.name)}
+                    onPress={() => this._onpressSeeAll(item.screenSeeAll == null ? '' : item.screenSeeAll, item.name)}
                   >
-                  See all</Text>
+                    See all</Text>
                 </View>
 
                 <FlatList
@@ -499,11 +510,11 @@ const styles = {
     paddingBottom: 10,
     alignItems: 'center',
   },
-  txtSeeAll:{
-    marginLeft:'auto',
-    color:'#ED50C6',
-    fontSize:12,
-    marginRight:19
+  txtSeeAll: {
+    marginLeft: 'auto',
+    color: '#ED50C6',
+    fontSize: 12,
+    marginRight: 19
   },
   txtTitleList: {
     marginLeft: '2%',
@@ -521,6 +532,7 @@ const styles = {
     backgroundColor: 'white',
     width: '84%',
     marginLeft: '8%',
+    marginRight: '8%',
     height: 41,
     alignItems: 'center',
     flexDirection: 'row',

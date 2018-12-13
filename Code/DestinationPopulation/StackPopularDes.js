@@ -5,9 +5,8 @@ import PopularDestinations from './PopularDestinations';
 import DaLatDenistation from './DaLatDestinations';
 import DaLatRestaurants from './DaLatRestaurants';
 import DaLatHotels from './DaLatHotels';
-import MapDestinationPopular from './MapDestinationPopular';
-import MapRestaurantScreen from './MapRestaurantScreen';
-import MapHotelsScreen from './MapHotelsScreen';
+import TripPlanDaLat from './TripPlanDaLat';
+import DaLatSearch from './DaLatSearch';
 
 export default class StackPopularDes extends Component {
   constructor(props) {
@@ -28,9 +27,8 @@ const StackPopular=createStackNavigator({
     DaLatDestinations_:DaLatDenistation,
     DaLatRestaurants_:DaLatRestaurants,
     DaLatHotels_:DaLatHotels,
-    MapDestinationPopular_: MapDestinationPopular,
-    MapHotels_: MapHotelsScreen,
-    MapRestaurants_: MapRestaurantScreen
+    TripPlanDaLat_:TripPlanDaLat,
+    DaLatSearch_:DaLatSearch
     
 },{
   headerMode:'none'

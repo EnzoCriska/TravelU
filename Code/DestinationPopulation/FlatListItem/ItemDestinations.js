@@ -58,14 +58,14 @@ const styleItem = StyleSheet.create({
         justifyContent: 'center'
     },
     txtTitle: {
-        fontSize: 20,
-        fontWeight: 'bold',
+        fontSize: 16,
         color: '#FFF'
     },
     txtDescription: {
         color: '#FFF',
-        fontSize: 16,
+        fontSize: 13,
         fontWeight: 'bold',
         fontFamily: 'Nabila',
+        marginLeft: '5%',
     }
 })
