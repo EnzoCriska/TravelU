@@ -59,4 +59,5 @@ buck-out/
 .buckconfig
 .flowconfig
 .gitattributes
-
+\package-lock.json
+\android\app\src\main\assets\index.android.bundle

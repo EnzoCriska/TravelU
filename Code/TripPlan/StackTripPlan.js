@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text, ImageBackground, TouchableOpacity, Image } from 'react-native';
+import {
+    StatusBar,
+    StyleSheet,
+    View,
+    Text,
+    ImageBackground,
+    TouchableOpacity,
+    Image
+} from 'react-native';
 import { createTabNavigator } from 'react-navigation'
 import MyTripPlan from './MyTripPlan';
 import Group from './Group';
@@ -12,64 +20,78 @@ export default class StackTripPlan extends Component {
         };
     }
 
+    btnBackClicked() {
+        this.props.navigation.navigate('HomeScreenChild_');
+    }
+
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <ImageBackground source={require('../../Resource/StackRoute/logo.png')} style={styles.imageLogo} >
+                <StatusBar hidden={false} />
+                <ImageBackground
+                    source={require('../../Resource/StackRoute/logo.png')}
+                    style={styles.imageLogo}
+                >
                     <View style={{ flex: 1 }}>
-                        <View style={{ flex: 1 }}></View>
+                        <View style={{ flex: 1 }} />
                         <View style={{ flex: 2 }}>
                             <View style={{ flex: 1, width: '100%', flexDirection: 'row', alignItems: 'center' }}>
-                                <TouchableOpacity style={styles.buttonBack}>
-                                    <Image source={require('../../Resource/StackRoute/back.png')}
+                                <TouchableOpacity
+                                    style={styles.buttonBack}
+                                    onPress={() => { this.btnBackClicked() }}
+                                >
+                                    <Image
+                                        source={require('../../Resource/StackRoute/back.png')}
                                         style={styles.iconBack} />
                                 </TouchableOpacity>
+
                                 <Text style={styles.textWhite}>Trip Plan</Text>
-                                <Image style={styles.iconSearch} source={require('../../Resource/TripPlan/search.png')}></Image>
+
+                                <Image
+                                    style={styles.iconSearch}
+                                    source={require('../../Resource/TripPlan/search.png')} />
                             </View>
-                            <View style={{ flex: 1 }}></View>
+
+                            <View style={{ flex: 1 }} />
                         </View>
                     </View>
                 </ImageBackground>
-                <RootStack></RootStack>
+
+                <TripPLanTab />
             </View>
         );
     }
 }
-const RootStack = createTabNavigator({
-    AllTripPlan_: {
-        screen: AllTripPlan,
-        navigationOptions: { title: 'ALL' }
-
-    },
-    MyTripPlan_: {
-        screen: MyTripPlan,
-        navigationOptions: { title: 'My Trip Plan' }
-    },
-    Group_: {
-        screen: Group,
-        navigationOptions: {
-            title: 'Group'
+const TripPLanTab = createTabNavigator(
+    {
+        AllTripPlan_: {
+            screen: AllTripPlan,
+            navigationOptions: { title: 'ALL' }
+        },
+        MyTripPlan_: {
+            screen: MyTripPlan,
+            navigationOptions: { title: 'My Trip Plan' }
+        },
+        Group_: {
+            screen: Group,
+            navigationOptions: {
+                title: 'Group'
+            }
         }
-    }
-}, {
-
+    }, {
         initialRouteName: 'AllTripPlan_',
         tabBarOptions: {
-
             style: {
-
                 width: '100%',
                 height: 40,
                 backgroundColor: 'Transparent',
                 left: 0,
                 right: 0,
-
             }
         }
     })
 
-const styles = {
+const styles = StyleSheet.create({
     buttonBack: {
         width: '14%',
         height: 50,
@@ -92,8 +114,7 @@ const styles = {
         height: 24
     },
     textWhite: {
-        color: 'white',
-        fontSize: 17
+        color: '#FFF',
+        fontSize: 18
     },
-
-}
+})
