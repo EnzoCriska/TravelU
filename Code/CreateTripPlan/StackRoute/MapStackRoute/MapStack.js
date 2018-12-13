@@ -34,12 +34,6 @@ export default class MapStack extends Component {
                     </View>
                 </ImageBackground>
                 <RootStack></RootStack>
-                <TouchableHighlight style={{ marginTop: 'auto',width:'100%' }} 
-                    onPress={()=>{
-                        this.props.navigation.navigate('StackNearly_')}}    >
-                            <Image source={require('../../../../Resource/CreateTripPlan/Place/nextsteep.png')}
-                                style={styles.addPlaceButton} />
-                    </TouchableHighlight>
             </View>
         );
     }

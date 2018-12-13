@@ -17,6 +17,10 @@ import StackCreateTripPlan from '../CreateTripPlan/StackCreateTripPlan';
 import StackTripPlan from '../TripPlan/StackTripPlan';
 import DaLatDenistation from '../DestinationPopulation/DaLatDestinations';
 import StackPopularDes from '../DestinationPopulation/StackPopularDes';
+import StackNearly from '../CreateTripPlan/StackRoute/AddPlace/Nearly/StackNearly';
+import ThingsToDo from '../CreateTripPlan/StackRoute/AddPlace/Nearly/ThingsToDo';
+import ItemThingsToDo from '../CreateTripPlan/StackRoute/AddPlace/Nearly/ItemFlatsList/ItemThingsToDo';
+import StackAddPlace from '../CreateTripPlan/StackRoute/AddPlace/AddPlace/StackAddPlace';
 
 
 export default class HomeScreen extends Component {
@@ -34,7 +38,11 @@ const StackHome = createStackNavigator({
     Search_: Search,
     MapHotel_: MapHotelsScreen,
     StackTripPlan_: StackTripPlan,
-    StackPopular_:StackPopularDes
+    StackPopular_:StackPopularDes,
+    TempStNearly_: StackNearly,   // temp for test, delete when finish stack
+    TempStAddPlace_:StackAddPlace,  // temp for test, delete when finish stack
+    // TempThingsTodo_: ThingsToDo,
+    // TempItem_:ItemThingsToDo
 },
 
     {
