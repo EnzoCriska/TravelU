@@ -63,6 +63,11 @@ export default class HomeScreenChild extends Component {
     _onpressPopular() {
         this.props.navigation.navigate('StackPopular_')
     }
+
+    btnToursClicked() {
+        this.props.navigation.navigate('ToursScreen');
+    }
+
     sizerat = 12;
 
     render() {
@@ -147,7 +152,7 @@ export default class HomeScreenChild extends Component {
 
                         <View style={{ flex: 1 }}>
                             <TouchableHighlight
-                                onPress={() => { }}
+                                onPress={() => { this.btnToursClicked() }}
                                 underlayColor={'transparent'}
                             >
                                 <Image
@@ -161,7 +166,7 @@ export default class HomeScreenChild extends Component {
                     <View style={styles.parentTouch}>
                         <Text style={styles.textTitle}>Tin khuyến mại</Text>
                         <Text style={styles.textSeeAll}
-                            onPress={()=> this.props.navigation.navigate('TempMapStack_')}>See all</Text>
+                            onPress={() => this.props.navigation.navigate('TempMapStack_')}>See all</Text>
                     </View>
 
                     <FlatList
@@ -214,7 +219,7 @@ export default class HomeScreenChild extends Component {
                     <View style={styles.parentTouch}>
                         <Text style={styles.textTitle}>Địa điểm gần bạn</Text>
                         <Text style={styles.textSeeAll}
-                            onPress={()=> this.props.navigation.navigate('TempStNearly_')}>See all</Text>
+                            onPress={() => this.props.navigation.navigate('TempStNearly_')}>See all</Text>
                     </View>
 
                     <FlatList
@@ -244,8 +249,8 @@ export default class HomeScreenChild extends Component {
                     {/* List Place of Month */}
                     <View style={styles.parentTouch}>
                         <Text style={styles.textTitle}>Tháng mười nên đi đâu</Text>
-                        <Text style={styles.textSeeAll} 
-                                onPress={()=> this.props.navigation.navigate('TempStAddPlace_')}>See all</Text>
+                        <Text style={styles.textSeeAll}
+                            onPress={() => this.props.navigation.navigate('TempStAddPlace_')}>See all</Text>
                     </View>
 
                     <FlatList
@@ -303,7 +308,7 @@ const styles = StyleSheet.create({
     },
     optionImage: {
         width: 65,
-        height: 65
+        height: 65,
     },
     inputIcon: {
         width: 17.5,

@@ -1,58 +1,69 @@
 import React, { Component } from 'react';
 import {
-    StatusBar,
     StyleSheet,
     Text,
     View,
+    StatusBar,
     Image,
     TouchableHighlight,
     TextInput,
     ScrollView,
     FlatList,
 } from 'react-native';
-import { Rating } from 'react-native-elements'
+import { Rating, Icon } from 'react-native-elements';
 
-export default class Restaurants extends Component {
+export default class Tours extends Component {
     constructor(props) {
         super(props);
 
-        topFoods = [
-            { 
-                source: require('../../Resource/Restaurants/TopFood/Dalat.png'), 
-                title: 'Giai Điệu - Melody Hotel Đà Lạt', 
-                ratting: 4, 
-                vote: 190, 
-                pernight: "1000000" 
-            },
-            { 
-                source: require('../../Resource/Restaurants/TopFood/LungCu.png'), 
-                title: 'Lũng Cú', 
-                ratting: 4, 
-                vote: 190, 
-                pernight: "1000000" 
-            },
-            { 
-                source: require('../../Resource/Restaurants/TopFood/Fansipan.png'), 
-                title: 'Fansipan', 
-                ratting: 4, 
-                vote: 190, 
-                pernight: "1000000" 
-            }
-        ]
+        hanoi = [{
+            source: require('../../Resource/Hotels/TopHotel/Dalat.png'),
+            title: 'Giai Điệu - Melody Hotel Đà Lạt',
+            ratting: 4,
+            vote: 190,
+            pernight: "1000000"
+        }, {
+            source: require('../../Resource/Hotels/TopHotel/LungCu.png'),
+            title: 'Lũng Cú',
+            ratting: 4,
+            vote: 190,
+            pernight: "1000000"
+        }, {
+            source: require('../../Resource/Hotels/TopHotel/Fansipan.png'),
+            title: 'Fansipan',
+            ratting: 4,
+            vote: 190,
+            pernight: "1000000"
+        }]
+
+        kiengiang = [{
+            source: require('../../Resource/Hotels/TopHotelRomatic/HaGiang.png'),
+            title: 'Hà Giang',
+            ratting: 4,
+            vote: 190,
+            pernight: "1000000"
+        }, {
+            source: require('../../Resource/Hotels/TopHotelRomatic/GoldenHotel.png'),
+            title: 'Golden Hotel',
+            ratting: 4,
+            vote: 190,
+            pernight: "1000000"
+        }, {
+            source: require('../../Resource/Hotels/TopHotelRomatic/Fansipan.png'),
+            title: 'Fansipan',
+            ratting: 4,
+            vote: 190,
+            pernight: "1000000"
+        }]
+
+        populars = [{ source: require('../../Resource/Hotels/HomeStay/Fansipan.png'), title: 'Le Bleu', ratting: 4, vote: 190, pernight: "1000000" },
+        { source: require('../../Resource/Hotels/HomeStay/GoldenHotel.png'), title: 'Golden Hotel', ratting: 4, vote: 190, pernight: "1000000" },
+        { source: require('../../Resource/Hotels/HomeStay/LeBleu.png'), title: 'Fansipan', ratting: 4, vote: 190, pernight: "1000000" }]
 
         this.state = {
-            dataTopFood: topFoods,
-            // dataCoffeRomatic: [{ source: require('../../Resource/Restaurants/TopCoffeRomatic/Fansipan.png'), title: 'Hà Giang', ratting: 4, vote: 190, pernight: "1000000" },
-            // { source: require('../../Resource/Restaurants/TopCoffeRomatic/GoldenHotel.png'), title: 'Golden Hotel', ratting: 4, vote: 190, pernight: "1000000" },
-            // { source: require('../../Resource/Restaurants/TopCoffeRomatic/LeBleu.png'), title: 'Fansipan', ratting: 4, vote: 190, pernight: "1000000" }],
-
-            // dataFamily: [{ source: require('../../Resource/Restaurants/TopFamily/Fansipan.png'), title: 'Le Bleu', ratting: 4, vote: 190, pernight: "1000000" },
-            // { source: require('../../Resource/Restaurants/TopFamily/GoldenHotel.png'), title: 'Golden Hotel', ratting: 4, vote: 190, pernight: "1000000" },
-            // { source: require('../../Resource/Restaurants/TopFamily/HaGiang.png'), title: 'Fansipan', ratting: 4, vote: 190, pernight: "1000000" }],
-
-            // dataPopular: [{ source: require('../../Resource/Restaurants/Popular/HaLong.png'), title: 'Le Bleu', ratting: 4, vote: 190, pernight: "1000000" },
-            // { source: require('../../Resource/Restaurants/Popular/HaGiang.png'), title: 'Golden Hotel', ratting: 4, vote: 190, pernight: "1000000" },
-            // { source: require('../../Resource/Restaurants/Popular/FindLand.png'), title: 'Fansipan', ratting: 4, vote: 190, pernight: "1000000" }]
+            toursHanoi: hanoi,
+            toursKiengiang: kiengiang,
+            toursPopular: populars
         }
     }
     rattingSize = 12;
@@ -128,7 +139,7 @@ export default class Restaurants extends Component {
                                 underlayColor={'transparent'}
                             >
                                 <Image
-                                    source={require('../../Resource/Restaurants/Logo/FindRestaurants.png')}
+                                    source={require('../../Resource/Restaurants/btnFindTours.png')}
                                     style={styles.buttonFind} />
                             </TouchableHighlight>
                         </View>
@@ -137,7 +148,7 @@ export default class Restaurants extends Component {
 
                 <View style={styles.titleFirst}>
                     <Text style={styles.textTitle}>
-                        Top ăn uống
+                        Activity | Tour in Ha Noi
                     </Text>
 
                     <Text
@@ -151,7 +162,7 @@ export default class Restaurants extends Component {
                     style={{ marginTop: -10 }}
                     showsHorizontalScrollIndicator={false}
                     horizontal={true}
-                    data={this.state.dataTopFood}
+                    data={this.state.toursHanoi}
                     keyExtractor={(item) => item.toString()}
                     renderItem={({ item }) => (
                         <View style={{ width: 150 }}>
@@ -186,7 +197,7 @@ export default class Restaurants extends Component {
                 />
 
                 <View style={styles.title}>
-                    <Text style={styles.textTitle}>Nhà hàng gia đình</Text>
+                    <Text style={styles.textTitle}>Activity | Tour in Kiên Giang</Text>
                     <Text style={styles.textSeeAll}>See all</Text>
                 </View>
 
@@ -194,7 +205,7 @@ export default class Restaurants extends Component {
                     style={{ marginTop: -10 }}
                     showsHorizontalScrollIndicator={false}
                     horizontal={true}
-                    data={this.state.dataTopFood}
+                    data={this.state.toursKiengiang}
                     keyExtractor={(item) => item.toString()}
                     renderItem={({ item }) => (
                         <View style={{ width: 150 }}>
@@ -229,7 +240,7 @@ export default class Restaurants extends Component {
                 />
 
                 <View style={styles.title}>
-                    <Text style={styles.textTitle}>Quán cafe phong cách lãng mạn</Text>
+                    <Text style={styles.textTitle}>Activity | Tour in Popular destinations</Text>
                     <Text style={styles.textSeeAll}>See all</Text>
                 </View>
 
@@ -237,7 +248,7 @@ export default class Restaurants extends Component {
                     style={{ marginTop: -10 }}
                     showsHorizontalScrollIndicator={false}
                     horizontal={true}
-                    data={this.state.dataTopFood}
+                    data={this.state.toursPopular}
                     keyExtractor={(item) => item.toString()}
                     renderItem={({ item }) => (
                         <View style={{ width: 150 }}>
@@ -258,50 +269,7 @@ export default class Restaurants extends Component {
                                 <View style={styles.pernightItemContainer}>
                                     <Text style={styles.txtPriceTitle}>Per night</Text>
                                     <Text style={styles.txtPrice}>
-                                            {this.formatNumberWithDot(item.pernight)}
-                                    </Text>
-                                </View>
-                                <Text style={styles.txtPrice}>đ</Text>
-                            </View>
-                        </View>
-                    )}
-                />
-
-                <View style={styles.title}>
-                    <Text style={styles.textTitle}>
-                        Điểm đến phổ biến
-                    </Text>
-                    <Text style={styles.textSeeAll}>
-                        See all
-                    </Text>
-                </View>
-
-                <FlatList
-                    style={{ marginTop: -10 }}
-                    showsHorizontalScrollIndicator={false}
-                    horizontal={true}
-                    data={this.state.dataTopFood}
-                    keyExtractor={(item) => item.toString()}
-                    renderItem={({ item }) => (
-                        <View style={{ width: 150 }}>
-                            <Image source={item.source} style={styles.imageTop}></Image>
-                            <Text style={styles.textName}>{item.title}</Text>
-                            <View style={styles.containerRating}>
-                                <Rating
-                                    style={{ marginLeft: 10 }}
-                                    type="star"
-                                    fractions={1}
-                                    imageSize={this.rattingSize}
-                                    startingValue={item.ratting}
-                                />
-                                <Text style={{ fontSize: 12 }}>({item.vote} đánh giá)</Text>
-                            </View>
-
-                            <View style={styles.containerPernight}>
-                                <View style={styles.pernightItemContainer}>
-                                    <Text style={styles.txtPriceTitle}>Per night</Text>
-                                    <Text style={styles.txtPrice}>
-                                            {this.formatNumberWithDot(item.pernight)}
+                                        {this.formatNumberWithDot(item.pernight)}
                                     </Text>
                                 </View>
                                 <Text style={styles.txtPrice}>đ</Text>
@@ -318,44 +286,46 @@ const shadow = {
     shadowRadius: 10,
     shadowOpacity: 0.9,
     elevation: 8,
+
 }
+
 const styles = StyleSheet.create({
-    containerScroll: { 
-        backgroundColor: '#FFF' 
+    containerScroll: {
+        backgroundColor: '#FFF'
     },
-    containerHeader:{ 
-        alignItems: 'center', 
-        height: 250 
+    containerHeader: {
+        alignItems: 'center',
+        height: 250
     },
-    containerTitle: { 
-        flex: 1, 
-        justifyContent: 'center', 
-        alignItems: 'center' 
+    containerTitle: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
-    textInput:{ 
-        marginLeft: 12, 
-        width: '90%', 
-        fontSize: 12, 
-        color: '#9F9F9F' 
+    textInput: {
+        marginLeft: 12,
+        width: '90%',
+        fontSize: 12,
+        color: '#9F9F9F'
     },
-    containerFindBtn: { 
-        flex: 1, 
-        alignItems: 'center', 
-        width: '100%' 
+    containerFindBtn: {
+        flex: 1,
+        alignItems: 'center',
+        width: '100%'
     },
-    containerRating: { 
-        flexDirection: 'row', 
-        alignItems: 'center' 
+    containerRating: {
+        flexDirection: 'row',
+        alignItems: 'center'
     },
-    containerPernight:{ 
-        flexDirection: 'row', 
-        marginLeft: 10, 
-        height: 30 
+    containerPernight: {
+        flexDirection: 'row',
+        marginLeft: 10,
+        height: 30
     },
-    pernightItemContainer: { 
-        flexDirection: 'row', 
-        height: '100%', 
-        alignItems: 'center' 
+    pernightItemContainer: {
+        flexDirection: 'row',
+        height: '100%',
+        alignItems: 'center'
     },
     imageLogo: {
         height: 250,

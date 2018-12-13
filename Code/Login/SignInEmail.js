@@ -25,7 +25,7 @@ export default class SignInEmail extends Component {
 
     render() {
         return (
-            <ScrollView style={{ flex: 1, backgroundColor: '#FFF' }}>
+            <ScrollView style={{ flex: 1, backgroundColor: '#FFF', height: '100%' }}>
                 <View style={{ flex: 1 }}>
                     <Image
                         source={require('../../Resource/SignIn/cover.png')}

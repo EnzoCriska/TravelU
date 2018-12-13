@@ -10,6 +10,7 @@ import {
 import HomeScreenChild from './HomeScreenChild';
 import Hotels from '../Hotels/Hotels';
 import Restaurants from '../Restaurants/Restaurants';
+import Tours from '../Restaurants/Tours'
 import Search from '../Search/Search';
 
 import StackCreateTripPlan from '../CreateTripPlan/StackCreateTripPlan';
@@ -35,12 +36,13 @@ const StackHome = createStackNavigator({
     HomeScreenChild_: HomeScreenChild,
     Hotels_: Hotels,
     Restaurants_: Restaurants,
+    ToursScreen: Tours,
     Search_: Search,
     StackTripPlan_: StackTripPlan,
-    StackPopular_:StackPopularDes,
+    StackPopular_: StackPopularDes,
     TempStNearly_: StackNearly,   // temp for test, delete when finish stack
-    TempStAddPlace_:StackAddPlace,  // temp for test, delete when finish stack
-    TempMapStack_:MapStack // temp for test, delete when finish stack
+    TempStAddPlace_: StackAddPlace,  // temp for test, delete when finish stack
+    TempMapStack_: MapStack // temp for test, delete when finish stack
     // TempThingsTodo_: ThingsToDo,
     // TempItem_:ItemThingsToDo
 },
