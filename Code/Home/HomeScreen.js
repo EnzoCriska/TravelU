@@ -11,11 +11,11 @@ import HomeScreenChild from './HomeScreenChild';
 import Hotels from '../Hotels/Hotels';
 import Restaurants from '../Restaurants/Restaurants';
 import Search from '../Search/Search';
-import PopularDestinations from '../DestinationPopulation/PopularDestinations';
+
 import MapHotelsScreen from '../Hotels/MapHotelsScreen';
 import StackCreateTripPlan from '../CreateTripPlan/StackCreateTripPlan';
 import StackTripPlan from '../TripPlan/StackTripPlan';
-import DaLatDenistation from '../DestinationPopulation/DaLatDestinations';
+
 import StackPopularDes from '../DestinationPopulation/StackPopularDes';
 import StackNearly from '../CreateTripPlan/StackRoute/AddPlace/Nearly/StackNearly';
 import ThingsToDo from '../CreateTripPlan/StackRoute/AddPlace/Nearly/ThingsToDo';
