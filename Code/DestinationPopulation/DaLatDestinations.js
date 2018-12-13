@@ -22,7 +22,7 @@ export default class DaLatDenistation extends Component {
     this.state = {
       data: [
         {
-
+          
           name: "Top vui chơi giải trí",
           locations: [
             {
@@ -46,6 +46,7 @@ export default class DaLatDenistation extends Component {
           ]
         },
         {
+          screenSeeAll:'DaLatHotels_',
           name: "Top khách sạn",
           locations: [
             {
@@ -69,6 +70,7 @@ export default class DaLatDenistation extends Component {
           ]
         },
         {
+          
           name: "Top ăn uống",
           locations: [
             {
@@ -92,6 +94,7 @@ export default class DaLatDenistation extends Component {
           ]
         },
         {
+          
           name: "Địa điểm văn hóa địa phương",
           locations: [
             {
@@ -115,6 +118,7 @@ export default class DaLatDenistation extends Component {
           ]
         },
         {
+        
           name: "Địa điểm thiên nhiên hấp dẫn",
           locations: [
             {
@@ -138,6 +142,7 @@ export default class DaLatDenistation extends Component {
           ]
         },
         {
+          screenSeeAll:'DaLatHotels_',
           name: "Địa điểm dành cho gia đình",
           locations: [
             {
@@ -161,6 +166,7 @@ export default class DaLatDenistation extends Component {
           ]
         },
         {
+          screenSeeAll:'DaLatHotels_',
           name: "Địa điểm mới lạ",
           locations: [
             {
@@ -187,8 +193,18 @@ export default class DaLatDenistation extends Component {
       ]
     };
   }
+  _onpressSeeAll(sceen,name){
+    this.props.navigation.navigate(sceen,{titleHotel:name})
+  }
   _onpressBack() {
     this.props.navigation
+  }
+  _onpressRestaurant() {
+    this.props.navigation.navigate('DaLatRestaurants_');
+  }
+  _onpressHotels() {
+    this.props.navigation.navigate('DaLatHotels_', { titleHotel: "Hotels" })
+
   }
   _renderDotIndicator() {
     return <PagerDotIndicator style={{ marginBottom: 100 }} pageCount={5} dotStyle={{ backgroundColor: 'black' }} />
@@ -266,57 +282,57 @@ export default class DaLatDenistation extends Component {
             {/* 5 Button Options: Trips Plan, Hotels, Fights, Restaurants, Tours */}
             <View elevation={5} style={styles.optionView}>
               <View style={{ flex: 1 }}>
-                <TouchableHighlight
-                  onPress={() => this._onpressTripPlan()}
+                <TouchableOpacity
+
                 >
                   <Image
                     style={styles.optionImage}
                     source={require('../../Resource/Home/logo/TripPlan.png')}
                     resizeMode='stretch'
                   />
-                </TouchableHighlight>
+                </TouchableOpacity>
               </View>
 
               <View style={{ flex: 1 }}>
-                <TouchableHighlight
-                  onPress={() => this._onpressTripPlan()}
+                <TouchableOpacity
+                  onPress={() => this._onpressHotels()}
                 >
                   <Image
                     style={styles.optionImage}
                     source={require('../../Resource/Home/logo/Hotel.png')}
                   />
-                </TouchableHighlight>
+                </TouchableOpacity>
               </View>
 
               <View style={{ flex: 1 }}>
-                <TouchableHighlight
-                  onPress={() => this._onpressTripPlan()}
+                <TouchableOpacity
+
                 >
                   <Image
                     style={styles.optionImage}
                     source={require('../../Resource/Home/logo/Flights.png')}
                   />
-                </TouchableHighlight>
+                </TouchableOpacity>
               </View>
 
               <View style={{ flex: 1 }}>
-                <TouchableHighlight
-                  onPress={() => this._onpressTripPlan()}
+                <TouchableOpacity
+                  onPress={() => this._onpressRestaurant()}
                 >
                   <Image
                     style={styles.optionImage}
                     source={require('../../Resource/Home/logo/Restaurants.png')} />
-                </TouchableHighlight>
+                </TouchableOpacity>
               </View>
 
               <View style={{ flex: 1 }}>
-                <TouchableHighlight
-                  onPress={() => this._onpressTripPlan()}
+                <TouchableOpacity
+
                 >
                   <Image
                     style={styles.optionImage}
                     source={require('../../Resource/Home/logo/Tours.png')} />
-                </TouchableHighlight>
+                </TouchableOpacity>
               </View>
             </View>
 
@@ -336,15 +352,22 @@ export default class DaLatDenistation extends Component {
           {/* FlatList all Location */}
 
           <FlatList
-            keyExtractor={({ item }) => item.toString()}
+            keyExtractor={(item) => item.toString()}
             showsVerticalScrollIndicator={false}
             style={{ width: '100%' }}
             data={this.state.data}
             renderItem={({ item }) => (
               <View style={styles.itemParentFlatList}>
-                <Text style={styles.txtTitleList}>{item.name}</Text>
+                <View style={{ flexDirection: 'row', width: '100%', alignItems:'center' }}>
+                  <Text style={styles.txtTitleList}>{item.name}</Text>
+                  <Text style={styles.txtSeeAll}
+                  onPress={()=>this._onpressSeeAll(item.screenSeeAll==null ? '' : item.screenSeeAll ,item.name)}
+                  >
+                  See all</Text>
+                </View>
+
                 <FlatList
-                  keyExtractor={({ item }) => item.toString()}
+                  keyExtractor={(item) => item.toString()}
                   horizontal={true}
                   data={item.locations}
                   showsHorizontalScrollIndicator={false}
@@ -474,6 +497,12 @@ const styles = {
     width: '93%',
     paddingBottom: 10,
     alignItems: 'center',
+  },
+  txtSeeAll:{
+    marginLeft:'auto',
+    color:'#ED50C6',
+    fontSize:12,
+    marginRight:19
   },
   txtTitleList: {
     marginLeft: '2%',

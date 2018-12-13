@@ -192,7 +192,7 @@ export default class HomeScreenChild extends Component {
                         <Text style={styles.textTitle}>Địa điểm phổ biến</Text>
 
                         <Text style={styles.textSeeAll}
-                            onPress={() => { this.props.navigation.navigate('PopularDes_') }} >
+                            onPress={() => this._onpressPopular()} >
                             See all
                         </Text>
                     </View>
@@ -212,7 +212,8 @@ export default class HomeScreenChild extends Component {
                     {/* List Near Place */}
                     <View style={styles.parentTouch}>
                         <Text style={styles.textTitle}>Địa điểm gần bạn</Text>
-                        <Text style={styles.textSeeAll}>See all</Text>
+                        <Text style={styles.textSeeAll}
+                            onPress={()=> this.props.navigation.navigate('TempStNearly_')}>See all</Text>
                     </View>
 
                     <FlatList
@@ -242,7 +243,8 @@ export default class HomeScreenChild extends Component {
                     {/* List Place of Month */}
                     <View style={styles.parentTouch}>
                         <Text style={styles.textTitle}>Tháng mười nên đi đâu</Text>
-                        <Text style={styles.textSeeAll}>See all</Text>
+                        <Text style={styles.textSeeAll} 
+                                onPress={()=> this.props.navigation.navigate('TempStAddPlace_')}>See all</Text>
                     </View>
 
                     <FlatList

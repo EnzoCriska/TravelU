@@ -8,7 +8,7 @@ import ThingsToDo from './ThingsToDo';
 
 import { createTabNavigator } from 'react-navigation'
 
-export default class StackNearly extends Component {
+export default class StackAddPlace extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,16 +29,28 @@ export default class StackNearly extends Component {
                                     <Image source={require('../../../../../Resource/StackRoute/back.png')}
                                         style={styles.iconBack} />
                                 </TouchableOpacity>
-                                <Text style={styles.textWhite}>Nearly</Text>
+                                <Text style={styles.textWhite}>Add Place</Text>
                                 
                             </View>
-                            
                             <View style ={styles.containerHeaderRight}>
-                                <Text style ={styles.TextDone}>Done</Text>
+                                <TouchableOpacity>
+                                    <Image
+                                        source={require('../../../../../Resource/CreateTripPlan/addPlaceandMap/search.png')}
+                                        style={styles.iconHeaderRight}
+                                    />
+                                </TouchableOpacity>
+                                
+                                <TouchableOpacity>
+                                    <Image
+                                        source={require('../../../../../Resource/CreateTripPlan/addPlaceandMap/map.png')}
+                                        style={styles.iconHeaderRight}
+                                    />
+                                </TouchableOpacity>
+                                
                             </View>
                         </View>
                         
-                        <View style={styles.container}>
+                        <View style={{ flex: 1}}>
                             
                         </View>
                     </View>
@@ -110,13 +122,15 @@ const styles = StyleSheet.create({
     },
     containerHeaderRight:{
         flex:1, 
-        justifyContent:'center', 
-        alignItems:'flex-end', 
-        paddingRight:20
+        alignItems:'center', 
+        justifyContent:'flex-end', 
+        paddingRight:20, 
+        flexDirection:'row'
     },
-    TextDone:{
-        color: '#fff', 
-        fontSize:16
+    iconHeaderRight:{
+        height:20, 
+        width:20, 
+        margin:10
     },
     buttonBack: {
         width: '14%',
@@ -147,7 +161,6 @@ const styles = StyleSheet.create({
     textWhite: {
         color: 'white',
         fontSize: 17
-    },
-
+    },      
 })
 
