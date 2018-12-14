@@ -26,25 +26,23 @@ export default class RouteDayOne extends Component {
                     hotelstar: 5,
                     pernight: "10000000",
                 },
-                places: [
-                    {
-                        image: require('../../../Resource/StackRoute/RouteDay1/vong_nguyet_lau.png'),
-                        name: 'Vọng Nguyệt Lâu',
-                        clock: '00:32',
-                        ratting: 4,
-                        vote: 190,
-                        time: '26',
-                        long: '16.5'
-                    },
-                    {
-                        image: require('../../../Resource/StackRoute/RouteDay1/ga_dalat.png'),
-                        name: 'Ga Đà lạt',
-                        clock: '00:32',
-                        ratting: 4,
-                        vote: 190,
-                        time: '26',
-                        long: '16.5'
-                    }]
+                places: [{
+                    image: require('../../../Resource/StackRoute/RouteDay1/vong_nguyet_lau.png'),
+                    name: 'Vọng Nguyệt Lâu',
+                    clock: '00:32',
+                    ratting: 4,
+                    vote: 190,
+                    time: '26',
+                    long: '16.5'
+                }, {
+                    image: require('../../../Resource/StackRoute/RouteDay1/ga_dalat.png'),
+                    name: 'Ga Đà lạt',
+                    clock: '00:32',
+                    ratting: 4,
+                    vote: 190,
+                    time: '26',
+                    long: '16.5'
+                }]
             }
         };
     }

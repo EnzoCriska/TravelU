@@ -249,7 +249,6 @@ export default class DaLatDenistation extends Component {
             </IndicatorViewPager>
 
             <View style={styles.viewLogo}>
-
               {/* Box 1 inclue : 1 button Back, 1 button Map, 1 text name */}
               <View style={{ flexDirection: 'row', alignItems: 'center', }}>
                 <TouchableOpacity style={styles.btnBack}
@@ -260,11 +259,11 @@ export default class DaLatDenistation extends Component {
                   >
                   </Image>
                 </TouchableOpacity>
- 
+
                 <Text style={styles.txtWhite}>   Đà Lạt</Text>
 
                 <TouchableOpacity style={styles.btnMap}
-                    onPress={()=> this.props.navigation.navigate('MapDestinationPopular_')}>
+                  onPress={() => this.props.navigation.navigate('MapDestinationPopular_')}>
                   <Image source={require('../../Resource/Denistation/Dalat/imgMap.png')}
                     style={styles.imgmap}
                   >
@@ -295,6 +294,8 @@ export default class DaLatDenistation extends Component {
               <View style={{ flex: 1 }}>
                 <TouchableOpacity
                   onPress={() => this._onpressTripPlan()}
+                  style={{ borderColor: '#DDD', borderRadius: 5, borderWidth: .5, width: 65, height: 65 }}
+                  elevation={2}
                 >
                   <Image
                     style={styles.optionImage}
@@ -304,9 +305,9 @@ export default class DaLatDenistation extends Component {
                 </TouchableOpacity>
               </View>
 
-              <View style={{ flex: 1 }}>
+              <View style={{ flex: 1, zIndex: 1 }}>
                 <TouchableOpacity
-
+                  elevation={2}
                   onPress={() => this._onpressHotels()}
                 >
                   <Image
@@ -318,7 +319,7 @@ export default class DaLatDenistation extends Component {
 
               <View style={{ flex: 1 }}>
                 <TouchableOpacity
-
+                  elevation={2}
                 >
                   <Image
                     style={styles.optionImage}
@@ -329,6 +330,7 @@ export default class DaLatDenistation extends Component {
 
               <View style={{ flex: 1 }}>
                 <TouchableOpacity
+                  elevation={2}
                   onPress={() => this._onpressRestaurant()}
                 >
                   <Image
@@ -339,7 +341,7 @@ export default class DaLatDenistation extends Component {
 
               <View style={{ flex: 1 }}>
                 <TouchableOpacity
-
+                  elevation={2}
                 >
                   <Image
                     style={styles.optionImage}
@@ -349,8 +351,9 @@ export default class DaLatDenistation extends Component {
             </View>
 
             {/* View inclue Text Description Đà Lạt */}
-            <View style={styles.viewDescription}>
+            <View elevation={3} style={styles.viewDescription}>
               <Text style={styles.txtTitlePresent}>Giới thiệu</Text>
+
               <Text style={styles.txtPresent} >Đà Lạt là một thành phố trực thuộc tỉnh và tỉnh lị tỉnh Lâm Đồng,
                 nằm trên cao nguyên Lâm Viên, ở độ cao 1.500 m so với mặt nước biển và diện tích tự nhiên: 393,29 km².
                 Với nhiều cảnh quan đẹp, Đà Lạt là một trong những thành phố du lịch nổi tiếng nhất của Việt Nam.
@@ -498,7 +501,8 @@ const styles = {
   txtTitlePresent: {
     marginTop: 15,
     fontSize: 18,
-    color: '#920DBB'
+    color: '#920DBB',
+    fontWeight: 'bold'
   },
   txtPresent: {
     color: '#090909',
@@ -508,7 +512,13 @@ const styles = {
   viewDescription: {
     width: '93%',
     paddingBottom: 10,
+    marginTop: 10,
     alignItems: 'center',
+    borderColor: '#DDD',
+    borderRadius: 10,
+    borderWidth: 1,
+    elevation: 3,
+    zIndex: 0
   },
   txtSeeAll: {
     marginLeft: 'auto',
@@ -519,8 +529,7 @@ const styles = {
   txtTitleList: {
     marginLeft: '2%',
     fontSize: 16,
-    color: 'black',
-    fontWeight: 'bold',
+    color: '#000',
   },
   txtViolet: {
     color: '#920DBB',

@@ -28,7 +28,7 @@ export default class HomeScreen extends Component {
     constructor(props) {
         super(props)
     }
-    
+
     render() {
         return (<HomeBottomTab />);
     }
@@ -54,9 +54,9 @@ const StackHome = createStackNavigator({
 
 StackHome.navigationOptions = ({ navigation }) => {
     let tabBarVisible = true;
-    // if (navigation.state.index > 0) {
-    //     tabBarVisible = false;
-    // }
+    if (navigation.state.index > 0) {
+        tabBarVisible = false;
+    }
     return {
         tabBarVisible,
     };
