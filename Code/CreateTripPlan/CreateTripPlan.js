@@ -6,36 +6,42 @@ import {
     TouchableHighlight,
     Text,
     Image,
-    TextInput
-}from 'react-native';
+    StatusBar,
+} from 'react-native';
 import {
-    createStackNavigator
-}from 'react-navigation';
+    NavigationActions
+} from 'react-navigation';
 
 export default class CreateTripPlan extends Component {
     gray = '#9E9E9E';
     _onpressPickDate() {
         this.props.navigation.navigate('PickDate_')
     }
-    _onpressNextSteep(){
+    _onpressNextSteep() {
         this.props.navigation.navigate('BookHotels_')
     }
     render() {
-        const { goBack } = this.props.navigation.dispatch({ type: 'Navigation/BACK' });
         return (
-            <View style={{ flex: 1, alignItems: 'center', backgroundColor: 'white' }}>
+            <View style={{ flex: 1, alignItems: 'center', backgroundColor: '#FFF' }}>
+                <StatusBar hidden={false} />
                 <View style={styles.logo}>
-                    <ImageBackground source={require('../../Resource/CreateTripPlan/CreateTripPlan/logo.png')}
+                    <ImageBackground
+                        source={require('../../Resource/CreateTripPlan/CreateTripPlan/logo.png')}
                         style={styles.logo}>
                         <View style={{ flex: 1 }} />
+
                         <View style={{ flex: 1 }}>
                             <View style={{ alignItems: 'center', flexDirection: 'row' }}>
-                                
-                                    <TouchableHighlight onPress={() => goBack()} style={styles.touchableBack}
-                                    >
-                                    <Image source={require('../../Resource/CreateTripPlan/CreateTripPlan/back.png')}
+                                <TouchableHighlight
+                                    onPress={() => this.props.navigation.navigate('HomeMainScreen')}
+                                    style={styles.touchableBack}
+                                    underlayColor={'transparent'}
+                                >
+                                    <Image
+                                        source={require('../../Resource/CreateTripPlan/CreateTripPlan/back.png')}
                                         style={styles.iconBack} />
                                 </TouchableHighlight>
+
                                 <Text style={styles.textLogo}>Create Trip Plan</Text>
                             </View>
                         </View>
@@ -43,92 +49,136 @@ export default class CreateTripPlan extends Component {
                 </View>
 
                 <View style={[shadow, styles.parentPlanName]}>
-                    <Image source={require('../../Resource/CreateTripPlan/CreateTripPlan/user.png')}
-                        style={styles.iconUser}></Image>
-                    <Text style={{ marginLeft: 20, color: this.gray }}> Plan name</Text>
-                    <TextInput style={[styles.textBlack, { marginLeft: 'auto', marginRight: 18 }]}>
+                    <Image
+                        source={require('../../Resource/CreateTripPlan/CreateTripPlan/user.png')}
+                        style={styles.iconUser} />
+
+                    <Text style={[{ marginLeft: 10 }, styles.txtUtil]}>Plan name</Text>
+
+                    <Text style={[styles.txtUtil, { marginLeft: 'auto', marginRight: 18 }]}>
                         3 Days to Hà Giang from Hà Nội
-                    </TextInput>
+                    </Text>
                 </View>
 
                 <View style={[styles.parentRoute, shadow]}>
                     <View style={{ flex: 11, alignItems: 'center', justifyContent: 'center' }}>
-                        <Image source={require('../../Resource/CreateTripPlan/CreateTripPlan/route.png')}
-                            style={styles.iconRoute}></Image>
+                        <Image
+                            source={require('../../Resource/CreateTripPlan/CreateTripPlan/route.png')}
+                            style={styles.iconRoute} />
                     </View>
+
                     <View style={{ flex: 89 }} >
                         <View style={{ flex: 1, justifyContent: 'center' }}>
                             <TouchableHighlight >
                                 <View style={styles.touchableToFrom}>
-                                    <Text style={{ marginLeft: 20, color: this.gray }}>Từ</Text>
-                                    <Text style={[styles.textBlack, { marginLeft: 'auto', marginRight: 11 }]}>Hà Nội</Text>
+                                    <Text style={[{ marginLeft: 20 }, styles.txtUtil]}>
+                                        Từ
+                                    </Text>
+
+                                    <Text style={[styles.txtUtil, { marginLeft: 'auto', marginRight: 11 }]}>
+                                        Hà Nội
+                                    </Text>
                                 </View>
                             </TouchableHighlight>
                         </View>
+
                         <View style={{ flex: 1, justifyContent: 'center' }}>
                             <TouchableHighlight >
                                 <View style={styles.touchableToFrom}>
-                                    <Text style={{ marginLeft: 20, color: this.gray }}>Đến</Text>
-                                    <Text style={{ marginLeft: 'auto', marginRight: 11, fontSize: 17, color: this.gray }}>Chọn điểm đến</Text>
+                                    <Text style={[{ marginLeft: 20 }, styles.txtUtil]}>
+                                        Đến
+                                    </Text>
+
+                                    <Text style={[{ marginLeft: 'auto', marginRight: 11 }, styles.txtUtil]}>
+                                        Chọn điểm đến
+                                    </Text>
                                 </View>
                             </TouchableHighlight>
                         </View>
                     </View>
                 </View>
 
-                <TouchableHighlight style={{ marginTop: 10 }} onPress={() => this._onpressPickDate()}>
+                <TouchableHighlight
+                    tyle={{ marginTop: 10 }}
+                    onPress={() => this._onpressPickDate()}
+                >
                     <View style={[styles.parentStartDay, shadow]}>
                         <View style={{ flex: 11, alignItems: 'center', justifyContent: 'center' }}>
-                            <Image source={require('../../Resource/CreateTripPlan/CreateTripPlan/calendar.png')}
-                                style={styles.iconCalendar}>
-                            </Image>
+                            <Image
+                                source={require('../../Resource/CreateTripPlan/CreateTripPlan/calendar.png')}
+                                style={styles.iconCalendar}
+                            />
                         </View>
+
                         <View style={{ flex: 89, alignItems: 'center', flexDirection: 'row' }}>
-                            <Text style={{ marginLeft: 10, color: this.gray }}>Ngày bắt đầu</Text>
-                            <Text style={[{ marginLeft: 'auto', marginRight: 11, fontSize: 17 }, styles.textBlack]}>23/10/2018</Text>
+                            <Text style={[{ marginLeft: 10 }, styles.txtUtil]}>
+                                Ngày bắt đầu
+                            </Text>
+
+                            <Text style={[{ marginLeft: 'auto', marginRight: 11, fontSize: 13 }, styles.txtUtil]}>
+                                23/10/2018
+                            </Text>
                         </View>
                     </View>
-
                 </TouchableHighlight>
 
-                <TouchableHighlight style={{ marginTop: 5 }} onPress={() => this._onpressPickDate()}>
+                <TouchableHighlight
+                    style={{ marginTop: 5 }}
+                    onPress={() => this._onpressPickDate()}
+                >
                     <View style={[styles.parentEndDay, shadow]}>
                         <View style={{ flex: 11, alignItems: 'center', justifyContent: 'center' }}>
-                            <Image source={require('../../Resource/CreateTripPlan/CreateTripPlan/calendar.png')}
-                                style={styles.iconCalendar}>
-                            </Image>
+                            <Image
+                                source={require('../../Resource/CreateTripPlan/CreateTripPlan/calendar.png')}
+                                style={styles.iconCalendar}
+                            />
                         </View>
+
                         <View style={{ flex: 89, alignItems: 'center', flexDirection: 'row' }}>
-                            <Text style={{ marginLeft: 10, color: this.gray }}>Ngày quay lại</Text>
-                            <Text style={[{ marginLeft: 'auto', marginRight: 11, fontSize: 17 }, styles.textBlack]}>26/10/2018</Text>
+                            <Text style={[{ marginLeft: 10 }, styles.txtUtil]}>
+                                Ngày quay lại
+                            </Text>
+
+                            <Text style={[{ marginLeft: 'auto', marginRight: 11 }, styles.txtUtil]}>
+                                26/10/2018
+                            </Text>
                         </View>
                     </View>
-
                 </TouchableHighlight>
 
-                <TouchableHighlight style={{ marginTop: 5 }}>
+                <TouchableHighlight
+                    style={{ marginTop: 5 }}
+                >
                     <View style={[styles.parentLock, shadow]}>
                         <View style={{ flex: 11, alignItems: 'center', justifyContent: 'center' }}>
-                            <Image source={require('../../Resource/CreateTripPlan/CreateTripPlan/lock.png')}
-                                style={styles.iconLock}>
-                            </Image>
+                            <Image
+                                source={require('../../Resource/CreateTripPlan/CreateTripPlan/lock.png')}
+                                style={styles.iconLock} />
                         </View>
+
                         <View style={{ flex: 89, alignItems: 'center', flexDirection: 'row' }}>
-                            <Text style={{ marginLeft: 10, color: this.gray }}>Private ?</Text>
-                            <Text style={[{ marginLeft: 20 }, styles.textBlack]}>Mark a trip as private</Text>
-                            <Switch
-                                style={{ marginLeft: 'auto', marginRight: 11, fontSize: 17, width: 50 }}></Switch>
+                            <Text style={[{ marginLeft: 10, }, styles.txtUtil]}>
+                                Private?
+                            </Text>
+
+                            <Text style={[{ marginLeft: 20 }, styles.txtUtil]}>
+                                Mark a trip as private
+                            </Text>
+
+                            <Switch style={{ marginLeft: 'auto', marginRight: 11, fontSize: 13, width: 50 }} />
                         </View>
                     </View>
-
                 </TouchableHighlight>
 
-                <TouchableHighlight style={{ marginTop: 'auto',width:'100%' }} 
-                onPress={()=>this._onpressNextSteep()}>
-                    <Image source={require('../../Resource/CreateTripPlan/CreateTripPlan/nextsteep.png')}
+                <TouchableHighlight
+                    style={{ marginTop: 'auto', width: '100%' }}
+                    onPress={() => this._onpressNextSteep()}
+                >
+                    <Image
+                        source={require('../../Resource/CreateTripPlan/CreateTripPlan/nextsteep.png')}
                         style={styles.nextsteepButton} />
                 </TouchableHighlight>
-            </View>
+            </View >
         );
     }
 };
@@ -142,7 +192,6 @@ const styles = {
     iconBack: {
         width: 50,
         height: '100%',
-
     },
     iconUser: {
         width: 17,
@@ -207,15 +256,14 @@ const styles = {
         height: 46,
         borderRadius: 5
     },
-
     textLogo: {
-        color: 'white',
-        fontSize: 20,
+        color: '#FFF',
+        fontSize: 18,
         marginLeft: 10
     },
     textBlack: {
-        color: 'black',
-        fontSize: 16
+        color: '#313131',
+        fontSize: 13
     },
     touchableToFrom: {
         flexDirection: 'row',
@@ -230,8 +278,12 @@ const styles = {
         justifyContent: 'center',
         width: 50,
         height: '100%',
-
     },
+    txtUtil: {
+        color: '#313131',
+        fontSize: 13,
+        opacity: .5
+    }
 }
 
 

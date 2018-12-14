@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
-import { View, Text, ImageBackground, Image, TouchableOpacity } from 'react-native';
-import { createTabNavigator , createStackNavigator} from 'react-navigation'
+import {
+    View,
+    Text,
+    ImageBackground,
+    Image,
+    TouchableOpacity
+} from 'react-native';
+import {
+    createTabNavigator,
+    createStackNavigator
+} from 'react-navigation'
 import RouteDayOne from './RouteDayOne';
 import RouteDayTwo from './RouteDayTwo';
 import RouteDayThree from './RouteDayThree';
@@ -18,31 +27,48 @@ export default class StackRoute extends Component {
         console.log('>>>>>>>')
         return (
             <View style={{ flex: 1 }}>
-                <ImageBackground source={require('../../../Resource/StackRoute/logo.png')} style={styles.imageLogo} >
+                <ImageBackground
+                    source={require('../../../Resource/StackRoute/logo.png')}
+                    style={styles.imageLogo}
+                >
                     <View style={{ flex: 1 }}>
                         <View style={{ flex: 1 }}></View>
+
                         <View style={{ flex: 2 }}>
                             <View style={{ flex: 1, width: '100%', flexDirection: 'row', alignItems: 'center' }}>
-                                <TouchableOpacity style={styles.buttonBack}
-                                    onPress={()=>{this.props.navigation.goBack()}}>
-                                    <Image source={require('../../../Resource/StackRoute/back.png')}
+                                <TouchableOpacity
+                                    style={styles.buttonBack}
+                                    onPress={() => { this.props.navigation.goBack() }}
+                                >
+                                    <Image
+                                        source={require('../../../Resource/StackRoute/back.png')}
                                         style={styles.iconBack} />
                                 </TouchableOpacity>
+
                                 <Text style={styles.textWhite}>3 day to Đà Lạt</Text>
+
                                 <TouchableOpacity style={styles.iconNote}>
-                                    <Image style={{width:'100%', height:'100%'}}  source={require('../../../Resource/StackRoute/note.png')}></Image>
+                                    <Image
+                                        style={{ width: '100%', height: '100%' }}
+                                        source={require('../../../Resource/StackRoute/note.png')} />
                                 </TouchableOpacity>
 
-                                <TouchableOpacity style={styles.iconMap}
-                                    onPress={()=> {this.props.navigation.navigate('MapStack_')}}>
-                                    <Image style={{width:'100%', height:'100%'}} source={require('../../../Resource/StackRoute/map.png')}></Image>
+                                <TouchableOpacity
+                                    style={styles.iconMap}
+                                    onPress={() => { this.props.navigation.navigate('MapStack_') }}
+                                >
+                                    <Image
+                                        style={{ width: '100%', height: '100%' }}
+                                        source={require('../../../Resource/StackRoute/map.png')} />
                                 </TouchableOpacity>
                             </View>
+
                             <View style={{ flex: 1 }}></View>
                         </View>
                     </View>
                 </ImageBackground>
-                <RootStack></RootStack>
+
+                <RootStack />
             </View>
         );
     }
@@ -50,10 +76,10 @@ export default class StackRoute extends Component {
 
 const stackDayOne = createStackNavigator({
     DayOne_: RouteDayOne,
-    StackNearly_ : StackNearly,
+    StackNearly_: StackNearly,
 }, {
-    headerMode: "none"
-})
+        headerMode: "none"
+    })
 
 const RootStack = createTabNavigator({
     RouteDayOne_: {

@@ -28,6 +28,7 @@ export default class HomeScreen extends Component {
     constructor(props) {
         super(props)
     }
+    
     render() {
         return (<HomeBottomTab />);
     }
@@ -53,9 +54,9 @@ const StackHome = createStackNavigator({
 
 StackHome.navigationOptions = ({ navigation }) => {
     let tabBarVisible = true;
-    if (navigation.state.index > 0) {
-        tabBarVisible = false;
-    }
+    // if (navigation.state.index > 0) {
+    //     tabBarVisible = false;
+    // }
     return {
         tabBarVisible,
     };
@@ -63,7 +64,6 @@ StackHome.navigationOptions = ({ navigation }) => {
 
 StackCreateTripPlan.navigationOptions = ({ navigation }) => {
     let tabBarVisible = false;
-
     return {
         tabBarVisible,
     };
@@ -80,7 +80,6 @@ StackTripPlan.navigationOptions = ({ navigation }) => {
 const HomeBottomTab = createBottomTabNavigator({
     HomeTab: {
         screen: StackHome,
-
         navigationOptions: () => ({
             tabBarIcon: <Image source={require('../../Resource/Home/icontabbar/home.png')} style={styles.inputIcon} />
         })
@@ -93,11 +92,12 @@ const HomeBottomTab = createBottomTabNavigator({
     },
     CreateTripPlanTab: {
         screen: StackCreateTripPlan,
-        navigationOptions: () => (
-            {
-                tabBarIcon: <Image source={require('../../Resource/Home/CreateTrip.png')} style={{ width: 82, height: 70, marginTop: -20 }}></Image>
-            }
-        )
+        navigationOptions: () => ({
+            tabBarIcon:
+                <Image
+                    source={require('../../Resource/Home/CreateTrip.png')}
+                    style={{ width: 82, height: 70, marginTop: -20 }} />
+        })
     },
     ActivityTab: {
         screen: HomeScreenChild,

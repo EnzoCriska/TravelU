@@ -61,3 +61,4 @@ buck-out/
 .gitattributes
 \package-lock.json
 \android\app\src\main\assets\index.android.bundle
+.vscode/launch.json

@@ -12,14 +12,15 @@ import MyTripPlan from './MyTripPlans';
 import StackRoute from './StackRoute/StackRoute';
 import MapStack from './StackRoute/MapStackRoute/MapStack';
 import StackNearly from './StackRoute/AddPlace/Nearly/StackNearly';
+import HomeScreenChild from '../Home/HomeScreenChild';
 
 export default class StackCreateTripPlan extends Component {
     render() {
-        return <RootStack />;
+        return <CreateTripPlanManager />;
     }
 };
 
-const RootStack = createStackNavigator(
+const CreateTripPlanManager = createStackNavigator(
     {
         CreateTripPlan_: CreateTripPlan,
         Search_: Search,
@@ -30,6 +31,7 @@ const RootStack = createStackNavigator(
         MyTripPlans_: MyTripPlan,
         StackRoute_: StackRoute,
         MapStack_: MapStack,
+        HomeMainScreen: HomeScreenChild
     },
     {
         headerMode: 'none'

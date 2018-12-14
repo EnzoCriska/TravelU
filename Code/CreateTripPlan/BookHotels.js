@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import {
     Alert,
     View,
@@ -10,7 +9,6 @@ import {
     Image,
     FlatList,
     TouchableOpacity
-
 } from 'react-native'
 import { Rating } from 'react-native-elements'
 
@@ -36,7 +34,6 @@ export default class BookHotels extends Component {
         return status === true ? styles.touchableTrue : styles.touchableFalse
     }
     formatNumberWithDot(number) {
-
         let string = "";
         k = number.length % 3;
 
@@ -46,122 +43,144 @@ export default class BookHotels extends Component {
                 string += ".";
             }
         }
-
-
         return string.split('').reverse().join('');
     }
-    _textTouchable(status) {
 
+    _textTouchable(status) {
         if (status == true) {
             return 'Đã thêm'
         } else {
             return 'Thêm'
         }
     }
+
     render() {
         const { goBack } = this.props.navigation;
         return (
             <View>
                 <View style={styles.logo}>
-                    <ImageBackground source={require('../../Resource/CreateTripPlan/CreateTripPlan/logo.png')}
-                        style={styles.logo}>
+                    <ImageBackground
+                        source={require('../../Resource/CreateTripPlan/CreateTripPlan/logo.png')}
+                        style={styles.logo}
+                    >
                         <View style={{ flex: 1 }} />
+
                         <View style={{ flex: 1 }}>
                             <View style={{ alignItems: 'center', flexDirection: 'row' }}>
-                                <TouchableHighlight onPress={() => goBack()} style={styles.touchableBack}>
-                                    <Image source={require('../../Resource/CreateTripPlan/BookHotels/back.png')}
+                                <TouchableHighlight
+                                    onPress={() => goBack()}
+                                    style={styles.touchableBack}
+                                >
+                                    <Image
+                                        source={require('../../Resource/CreateTripPlan/BookHotels/back.png')}
                                         style={styles.iconBack} />
                                 </TouchableHighlight>
 
                                 <Text style={styles.textLogo}>Create Trip Plan</Text>
-                                <Image source={require('../../Resource/CreateTripPlan/BookHotels/search.png')}
-                                    style={styles.iconSearch}
-                                ></Image>
-                                <Image source={require('../../Resource/CreateTripPlan/BookHotels/map.png')}
-                                    style={styles.iconMap}
-                                ></Image>
+
+                                <Image
+                                    source={require('../../Resource/CreateTripPlan/BookHotels/search.png')}
+                                    style={styles.iconSearch} />
+
+                                <Image
+                                    source={require('../../Resource/CreateTripPlan/BookHotels/map.png')}
+                                    style={styles.iconMap} />
                             </View>
                         </View>
                     </ImageBackground>
                 </View>
 
-
                 <TouchableHighlight >
                     <View style={styles.viewSortBy}>
-                        <Text style={{ marginLeft: 20 }}>Sort by: Popular</Text>
-                        <Image source={require('../../Resource/CreateTripPlan/BookHotels/filter.png')}
-                            style={styles.iconFilter}></Image>
-                        <Text style={{ marginLeft: 5 }}>Filter</Text>
-                    </View>
+                        <Text style={{ position: 'absolute', left: 10, fontSize: 14, color: '#7F8B9A' }}>
+                            Sort by: Popular
+                        </Text>
 
+                        <View style={{ position: 'absolute', right: 10 }}>
+                            <Text style={{ fontSize: 14, color: '#7F8B9A' }}>
+                                <Image
+                                    source={require('../../Resource/CreateTripPlan/BookHotels/filter.png')}
+                                    style={[styles.iconFilter]} />
+                                <Text style={{ fontSize: 14, color: '#7F8B9A' }}> Filter</Text>
+                            </Text>
+                        </View>
+                    </View>
                 </TouchableHighlight>
 
                 <FlatList
-
                     keyExtractor={(item) => item.name}
                     showsVerticalScrollIndicator={false}
                     data={this.state.data}
-                    renderItem={({ item }) =>
-                        (
-                            <View style={styles.viewItem}>
-                                <Image source={item.source} style={styles.imageItems}></Image>
-                                <View style={styles.itemDescription}>
-                                    <Text style={styles.textBlack}>{item.name}</Text>
-                                    <View style={{ flexDirection: 'row',alignItems:'center' }}>
-                                        <Rating
-                                            ratingColor='#FF5526'
-                                            type='star'
-                                            imageSize={12}
-                                            startingValue={item.rating}
-                                        ></Rating>
+                    renderItem={({ item }) => (
+                        <View style={styles.viewItem}>
+                            <Image
+                                source={item.source}
+                                style={styles.imageItems} />
 
-                                        <Text> ({item.vote} đánh giá)</Text>
-                                    </View>
+                            <View style={styles.itemDescription}>
+                                <Text style={styles.textBlack}>
+                                    {item.name}
+                                </Text>
 
-                                    <View style={{ flexDirection: 'row' }}>
-                                        <Text>Home star  {item.star}</Text>
-                                        <Image style={{ width: 7, height: 7 }} source={require('../../Resource/CreateTripPlan/BookHotels/star.png')}></Image>
-                                    </View>
-                                    <View style={{ flexDirection: 'row' }}>
-                                        <Text>Per night </Text>
-                                        <Text style={styles.textPerNight}>{this.formatNumberWithDot(item.pernight)}</Text>
-                                    </View>
+                                <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 5 }}>
+                                    <Rating
+                                        ratingColor='#FF5526'
+                                        type='star'
+                                        imageSize={12}
+                                        startingValue={item.rating}
+                                    />
 
-
-
-                                </View>
-                                <View style={{ marginLeft: 40, alignItems: 'center', justifyContent: 'center' }}>
-                                    <View>
-                                        <TouchableHighlight style={this._backgroundTouchable(item.status)} >
-                                            <Text>{this._textTouchable(item.status)}</Text>
-                                        </TouchableHighlight>
-                                        <TouchableHighlight style={styles.touchableBook} >
-                                            <Text>Book</Text>
-                                        </TouchableHighlight>
-                                    </View>
-
+                                    <Text style={{ fontSize: 10, color: '#A5A4A4' }}> ({item.vote} đánh giá)</Text>
                                 </View>
 
+                                <View style={{ flexDirection: 'row', marginBottom: 5 }}>
+                                    <Text style={{ fontSize: 12, color: '#313131' }}>Home star  {item.star}</Text>
+
+                                    <Image
+                                        style={{ width: 7, height: 7 }}
+                                        source={require('../../Resource/CreateTripPlan/BookHotels/star.png')} />
+                                </View>
+
+                                <View style={{ flexDirection: 'row', marginBottom: 5 }}>
+                                    <Text style={{ fontSize: 12, color: '#313131' }}>Per night </Text>
+
+                                    <Text style={styles.textPerNight}>
+                                        {this.formatNumberWithDot(item.pernight)}
+                                    </Text>
+                                </View>
                             </View>
-                        )
 
-                    }
+                            <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                                <View style={{ position: 'absolute', right: -30, width: '100%' }}>
+                                    <TouchableHighlight
+                                        style={[this._backgroundTouchable(item.status)]}
+                                    >
+                                        <Text>
+                                            {this._textTouchable(item.status)}
+                                        </Text>
+                                    </TouchableHighlight>
+
+                                    <TouchableHighlight
+                                        style={[styles.touchableBook]}
+                                    >
+                                        <Text>Book</Text>
+                                    </TouchableHighlight>
+                                </View>
+                            </View>
+                        </View>
+                    )}
                 />
 
-                <TouchableHighlight style={{ width: '100%', marginTop: 'auto' }} onPress={() => this._onpressNextSteep()}>
+                <TouchableHighlight
+                    style={{ width: '100%', marginTop: 'auto' }}
+                    onPress={() => this._onpressNextSteep()}
+                >
                     <View style={{ flexDirection: 'row' }}>
-
-                        <Image source={require('../../Resource/CreateTripPlan/BookHotels/nextsteep.png')}
+                        <Image
+                            source={require('../../Resource/CreateTripPlan/BookHotels/nextsteep.png')}
                             style={{ width: '100%', height: 55 }} />
-
                     </View>
-
                 </TouchableHighlight>
-
-
-
-
-
             </View>
         );
     }
@@ -186,17 +205,18 @@ const styles = {
         marginRight: 20
     },
     iconFilter: {
-        marginLeft: 200,
         width: 18,
-        height: 15
+        height: 15,
+        right: 15
     },
     imageItems: {
         width: 100,
         height: 100,
-        marginLeft: 20
+        margin: 10
     },
     itemDescription: {
-        marginLeft: 10,
+        marginTop: 10,
+        marginBottom: 10,
         width: 125
     },
     logo: {
@@ -210,6 +230,7 @@ const styles = {
     },
     textPerNight: {
         color: '#FF5526',
+        fontSize: 12,
         marginLeft: 10
     },
     touchableBack: {
@@ -244,19 +265,21 @@ const styles = {
         borderRadius: 5,
     },
     textLogo: {
-        color: 'white',
-        fontSize: 20,
+        color: '#FFF',
+        fontSize: 18,
         marginLeft: 10
     },
     textBlack: {
-        color: 'black',
-        fontSize: 19
+        color: '#000',
+        fontSize: 14,
+        marginBottom: 5,
     },
     viewSortBy: {
         alignItems: 'center',
-        width: '200%',
+        width: '100%',
         height: 40,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        backgroundColor: '#F3F5F9'
     },
     viewItem: {
         flexDirection: 'row',
