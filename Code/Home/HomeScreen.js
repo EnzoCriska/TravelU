@@ -22,6 +22,9 @@ import ThingsToDo from '../CreateTripPlan/StackRoute/AddPlace/Nearly/ThingsToDo'
 import ItemThingsToDo from '../CreateTripPlan/StackRoute/AddPlace/Nearly/ItemFlatsList/ItemThingsToDo';
 import StackAddPlace from '../CreateTripPlan/StackRoute/AddPlace/AddPlace/StackAddPlace';
 import MapStack from '../CreateTripPlan/StackRoute/AddPlace/MapThreeDay/MapStack';
+import MyProfile from '../ProfileUser/MyProfile';
+import MyProfileDetail from '../ProfileUser/MyProfileDetail';
+import OtherUser from '../ProfileUser/OtherUser';
 
 
 export default class HomeScreen extends Component {
@@ -76,6 +79,25 @@ StackTripPlan.navigationOptions = ({ navigation }) => {
     };
 };
 
+const StackAccount = createStackNavigator({
+    MyProfile_: MyProfile,
+    MyDetailPr5_: MyProfileDetail,
+    OtherUser_: OtherUser
+
+},
+{
+    headerMode: 'none'
+});
+
+StackAccount.navigationOptions=({navigation}) => {
+    let tabBarVisible = true;
+    if (navigation.state.index > 0) {
+        tabBarVisible = false;
+    }
+    return {
+        tabBarVisible,
+    };
+}
 // Create Button Tab 
 const HomeBottomTab = createBottomTabNavigator({
     HomeTab: {
@@ -106,7 +128,7 @@ const HomeBottomTab = createBottomTabNavigator({
         })
     },
     ProfileTab: {
-        screen: HomeScreenChild,
+        screen: StackAccount,
         navigationOptions: () => ({
             tabBarIcon: <Image source={require('../../Resource/Home/icontabbar/user.png')} style={styles.inputIcon} />
         })

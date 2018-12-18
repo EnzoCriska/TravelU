@@ -17,7 +17,8 @@ export default class MapStack extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <ImageBackground source={require('../../../../../Resource/StackRoute/logo.png')} style={styles.imageLogo} >
+                <ImageBackground source={require('../../../../../Resource/StackRoute/logo.png')} 
+                    style={styles.imageLogo} >
                     <View style={styles.container}>
                         <View style={styles.container}></View>
                         <View style={{ flex: 2 }}>

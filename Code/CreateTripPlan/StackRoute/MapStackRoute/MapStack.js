@@ -17,11 +17,14 @@ export default class MapStack extends Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <ImageBackground source={require('../../../../Resource/StackRoute/logo.png')} style={styles.imageLogo} >
+                <ImageBackground 
+                    source={require('../../../../Resource/StackRoute/logo.png')} 
+                    style={styles.imageLogo} >
                     <View style={{ flex: 1 }}>
                         <View style={{ flex: 1 }}></View>
                         <View style={{ flex: 2 }}>
-                            <View style={{ flex: 1, width: '100%', flexDirection: 'row', alignItems: 'center' }}>
+                            <View 
+                            style={{ flex: 1, width: '100%', flexDirection: 'row', alignItems: 'center' }}>
                                 <TouchableOpacity style={styles.buttonBack}
                                     onPress={()=>{this.props.navigation.goBack()}}>
                                     <Image source={require('../../../../Resource/StackRoute/back.png')}
