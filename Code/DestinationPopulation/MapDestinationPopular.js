@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { 
-    View, Text, FlatList, StyleSheet, TouchableOpacity, ImageBackground, Image, ScrollView, Dimensions
+    View, Text, FlatList, StyleSheet, TouchableOpacity, ImageBackground, Image, ScrollView, Dimensions, Animated
  } from "react-native";
 import MapView, {Marker} from "react-native-maps";
 import  Icon  from "react-native-vector-icons/FontAwesome";
@@ -10,7 +10,7 @@ import ItemRestaurants from './FlastListItemRestaurants/ItemRestaurants';
 const { width, height } = Dimensions.get("window");
 
 const CARD_HEIGHT = height / 4;
-const CARD_WIDTH = CARD_HEIGHT - 50;
+const CARD_WIDTH = width - 20;
 
 export default class MapDestinationPopular extends Component {
 
@@ -72,6 +72,43 @@ export default class MapDestinationPopular extends Component {
         }
     }
 
+    componentWillMount(){
+        this.index = 0;
+        this.animation = new Animated.Value(0);
+    }
+
+    componentDidMount(){
+        console.log('componentDidmount...')
+        this.animation.addListener(({ value }) => {
+            console.log('value: '+ value)
+            let index = Math.floor(value / CARD_WIDTH + 0.3); // animate 30% away from landing on the next item
+            console.log('index: ' + index)
+            if (index >= this.state.list.length) {
+              index = this.state.list.length - 1;
+            }
+            if (index <= 0) {
+              index = 0;
+            }
+      
+            clearTimeout(this.regionTimeout);
+            this.regionTimeout = setTimeout(() => {
+              if (this.index !== index) {
+                this.index = index;
+                const { location } = this.state.list[index];
+                this.map.animateToRegion(
+                  {
+                    ...location,
+                    latitudeDelta: this.state.region.latitudeDelta,
+                    longitudeDelta: this.state.region.longitudeDelta,
+                  },
+                  350
+                );
+              }
+            }, 10);
+          });
+        }
+
+
   render() {
     return (
       <View style={styles.container}>
@@ -113,11 +150,23 @@ export default class MapDestinationPopular extends Component {
                         </Marker>
                     ))}
                 </MapView>
-                <ScrollView
+                <Animated.ScrollView
                     horizontal
                     scrollEventThrottle={1}
                     showsHorizontalScrollIndicator={false}
                     snapToInterval={CARD_WIDTH}
+                    onScroll={Animated.event(
+                        [
+                        {
+                            nativeEvent: {
+                            contentOffset: {
+                                x: this.animation,
+                            },
+                            },
+                        },
+                        ],
+                        { useNativeDriver: true }
+                    )}
                     style={styles.scrollView}
                     contentContainerStyle={styles.endPadding}>
                     {this.state.list.map((item, index) => (
@@ -130,7 +179,7 @@ export default class MapDestinationPopular extends Component {
                             vote = {item.vote}
                         />
                     ))}
-                </ScrollView>
+                </Animated.ScrollView>
             </View>
       </View>
     )

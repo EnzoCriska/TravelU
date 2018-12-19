@@ -82,9 +82,7 @@ export default class OtherUser extends Component {
             )
         }
     }
-
     
-
   render() {
     return (
       <ScrollView>
@@ -104,7 +102,10 @@ export default class OtherUser extends Component {
                 <View style={styles.TitleHeader}>
                     <Text style={styles.titleContent}>{this.state.userID}</Text>
                     <TouchableOpacity
-                        onPress={()=> console.log('click ...')}>
+                        onPress={()=> {
+                            console.log('click ...')
+                            this.setState({isFollowed: !this.state.isFollowed})
+                        }}>
                         {this.renderFollowButton()}
                         
                     </TouchableOpacity>
