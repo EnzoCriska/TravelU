@@ -197,7 +197,7 @@ export default class DaLatDenistation extends Component {
     this.props.navigation.navigate(sceen, { titleHotel: name })
   }
   _onpressBack() {
-    this.props.navigation
+    this.props.navigation.goBack();
   }
   _onpressRestaurant() {
     this.props.navigation.navigate('DaLatRestaurants_');
@@ -263,7 +263,9 @@ export default class DaLatDenistation extends Component {
                 <Text style={styles.txtWhite}>   Đà Lạt</Text>
 
                 <TouchableOpacity style={styles.btnMap}
-                  onPress={() => this.props.navigation.navigate('MapDestinationPopular_')}>
+                  onPress={() => {
+                    console.log("map...")
+                    this.props.navigation.navigate('MapDestinationPopular_')}}>
                   <Image source={require('../../Resource/Denistation/Dalat/imgMap.png')}
                     style={styles.imgmap}
                   >

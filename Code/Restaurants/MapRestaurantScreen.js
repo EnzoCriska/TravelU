@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { 
-    View, Text, FlatList, StyleSheet, TouchableOpacity, ImageBackground, Image, ScrollView, Dimensions, Animated
+    View, Text, FlatList, StyleSheet, TouchableOpacity, ImageBackground, Image, ScrollView, Dimensions, Animated,
+    PermissionsAndroid
  } from "react-native";
 import MapView, {Marker} from "react-native-maps";
 import  Icon  from "react-native-vector-icons/FontAwesome";
@@ -106,6 +107,9 @@ export default class MapRestaurantScreen extends Component {
             }, 10);
           });
         }
+     currentLocation(){
+
+     }   
   render() {
     return (
       <View style={styles.container}>
@@ -146,7 +150,7 @@ export default class MapRestaurantScreen extends Component {
                 <MapView
                     ref={map => this.map = map}
                     initialRegion={this.state.region}
-                    style={{height:'100%'}}>
+                    style={{width: width,height:height-100, zIndex:1, position:'absolute'}}>
                     {this.state.listRestaurants.map((item, index) => (
                     <Marker
                         coordinate = {item.location}
@@ -158,11 +162,16 @@ export default class MapRestaurantScreen extends Component {
                         
                 ))}
                 </MapView>
-                {/* <Image
-                        source={require('../../Resource/Hotels/Map/qw.png')}
-                        style={{height:100, width:100}}
-                        contentContainerStyle={{alignItems:'center', justifyContent:'center'}}
-                /> */}
+                <TouchableOpacity
+                    onPress={() => {console.log("get current locations")
+                                    this.currentLocation()}}
+                    style={{height:50, width:50, zIndex:2, position:'absolute',marginLeft: "85%", marginTop:"5%"}}>
+                    <Image
+                            source={require('../../../Resource/Hotels/Map/qw.png')}
+                            style={{height:50, width:50}}
+                            contentContainerStyle={{alignItems:'center', justifyContent:'center'}}
+                    />
+                </TouchableOpacity>
 
                 <Animated.ScrollView
                     horizontal
@@ -248,6 +257,7 @@ const styles = StyleSheet.create({
         flex:1,
     },
     scrollView: {
+        zIndex:2,
         position: "absolute",
         bottom: 10,
         left: 10,

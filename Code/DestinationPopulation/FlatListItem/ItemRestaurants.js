@@ -11,7 +11,11 @@ export default class ItemRestaurant extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Image source={this.props.image} style={styles.img}></Image>
+                <Image 
+                    source={this.props.image} 
+                    style={styles.img}>
+                </Image>
+                
                 {/* View Description inclue sum rating ,vote, name*/}
                 <View style={styles.viewDescription}>
                     <Text style={styles.txtBlack}>{this.props.name}</Text>

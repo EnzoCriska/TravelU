@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, ImageBackground, Image, TouchableOpacity, FlatList } from 'react-native';
-import ItemHotels from './FlatListItem/ItemHotels';
+import ItemHotels from '../FlatListItem/ItemHotels';
 
 export default class DaLatHotels extends Component {
     constructor(props) {
@@ -9,7 +9,7 @@ export default class DaLatHotels extends Component {
 
             data: [
                 {
-                    image: require('../../Resource/Denistation/Dalat/Hotel/1.png'),
+                    image: require('../../../Resource/Denistation/Dalat/Hotel/1.png'),
                     name: "The Dune Villa",
                     rating: 4,
                     vote: 190,
@@ -17,7 +17,7 @@ export default class DaLatHotels extends Component {
                     hotelstar: 5,
                     pernight: "10000000"
                 }, {
-                    image: require('../../Resource/Denistation/Dalat/Hotel/2.png'),
+                    image: require('../../../Resource/Denistation/Dalat/Hotel/2.png'),
                     name: "Zen Diamond Suites Luxury Hotel",
                     rating: 4,
                     vote: 190,
@@ -25,7 +25,7 @@ export default class DaLatHotels extends Component {
                     hotelstar: 5,
                     pernight: "10000000"
                 }, {
-                    image: require('../../Resource/Denistation/Dalat/Hotel/3.png'),
+                    image: require('../../../Resource/Denistation/Dalat/Hotel/3.png'),
                     name: "Giọt Đắng Hotel",
                     rating: 4,
                     vote: 190,
@@ -33,7 +33,7 @@ export default class DaLatHotels extends Component {
                     hotelstar: 5,
                     pernight: "10000000"
                 }, {
-                    image: require('../../Resource/Denistation/Dalat/Hotel/4.png'),
+                    image: require('../../../Resource/Denistation/Dalat/Hotel/4.png'),
                     name: "Đâu cũng được Hotel",
                     rating: 4,
                     vote: 190,
@@ -53,7 +53,7 @@ export default class DaLatHotels extends Component {
         return (
             <View style={styles.container}>
                 <ImageBackground style={styles.imgLogo}
-                    source={require('../../Resource/DataImages/imgLogo90.png')}
+                    source={require('../../../Resource/DataImages/imgLogo90.png')}
                 >
                     <View style={{ flex: 1, width: '100%' }}>
                         <View style={{ flex: 1 }}></View>
@@ -64,7 +64,7 @@ export default class DaLatHotels extends Component {
                                 onPress={() => goBack()}
                             >
                                 <Image style={styles.imgBack}
-                                    source={require('../../Resource/DataImages/imgBack.png')}
+                                    source={require('../../../Resource/DataImages/imgBack.png')}
                                 >
                                 </Image>
                             </TouchableOpacity>
@@ -72,15 +72,16 @@ export default class DaLatHotels extends Component {
 
                             <TouchableOpacity style={styles.btnSearch} >
                                 <Image style={styles.imgSearch}
-                                    source={require('../../Resource/DataImages/imgSearch.png')}
+                                    source={require('../../../Resource/DataImages/imgSearch.png')}
                                 >
                                 </Image>
                             </TouchableOpacity>
 
                             <TouchableOpacity style={styles.btnMap}
-                                onPress={()=> this.props.navigation.navigate('MapHotels_')} >
+                                onPress={()=> {this.props.navigation.navigate('DaLatMapHotels_')
+                                                console.log("go to map")}} >
                                 <Image style={styles.imgSearch}
-                                    source={require('../../Resource/DataImages/imgMap.png')}
+                                    source={require('../../../Resource/DataImages/imgMap.png')}
                                 >
                                 </Image>
                             </TouchableOpacity>
@@ -94,7 +95,7 @@ export default class DaLatHotels extends Component {
 
                     <TouchableOpacity style={styles.btnFilter}>
                         <Image style={styles.imgFilter}
-                            source={require('../../Resource/DataImages/imgFilter.png')}
+                            source={require('../../../Resource/DataImages/imgFilter.png')}
                         >
                         </Image>
                     </TouchableOpacity>

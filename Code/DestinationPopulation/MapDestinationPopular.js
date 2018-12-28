@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { 
-    View, Text, FlatList, StyleSheet, TouchableOpacity, ImageBackground, Image, ScrollView, Dimensions, Animated
+    View, Text, FlatList, StyleSheet, TouchableOpacity, ImageBackground, Image, PermissionsAndroid, Dimensions, Animated
  } from "react-native";
 import MapView, {Marker} from "react-native-maps";
 import  Icon  from "react-native-vector-icons/FontAwesome";
-import ItemRestaurants from './FlastListItemRestaurants/ItemRestaurants';
+import ItemRestaurants from './FlatListItem/MapItemRestaurant';
 
 
 const { width, height } = Dimensions.get("window");
@@ -108,7 +108,58 @@ export default class MapDestinationPopular extends Component {
           });
         }
 
+       async currentLocation(){
+        try {
+            const granted = await PermissionsAndroid.request(
+              PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+              {
+                'title': 'ACCESS_FINE_LOCATION Permission',
+                'message': 'ACCESS_FINE_LOCATION needs access to your LOCATION ' +
+                           'so you can take awesome Location.'
+              }
+            )
+            if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+              console.log("You can use the Location")
+            } else {
+              console.log("Location permission denied")
+            }
+            const granted2 = await PermissionsAndroid.request(
+                PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
+                {
+                  'title': 'ACCESS_FINE_LOCATION Permission',
+                  'message': 'ACCESS_FINE_LOCATION needs access to your LOCATION ' +
+                             'so you can take awesome Location.'
+                }
+              )
+              if (granted2 === PermissionsAndroid.RESULTS.GRANTED) {
+                console.log("You can use the Location")
+              } else {
+                console.log("Location permission denied")
+              }
+          } catch (err) {
+            console.warn(err)
+          }
+            console.log("get...")
+            await navigator.geolocation.watchPosition((position) => {
+                  console.log('Position -> ',position.toString());
+                },
+                (error) => console.log(error),
+                { enableHighAccuracy: true, timeout: 25000, maximumAge: 1000 }
+            );
 
+            // navigator.geolocation.getCurrentPosition((position)=>{
+            //     var {location} = position.coords
+            //     console.log(location)
+            //     this.map.animateToRegion(
+            //         {
+            //           ...location,
+            //           latitudeDelta: this.state.region.latitudeDelta,
+            //           longitudeDelta: this.state.region.longitudeDelta,
+            //         },
+            //         350
+            //       );
+            // })
+        }
   render() {
     return (
       <View style={styles.container}>
@@ -139,7 +190,7 @@ export default class MapDestinationPopular extends Component {
                 <MapView
                     ref={map => this.map = map}
                     initialRegion={this.state.region}
-                    style={{height:'100%'}}>
+                    style={{width: width,height:height-100,zIndex:1, position:'absolute'}}>
                     {this.state.list.map((item, index) => (
                     <Marker
                         coordinate = {item.location}
@@ -150,6 +201,17 @@ export default class MapDestinationPopular extends Component {
                         </Marker>
                     ))}
                 </MapView>
+                <TouchableOpacity
+                    onPress={() => {console.log("get current locations")
+                                    this.currentLocation()}}
+                    style={{height:50, width:50, zIndex:2, position:'absolute',marginLeft: "85%", marginTop:"5%"}}>
+                    <Image
+                            source={require('../../Resource/Hotels/Map/qw.png')}
+                            style={{height:50, width:50}}
+                            contentContainerStyle={{alignItems:'center', justifyContent:'center'}}
+                    />
+                </TouchableOpacity>
+
                 <Animated.ScrollView
                     horizontal
                     scrollEventThrottle={1}
@@ -169,6 +231,7 @@ export default class MapDestinationPopular extends Component {
                     )}
                     style={styles.scrollView}
                     contentContainerStyle={styles.endPadding}>
+                    
                     {this.state.list.map((item, index) => (
                         <ItemRestaurants
                             key = {index}
@@ -179,6 +242,7 @@ export default class MapDestinationPopular extends Component {
                             vote = {item.vote}
                         />
                     ))}
+                    {console.log("rended ListItem")}
                 </Animated.ScrollView>
             </View>
       </View>
@@ -234,6 +298,7 @@ const styles = StyleSheet.create({
         flex:1,
     },
     scrollView: {
+        zIndex:2,
         position: "absolute",
         bottom: 10,
         left: 10,

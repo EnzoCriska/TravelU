@@ -108,6 +108,9 @@ export default class MapDayOne extends Component {
             }, 10);
           });
         }
+        currentLocation(){
+
+        }
 
     renderImageMarker({item}){
         if (item.type === 'hotel') 
@@ -140,6 +143,16 @@ export default class MapDayOne extends Component {
                         </Marker>
                     ))}
           </MapView>
+          <TouchableOpacity
+                    onPress={() => {console.log("get current locations")
+                                    this.currentLocation()}}
+                    style={{height:50, width:50, zIndex:2, position:'absolute',marginLeft: "85%", marginTop:"5%"}}>
+                    <Image
+                            source={require('../../../../Resource/Hotels/Map/qw.png')}
+                            style={{height:50, width:50}}
+                            contentContainerStyle={{alignItems:'center', justifyContent:'center'}}
+                    />
+                </TouchableOpacity>
           <Animated.ScrollView
                     horizontal
                     scrollEventThrottle={1}
@@ -180,13 +193,17 @@ const styles = StyleSheet.create({
         flex:1
     },
     mapSize:{
-        height:'100%'
+        width: width,
+        height:height-100,
+        zIndex:1,
+        position: 'absolute',
     },
     imageMarker:{
         height:40, 
         width:30
     },
     scrollView: {
+        zIndex:2,
         position: "absolute",
         bottom: 10,
         left: 10,

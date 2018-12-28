@@ -11,9 +11,9 @@ import ItemHotel from './FlatlistItem/ItemHotel';
 const { width, height } = Dimensions.get("window");
 
 const CARD_HEIGHT = height / 4;
-const CARD_WIDTH = CARD_HEIGHT - 50;
+const CARD_WIDTH = width - 20;
 
-export default class MapRestaurantScreen extends Component {
+export default class MapHotelScreen extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -103,6 +103,7 @@ export default class MapRestaurantScreen extends Component {
               if (this.index !== index) {
                 this.index = index;
                 const { location } = this.state.listRestaurants[index];
+                console.log(location)
                 this.map.animateToRegion(
                   {
                     ...location,
@@ -116,12 +117,19 @@ export default class MapRestaurantScreen extends Component {
           });
         }
 
+        currentLocation(){
+
+        }
+        currentLocation(){
+
+        }
+
   render() {
     return (
       <View style={styles.container}>
-            <View style={StyleSheet.header}>
+            <View style={styles.header}>
                 <ImageBackground
-                        source={require('../../Resource/Hotels/logo.png')}
+                        source={require('../../../Resource/Hotels/logo.png')}
                         style = {styles.imageBackground}>
                         <View style={styles.containerHeader}>
                             <View style={styles.containerBackHeader}>
@@ -156,23 +164,30 @@ export default class MapRestaurantScreen extends Component {
                 <MapView
                     ref={map => this.map = map}
                     initialRegion={this.state.region}
-                    style={{height:'100%'}}>
+                    style={{width: width,height:height-100, zIndex:1, position:'absolute',}}>
                     {this.state.listRestaurants.map((item, index) => (
                     <Marker
                         coordinate = {item.location}
                         title = {item.title}>
-                        <Image source = {require('../../Resource/Hotels/Map/hotelMarker.png')}
+                        <Image source = {require('../../../Resource/Hotels/Map/hotelMarker.png')}
                             style={styles.imageMarker}
                         />
                         </Marker>
                         
                 ))}
                 </MapView>
-                {/* <Image
-                        source={require('../../Resource/Hotels/Map/qw.png')}
-                        style={{height:100, width:100}}
-                        contentContainerStyle={{alignItems:'center', justifyContent:'center'}}
-                /> */}
+
+                <TouchableOpacity
+                    onPress={() => {console.log("get current locations")
+                                    this.currentLocation()}}
+                    style={{height:50, width:50, zIndex:2, position:'absolute',marginLeft: "85%", marginTop:"5%"}}>
+                    <Image
+                            source={require('../../../Resource/Hotels/Map/qw.png')}
+                            style={{height:50, width:50}}
+                            contentContainerStyle={{alignItems:'center', justifyContent:'center'}}
+                    />
+                </TouchableOpacity>
+                        
 
                 <Animated.ScrollView
                     horizontal
@@ -195,6 +210,7 @@ export default class MapRestaurantScreen extends Component {
                     contentContainerStyle={styles.endPadding}>
                     {this.state.listRestaurants.map((item, index) => (
                         <ItemHotel
+                            key = {index.toString()}
                             title = {item.title}
                             image = {item.image}
                             distance = {item.distance}
@@ -265,6 +281,8 @@ const styles = StyleSheet.create({
         left: 10,
         right: 0,
         paddingVertical: 5,
+        zIndex:2,
+        position:'absolute',
     },
     endPadding: {
     //  paddingHorizontal: width - CARD_WIDTH,

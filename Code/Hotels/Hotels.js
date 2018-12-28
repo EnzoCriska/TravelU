@@ -158,7 +158,7 @@ export default class Hotels extends Component {
 
                     <Text
                         style={styles.textSeeAll}
-                        onPress={() => { this.props.navigation.navigate('MapRestaurant_') }}>
+                        onPress={() => {}}>
                         See all
                     </Text>
                 </View>

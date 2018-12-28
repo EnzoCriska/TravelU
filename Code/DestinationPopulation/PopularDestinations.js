@@ -26,7 +26,7 @@ const datasourceDestinations = [
     {
         image: 'https://triphunter.vn/media/W1siZiIsIjIwMTYvMDMvMDUvMmp1dmg0dGljOV8xMjU5MjIyN18xMDE2NTE5MTc1MDU2MjQzXzU4MTU2MDUzNTc3NDIxMzQ0NzNfbi5qcGciXSxbInAiLCJ0aHVtYiIsIjY0MHg0ODBcdTAwM2UiXV0/12592227_1016519175056243_5815605357742134473_n.jpg?sha=c82aa868012d0f4a',
         title: 'Hội An',
-        descripstion: 'Phố hoài niệm'
+        description: 'Phố hoài niệm'
     },
     {
         image: 'https://mochilerosentailandia.com/wp-content/uploads/2016/07/Halong-Bay.jpg',
@@ -41,11 +41,35 @@ const datasourceDestinations = [
 ]
 
 export default class PopularDestinations extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            isLoading:  true,
+            datasourceDestinations: []
+        };
+    }
+
+    // async componentDidMount(){
+    //         console.log('request...');
+    //         try {
+    //         const response = await fetch('http://192.168.100.46:3000/getDesPopular');
+    //         const responseJson = await response.json();
+    //         console.log(responseJson);
+    //         this.setState({datasourceDestinations:responseJson});
+    //         console.log(this.state.datasourceDestinations)
+    //     }
+    //     catch (error) {
+    //         console.error(error);
+    //     }
+    // }
+
+
     onPressItem() {
         this.props.navigation.navigate('DaLatDestinations_')
     }
     render() {
         return (
+            
             <View style={styles.container}>
                 <StatusBar hidden={false} />
                 <ImageBackground
@@ -71,7 +95,7 @@ export default class PopularDestinations extends Component {
                 <ScrollView style={styles.scrollView}>
                     <FlatList
                         data={datasourceDestinations}
-                        keyExtractor={item => item.title}
+                        keyExtractor={item => item.image}
                         renderItem={({ item }) => (
                             <TouchableOpacity
                                 onPress={() => { this.onPressItem() }}
