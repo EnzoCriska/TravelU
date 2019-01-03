@@ -7,11 +7,11 @@ import {
     Image,
     TouchableHighlight
 } from 'react-native';
-
+import {CheckPermission} from '../Util/CheckPermission'
 export default class Login extends Component {
     constructor(props) {
         super(props);
-
+        CheckPermission()
         this.state = {
             sologan: "Travel with people. Make new friends",
         };
