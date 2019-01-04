@@ -26,7 +26,7 @@ export default class Login extends Component {
     }
 
     btnSignInEmailClicked() {
-        this.props.navigation.navigate('SignInScreen');
+        this.props.navigation.navigate('SingUpScreen');
     }
 
     btnLoginClicked() {

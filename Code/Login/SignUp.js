@@ -7,12 +7,69 @@ import {
     ImageBackground,
     Image,
     TouchableHighlight,
-    ScrollView
+    ScrollView,
+    Alert
 } from 'react-native';
 
 export default class SignUp extends Component {
+
+    constructor(props){
+        super(props)
+        this.state={
+            email : "",
+            password : "",
+            re_password : ""
+        }
+    }
+
+    onSignUp(){
+        console.log("SignUp...")
+        if(this.state.email == "" || this.state.password == "" || this.state.re_password == ""){
+            Alert.alert(
+                'Sorry',
+                'Please fill all the fields',
+                [
+                  {text: 'OK', onPress: () => console.log('OK Pressed')},
+                ],
+                { cancelable: false }
+              )
+        }else{
+            if(this.state.password != this.state.re_password){
+                Alert.alert(
+                    'Sorry',
+                    'Password and re_password are same',
+                    [
+                      {text: 'OK', onPress: () => console.log('OK Pressed')},
+                    ],
+                    { cancelable: false }
+                  )
+            }else{
+                fetch('http://10.103.164.233:3000/users', {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    "email": this.state.email,
+                    "password": this.state.password,
+                }),
+                }).then((response) => response.json())
+                    .then((responseJson) => {
+                        console.log(responseJson)
+                        this.props.navigation.navigate('HomeScreen')
+                    return responseJson;
+                    })
+                    .catch((error) => {
+                    console.error(error);
+                    });
+            }
+        }
+        console.log("wait...")
+    }
+
     buttonBackClicked() {
-        this.props.navigation.navigate('SignInScreen')
+        this.props.navigation.goBack()
     }
 
     render() {
@@ -45,6 +102,8 @@ export default class SignUp extends Component {
                         </Text>
                         <TextInput
                             style={styles.input}
+                            onChangeText={(email) => this.setState({email})}
+                            value={this.state.email}
                             placeholder='example@email.com' />
 
                         <Text
@@ -54,6 +113,8 @@ export default class SignUp extends Component {
                         <TextInput
                             style={styles.input}
                             placeholder='********'
+                            onChangeText={(password) => this.setState({password})}
+                            value={this.state.password}
                             secureTextEntry={true} />
 
                         <Text style={styles.textLogin}>
@@ -62,6 +123,8 @@ export default class SignUp extends Component {
                         <TextInput
                             style={styles.input}
                             placeholder='********'
+                            onChangeText={(re_password) => this.setState({re_password})}
+                            value={this.state.re_password}
                             secureTextEntry={true} />
 
                     </View>
@@ -70,7 +133,9 @@ export default class SignUp extends Component {
                         elevation={6}
                         style={{ alignItems: 'center', marginTop: -23 }}
                     >
-                        <TouchableHighlight style={styles.buttonLogin}>
+                        <TouchableHighlight 
+                            style={styles.buttonLogin}
+                            onPress={()=> this.onSignUp()}>
                             <ImageBackground
                                 source={require('../../Resource/SignIn/ButtonLogin.png')}
                                 style={styles.buttonLogin}
