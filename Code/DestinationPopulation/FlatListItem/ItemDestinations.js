@@ -6,6 +6,7 @@ import {
     StyleSheet
 } from "react-native";
 import { Rating } from 'react-native-elements'
+import { Fonts } from '../../Fonts/Fonts';
 
 export default class ItemTrendLocation extends Component {
     constructor(props) {
@@ -65,7 +66,7 @@ const styleItem = StyleSheet.create({
         color: '#FFF',
         fontSize: 13,
         fontWeight: 'bold',
-        fontFamily: 'Nabila',
+        fontFamily: Fonts.Nabila,
         marginLeft: '5%',
     }
 })
